@@ -1,4 +1,6 @@
-<?php require_once dirname(__DIR__, 2) . '/Resource/dataview/Os_dataview.php'; use Src\_public\Util; ?>
+<?php require_once dirname(__DIR__, 2) . '/Resource/dataview/Os_dataview.php';
+
+use Src\_public\Util; ?>
 <!DOCTYPE html>
 <html>
 
@@ -46,26 +48,26 @@
             <section class="content">
 
                 <!-- Default box -->
-                <div id="CadCliente" class="card card-secondary collapsed-card">
+                <div id="CadOs" class="card card-secondary <?= ($ordemOS[0]['OsID'] != '' ? '' : 'collapsed-card') ?>">
                     <div class="card-header">
                         <h3 class="card-title">Dados da Ordem</h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                                <i class="fa">Novo Cliente</i></button>
+                                <i class="fa"><?= ($ordemOS[0]['OsID'] != '' ? 'Editar ' : 'Novo ') ?>Cliente</i></button>
 
                         </div>
                     </div>
                     <form id="form_os" action="ordem_servico.php" method="post">
+                        <input type="hidden" name="OsID" id="OsID" value="<?= ($ordemOS[0]['OsID']!=''?$ordemOS[0]['OsID']:'')?>">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Cliente</label>
                                         <select class="select2bs4 obg" data-placeholder="Selecione o cliente" id="Oscliente" name="Oscliente" style="width: 100%;">
-                                            <option value="">Selecione...</option>
                                             <?php foreach ($clientes as $cliente) { ?>
-                                                <option value="<?= $cliente['CliID'] ?>"><?= $cliente['CliNome'] ?></option>
+                                                <option value="<?= $cliente['CliID'] ?>" <?= ($ordemOS[0]['OsID'] == '' ? '' : ($ordemOS[0]['CliID'] == $cliente['CliID'] ? 'selected' : '')) ?>><?= $cliente['CliNome'] ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -73,14 +75,27 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Técnico</label>
-                                        <input class="form-control obg" id="tecnico" name="tecnico">
+                                        <input class="form-control obg" id="tecnico" name="tecnico" value="<?= ($ordemOS[0]['OsID'] == '' ? '' : $ordemOS[0]['OsTecID']) ?>">
                                     </div>
                                 </div>
+                                <?php
+                                $status = '';
+                                if ($ordemOS[0]['OsStatus'] == "O") {
+                                    $status = "<button class=\"btn btn-secondary btn-xs\">Orçamento</button>";
+                                } else if ($ordemOS[0]['OsStatus'] == "A") {
+                                    $status = "<button class=\"btn btn-info btn-xs\">Aberto</button>";
+                                } else if ($ordemOS[0]['OsStatus'] == "EA") {
+                                    $status = "<button class=\"btn btn-warning btn-xs\">Em aberto</button>";
+                                } else if ($ordemOS[0]['OsStatus'] == "F") {
+                                    $status = "<button class=\"btn btn-success btn-xs\">Finalizada</button>";
+                                } else if ($ordemOS[0]['OsStatus'] == "C") {
+                                    $status = "<button class=\"btn btn-danger btn-xs\">Cancelado</button>";
+                                } ?>
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label>Status</label>
                                         <select class="form-control obg" id="status" name="status">
-                                            <option value="O">Orçamento</option>
+                                            <option value="<?= ($ordemOS[0]['OsID'] != '' ? $ordemOS[0]['OsStatus'] : 'O') ?>"><?= ($status != '' ? $status : 'Orçamento') ?></option>
                                             <option value="A">Aberto</option>
                                             <option value="EA">Em andamento</option>
                                             <option value="F">Finalizado</option>
@@ -91,48 +106,48 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Data inicial</label>
-                                        <input type="date" class="form-control obg" id="dtInicial" name="dtInicial" placeholder="Digite o aqui....">
+                                        <input type="date" class="form-control obg" id="dtInicial" name="dtInicial" value="<?= ($ordemOS[0]['OsID'] == '' ? '' : $ordemOS[0]['OsDtInicial']) ?>" placeholder="Digite o aqui....">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Data final</label>
-                                        <input type="date" class="form-control" id="dtFinal" name="dtFinal" placeholder="Digite o aqui....">
+                                        <input type="date" class="form-control" id="dtFinal" name="dtFinal" value="<?= ($ordemOS[0]['OsID'] == '' ? '' : $ordemOS[0]['OsDtFinal']) ?>" placeholder="Digite o aqui....">
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Garantia</label>
-                                        <input class="form-control obg" id="garantia" name="garantia" placeholder="Digite o aqui....">
+                                        <input class="form-control obg" id="garantia" name="garantia" value="<?= ($ordemOS[0]['OsID'] == '' ? '' : $ordemOS[0]['OsGarantia']) ?>" placeholder="Digite o aqui....">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Descrição do Produto/Serviço</label>
-                                        <textarea class="form-control obg" id="descProd" name="descProd" placeholder="Digite o aqui...."></textarea>
+                                        <textarea class="form-control obg" id="descProd" name="descProd"  placeholder="Digite o aqui...."><?= ($ordemOS[0]['OsID'] == '' ? '' : $ordemOS[0]['OsDescProdServ']) ?></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Defeito</label>
-                                        <textarea class="form-control obg" id="defeito" name="defeito" placeholder="Digite o aqui...."></textarea>
+                                        <textarea class="form-control obg" id="defeito" name="defeito"  placeholder="Digite o aqui...."><?= ($ordemOS[0]['OsID'] == '' ? '' : $ordemOS[0]['OsDefeito']) ?></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Observações</label>
-                                        <textarea class="form-control " id="obs" name="obs" placeholder="Digite o aqui...."></textarea>
+                                        <textarea class="form-control " id="obs" name="obs"  placeholder="Digite o aqui...."><?= ($ordemOS[0]['OsID'] == '' ? '' : $ordemOS[0]['OsObs']) ?></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Laudo Técnico</label>
-                                        <textarea class="form-control" id="laudo" name="laudo" placeholder="Digite o aqui...."></textarea>
+                                        <textarea class="form-control" id="laudo" name="laudo"  placeholder="Digite o aqui...."><?= ($ordemOS[0]['OsID'] == '' ? '' : $ordemOS[0]['OsLaudo']) ?></textarea>
                                     </div>
                                 </div>
-                            
-                        </div>
+
+                            </div>
                             <button class="btn btn-success col-md-12" onclick="return CadastrarOs('form_os')" name="btn_cadastrar">Cadastrar</button>
                     </form>
                 </div>
@@ -192,10 +207,10 @@
                                     <?php for ($i = 0; $i < count($os); $i++) { ?>
                                         <tr>
                                             <td>
-                                                <a href="#" onclick="AlterarOsModal('<?= $os[$i]['OsID'] ?>', '<?= $os[$i]['OsDtInicial'] ?>','<?= $os[$i]['OsDtFinal'] ?>','<?= $os[$i]['OsGarantia'] ?>','<?= $os[$i]['OsDescProdServ'] ?>','<?= $os[$i]['OsDefeito'] ?>','<?= $os[$i]['OsObs'] ?>','<?= $os[$i]['OsCliID'] ?>','<?= $os[$i]['OsTecID'] ?>','<?= $os[$i]['OsStatus'] ?>','<?= $os[$i]['OsLaudoTec'] ?>','<?= $os[$i]['nomeCliente'] ?>')" data-toggle="modal" data-target="#alterarOs"><i class="fas fa-edit"></i></a>
+                                                <a href="ordem_servico.php?OsID=<?= $os[$i]['OsID']?>"><i class="fas fa-edit"></i></a>
                                                 <a href="#" onclick="ExcluirModal('<?= $os[$i]['OsID'] ?>','<?= $os[$i]['nomeCliente'] ?>')" data-toggle="modal" data-target="#modalExcluir"><i style="color:red" class="fas fa-trash-alt"></i></a>
-                                                <a href="itens_os.php?OsID=<?= $os[$i]['OsID']?>" ><i style="color:red" title="Inserir os Itens na OS" class="fas fa-list"></i></a>
-                                                <a href="print_os.php?OsID=<?= $os[$i]['OsID']?>" ><i style="color:red" title="Imprimir OS" class="fas fa-print"></i></a>
+                                                <a href="itens_os.php?OsID=<?= $os[$i]['OsID'] ?>"><i style="color:red" title="Inserir os Itens na OS" class="fas fa-list"></i></a>
+                                                <a href="print_os.php?OsID=<?= $os[$i]['OsID'] ?>"><i style="color:red" title="Imprimir OS" class="fas fa-print"></i></a>
                                             </td>
                                             <td><?= $os[$i]['nomeCliente'] ?></td>
                                             <td><?= Util::ExibirDataBr($os[$i]['OsDtInicial']) ?></td>
@@ -260,11 +275,11 @@
             $('#Oscliente').select2({
                 theme: 'bootstrap4'
             })
-           
+
             $('#AlteraOscliente').select2({
                 theme: 'bootstrap4'
             })
-           
+
         })
     </script>
 

@@ -790,3 +790,9 @@ Hora:00:49:28
 Função:ExcluirItemOSController
 cod Logado:6
 Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:30/08/2022
+Hora:17:19:41
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_os`, CONSTRAINT `fk_tb_os_2` FOREIGN KEY (`OsTecID`) REFERENCES `tb_tecnico` (`tecnico_id`))

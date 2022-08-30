@@ -30,7 +30,6 @@ if (isset($_GET['OsID'])) {
     $ordemOS = $ctrl->RetornaOrdem($vo);
     $ProdOrdem = $ctrl->RetornaProdOrdem($vo);
     $ProdServOrdem = $ctrl->RetornaServOrdem($vo);
-
 }
 
 if (isset($_POST['btn_cadastrar'])) {
@@ -45,7 +44,13 @@ if (isset($_POST['btn_cadastrar'])) {
     $vo->setOsTecID($_POST['tecnico']);
     $vo->setOsStatus($_POST['status']);
     $vo->setOsLaudoTec($_POST['laudo']);
-    $ret = $ctrl->CadastrarOsController($vo);
+    if (isset($_POST['OsID'])) {
+        $vo->setID($_POST['OsID']);
+        $ret = $ctrl->AlterarOsController($vo);
+    } else {
+
+        $ret = $ctrl->CadastrarOsController($vo);
+    }
 
     if ($_POST['btn_cadastrar'] == 'ajx') {
         echo $ret;
@@ -86,7 +91,7 @@ if (isset($_POST['btn_cadastrar'])) {
     $vo = new OSVO;
     $vo->setID($_POST['ExcluirID']);
     $ret = $ctrl->ExcluirOSController($vo);
-    
+
     if ($_POST['btnExcluir'] == 'ajx') {
         echo $ret;
     } else {

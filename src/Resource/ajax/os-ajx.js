@@ -167,7 +167,7 @@ function AlterarOs() {
 function CadastrarOs(id_form) {
 
     if (NotificarCampos(id_form)) {
-
+        let OsID = $("#OsID").val();
         let Oscliente = $("#Oscliente").val();
         let tecnico = $("#tecnico").val();
         let status = $("#status").val();
@@ -193,8 +193,8 @@ function CadastrarOs(id_form) {
                 descProd: descProd,
                 defeito: defeito,
                 obs: obs,
-                laudo: laudo
-
+                laudo: laudo,
+                OsID: OsID
             },
             success: function (ret) {
                 RemoverLoad();
@@ -203,7 +203,7 @@ function CadastrarOs(id_form) {
                     LimparCampos(id_form);
                     ConsultarOs();
                     $("#CadOs").addClass('collapsed-card');
-                    $("#CadOsBody").hide();
+                    window.location.replace("ordem_servico.php")
 
 
                 } else {
