@@ -1,0 +1,14 @@
+{
+    "require": {
+        "dompdf/dompdf": "^1.2",
+        "mpdf/mpdf": "^8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Src\\": "src/"
+        },
+        "files": [
+            "src/Config/fixos.php"
+        ]
+    }
+}

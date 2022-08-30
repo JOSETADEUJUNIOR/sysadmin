@@ -1,0 +1,792 @@
+--------------------------------------------------
+Data:22/06/2022
+Hora:22:22:34
+Função:CadastrarTipoEquipamento
+cod Logado:1
+Erro:SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+--------------------------------------------------
+Data:23/06/2022
+Hora:07:50:29
+Função:CadastrarTipoEquipamento
+cod Logado:1
+Erro:SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+--------------------------------------------------
+Data:23/06/2022
+Hora:07:51:59
+Função:CadastrarSetor
+cod Logado:1
+Erro:SQLSTATE[42000]: Syntax error or access violation: 1049 Unknown database 'db_controleos'
+--------------------------------------------------
+Data:23/06/2022
+Hora:12:51:46
+Função:CadastrarModelo
+cod Logado:1
+Erro:SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+--------------------------------------------------
+Data:02/07/2022
+Hora:15:43:50
+Função:AlterarSetor
+cod Logado:1
+Erro:SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+--------------------------------------------------
+Data:02/07/2022
+Hora:15:47:22
+Função:AlterarSetor
+cod Logado:1
+Erro:SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '= '3' where id = 'Mouse'' at line 1
+--------------------------------------------------
+Data:02/07/2022
+Hora:15:47:29
+Função:AlterarSetor
+cod Logado:1
+Erro:SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '= '3' where id = 'Mouse'' at line 1
+--------------------------------------------------
+Data:02/07/2022
+Hora:15:48:58
+Função:AlterarSetor
+cod Logado:1
+Erro:SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '= '3' where id = 'Mouse'' at line 1
+--------------------------------------------------
+Data:02/07/2022
+Hora:15:50:55
+Função:AlterarSetor
+cod Logado:1
+Erro:SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '= 'Mouse' where id = '3'' at line 1
+--------------------------------------------------
+Data:09/07/2022
+Hora:00:06:29
+Função:ExcluirTipoEquipamento
+cod Logado:1
+Erro:SQLSTATE[42000]: Syntax error or access violation: 1065 Query was empty
+--------------------------------------------------
+Data:09/07/2022
+Hora:00:06:37
+Função:ExcluirTipoEquipamento
+cod Logado:1
+Erro:SQLSTATE[42000]: Syntax error or access violation: 1065 Query was empty
+--------------------------------------------------
+Data:09/07/2022
+Hora:00:06:41
+Função:ExcluirTipoEquipamento
+cod Logado:1
+Erro:SQLSTATE[42000]: Syntax error or access violation: 1065 Query was empty
+--------------------------------------------------
+Data:02/08/2022
+Hora:13:38:03
+Função:CadastrarSetorController
+cod Logado:1
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'estado_id' cannot be null
+--------------------------------------------------
+Data:02/08/2022
+Hora:13:49:40
+Função:CadastrarSetorController
+cod Logado:1
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'estado_id' cannot be null
+--------------------------------------------------
+Data:02/08/2022
+Hora:17:06:35
+Função:CadastrarSetorController
+cod Logado:1
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'estado_id' cannot be null
+--------------------------------------------------
+Data:02/08/2022
+Hora:17:07:46
+Função:CadastrarCidadeController
+cod Logado:1
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'estado_id' cannot be null
+--------------------------------------------------
+Data:02/08/2022
+Hora:17:09:50
+Função:CadastrarCidadeController
+cod Logado:1
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'estado_id' cannot be null
+--------------------------------------------------
+Data:02/08/2022
+Hora:17:10:37
+Função:CadastrarCidadeController
+cod Logado:1
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'estado_id' cannot be null
+--------------------------------------------------
+Data:02/08/2022
+Hora:17:10:40
+Função:CadastrarCidadeController
+cod Logado:1
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'estado_id' cannot be null
+--------------------------------------------------
+Data:02/08/2022
+Hora:17:11:28
+Função:CadastrarCidadeController
+cod Logado:1
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'estado_id' cannot be null
+--------------------------------------------------
+Data:02/08/2022
+Hora:17:16:20
+Função:CadastrarCidadeController
+cod Logado:1
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_cidade`, CONSTRAINT `fk_tb_cidade_tb_estado1` FOREIGN KEY (`estado_id`) REFERENCES `tb_estado` (`id`))
+--------------------------------------------------
+Data:02/08/2022
+Hora:17:17:16
+Função:CadastrarCidadeController
+cod Logado:1
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_cidade`, CONSTRAINT `fk_tb_cidade_tb_estado1` FOREIGN KEY (`estado_id`) REFERENCES `tb_estado` (`id`))
+--------------------------------------------------
+Data:02/08/2022
+Hora:17:18:47
+Função:CadastrarCidadeController
+cod Logado:1
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_cidade`, CONSTRAINT `fk_tb_cidade_tb_estado1` FOREIGN KEY (`estado_id`) REFERENCES `tb_estado` (`id`))
+--------------------------------------------------
+Data:02/08/2022
+Hora:17:19:51
+Função:CadastrarCidadeController
+cod Logado:1
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_cidade`, CONSTRAINT `fk_tb_cidade_tb_estado1` FOREIGN KEY (`estado_id`) REFERENCES `tb_estado` (`id`))
+--------------------------------------------------
+Data:24/08/2022
+Hora:17:24:00
+Função:CadastrarProdutoController
+cod Logado:6
+Erro:SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+--------------------------------------------------
+Data:24/08/2022
+Hora:17:24:58
+Função:CadastrarProdutoController
+cod Logado:6
+Erro:SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+--------------------------------------------------
+Data:24/08/2022
+Hora:17:26:11
+Função:CadastrarProdutoController
+cod Logado:6
+Erro:SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+--------------------------------------------------
+Data:25/08/2022
+Hora:08:08:01
+Função:AlterarProdutoController
+cod Logado:6
+Erro:SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+--------------------------------------------------
+Data:25/08/2022
+Hora:08:08:04
+Função:AlterarProdutoController
+cod Logado:6
+Erro:SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+--------------------------------------------------
+Data:25/08/2022
+Hora:08:09:24
+Função:AlterarProdutoController
+cod Logado:6
+Erro:SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+--------------------------------------------------
+Data:25/08/2022
+Hora:08:09:28
+Função:AlterarProdutoController
+cod Logado:6
+Erro:SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+--------------------------------------------------
+Data:25/08/2022
+Hora:08:09:33
+Função:AlterarProdutoController
+cod Logado:6
+Erro:SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+--------------------------------------------------
+Data:25/08/2022
+Hora:08:27:21
+Função:AlterarProdutoController
+cod Logado:6
+Erro:SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+--------------------------------------------------
+Data:25/08/2022
+Hora:15:09:07
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_os`, CONSTRAINT `fk_tb_os_2` FOREIGN KEY (`OsTecID`) REFERENCES `tb_tecnico` (`tecnico_id`))
+--------------------------------------------------
+Data:25/08/2022
+Hora:15:09:10
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_os`, CONSTRAINT `fk_tb_os_2` FOREIGN KEY (`OsTecID`) REFERENCES `tb_tecnico` (`tecnico_id`))
+--------------------------------------------------
+Data:25/08/2022
+Hora:15:09:31
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_os`, CONSTRAINT `fk_tb_os_2` FOREIGN KEY (`OsTecID`) REFERENCES `tb_tecnico` (`tecnico_id`))
+--------------------------------------------------
+Data:25/08/2022
+Hora:21:57:47
+Função:AlterarOsController
+cod Logado:6
+Erro:SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'set OsDtInicial = '2022-01-01', OsDtFinal = '2022-12-31', OsGarantia = 'asasd...' at line 1
+--------------------------------------------------
+Data:25/08/2022
+Hora:21:58:51
+Função:AlterarOsController
+cod Logado:6
+Erro:SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'OsEmpID = '10' WHERE OsID = NULL And OsEmpID = '10'' at line 1
+--------------------------------------------------
+Data:25/08/2022
+Hora:22:00:35
+Função:AlterarOsController
+cod Logado:6
+Erro:SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'OsEmpID = '10' WHERE OsID = NULL And OsEmpID = '10'' at line 1
+--------------------------------------------------
+Data:25/08/2022
+Hora:22:03:18
+Função:AlterarOsController
+cod Logado:6
+Erro:SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'OsEmpID = '10' WHERE OsID = NULL And OsEmpID = '10'' at line 1
+--------------------------------------------------
+Data:25/08/2022
+Hora:22:03:58
+Função:AlterarOsController
+cod Logado:6
+Erro:SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'OsEmpID = '10' WHERE OsID = '4' And OsEmpID = '10'' at line 1
+--------------------------------------------------
+Data:25/08/2022
+Hora:22:05:07
+Função:AlterarOsController
+cod Logado:6
+Erro:SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'OsEmpID = '10' WHERE OsID = '4'' at line 1
+--------------------------------------------------
+Data:25/08/2022
+Hora:22:30:47
+Função:AlterarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_os`, CONSTRAINT `fk_tb_os_2` FOREIGN KEY (`OsTecID`) REFERENCES `tb_tecnico` (`tecnico_id`))
+--------------------------------------------------
+Data:25/08/2022
+Hora:22:31:19
+Função:AlterarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_os`, CONSTRAINT `fk_tb_os_2` FOREIGN KEY (`OsTecID`) REFERENCES `tb_tecnico` (`tecnico_id`))
+--------------------------------------------------
+Data:26/08/2022
+Hora:01:05:18
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+--------------------------------------------------
+Data:26/08/2022
+Hora:01:09:12
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'ProdOs_osID' cannot be null
+--------------------------------------------------
+Data:26/08/2022
+Hora:01:11:20
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'ProdOs_osID' cannot be null
+--------------------------------------------------
+Data:26/08/2022
+Hora:01:13:06
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'ProdOs_osID' cannot be null
+--------------------------------------------------
+Data:27/08/2022
+Hora:18:08:10
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_servico_os`, CONSTRAINT `fk_tb_servico_os_1` FOREIGN KEY (`ServOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:38:39
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:38:43
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:39:10
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:39:24
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:39:39
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:39:40
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:39:40
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:39:41
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:39:41
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:39:42
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:39:42
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:42:19
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:42:24
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:42:50
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:42:51
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:42:52
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:42:53
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:42:53
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:42:53
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:42:53
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:42:53
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:42:54
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:42:54
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:42:54
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:42:54
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:42:54
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:44:01
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:44:02
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:44:03
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:44:04
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:44:04
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:44:05
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:44:05
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:44:05
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:44:06
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:44:06
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:44:06
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:44:06
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:44:06
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:44:06
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:44:07
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:44:07
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:44:07
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:44:07
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:45:04
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:45:06
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:45:06
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:45:06
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:45:07
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:45:07
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:45:07
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:45:07
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:28/08/2022
+Hora:00:45:07
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:30/08/2022
+Hora:00:27:55
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:30/08/2022
+Hora:00:28:07
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:30/08/2022
+Hora:00:29:29
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:30/08/2022
+Hora:00:29:35
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:30/08/2022
+Hora:00:29:49
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:30/08/2022
+Hora:00:29:54
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:30/08/2022
+Hora:00:30:00
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:30/08/2022
+Hora:00:30:13
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:30/08/2022
+Hora:00:30:17
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:30/08/2022
+Hora:00:31:42
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:30/08/2022
+Hora:00:33:40
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:30/08/2022
+Hora:00:33:48
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:30/08/2022
+Hora:00:35:04
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:30/08/2022
+Hora:00:36:35
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:30/08/2022
+Hora:00:37:14
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:30/08/2022
+Hora:00:37:22
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:30/08/2022
+Hora:00:39:18
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:30/08/2022
+Hora:00:40:05
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:30/08/2022
+Hora:00:40:07
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:30/08/2022
+Hora:00:40:13
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:30/08/2022
+Hora:00:40:38
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:30/08/2022
+Hora:00:40:42
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:30/08/2022
+Hora:00:40:48
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:30/08/2022
+Hora:00:43:12
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:30/08/2022
+Hora:00:46:19
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:30/08/2022
+Hora:00:46:22
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:30/08/2022
+Hora:00:46:31
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:30/08/2022
+Hora:00:46:36
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:30/08/2022
+Hora:00:46:38
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
+--------------------------------------------------
+Data:30/08/2022
+Hora:00:49:28
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_produto_os`, CONSTRAINT `fk_tb_produto_os_1` FOREIGN KEY (`ProdOs_osID`) REFERENCES `tb_os` (`OsID`))
