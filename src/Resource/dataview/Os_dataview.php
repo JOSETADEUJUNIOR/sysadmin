@@ -10,6 +10,7 @@ use Src\VO\OsVO;
 use Src\_public\Util;
 use Src\VO\ServicoOSVO;
 use Src\VO\ProdutoOSVO;
+use Src\VO\AnxOSVO;
 
 Util::VerLogado();
 
@@ -31,6 +32,8 @@ if (isset($_GET['OsID'])) {
     $ordemOS = $ctrl->RetornaOrdem($vo);
     $ProdOrdem = $ctrl->RetornaProdOrdem($vo);
     $ProdServOrdem = $ctrl->RetornaServOrdem($vo);
+    $AnxOs = $ctrl->RetornaAnxOS($vo);
+    
 }
 
 if (isset($_POST['btn_cadastrar'])) {
@@ -48,9 +51,9 @@ if (isset($_POST['btn_cadastrar'])) {
     if ($_POST['OsID'] > 0) {
         $vo->setID($_POST['OsID']);
         $ret = $ctrl->AlterarOsController($vo);
-    } else{
+    } else {
         $ret = $ctrl->CadastrarOsController($vo);
-    } 
+    }
 
     if ($_POST['btn_cadastrar'] == 'ajx') {
         echo $ret;
@@ -83,6 +86,34 @@ if (isset($_POST['btn_cadastrar'])) {
     $produtos = $ctrlProd->RetornarProdutoController();
 
     if ($_POST['btn_addItem'] == 'ajx') {
+        echo $ret;
+    } else {
+        $os = $ctrl->RetornarOsController();
+    }
+} else if (isset($_POST['btnAddAnx'])) {
+    $vo = new AnxOSVO;
+    $vo->setAnxOsID($_POST['anxOsID']);
+    $vo->setAnxNome($_POST['anxNome']);
+    $arquivos = $_FILES['arquivos'];
+
+    if ($arquivos['size'] > 2097152)
+        die("Arquivo muito grande !! Max: 2MB");
+
+    $pasta = "arquivos/";
+    @mkdir($pasta);
+    $nomeDoArquivo = $arquivos['name'];
+    $novoNomeDoArquivo = uniqid();
+    $extensao = strtolower(pathinfo($nomeDoArquivo, PATHINFO_EXTENSION));
+    if ($extensao != "jpg" && $extensao != "png" && $extensao != "pdf" && $extensao != "jpeg" && $extensao != '')
+        die("Tipo de arquivo não aceito");
+
+    $path = $pasta . $novoNomeDoArquivo . "." . $extensao;
+    $deu_certo = move_uploaded_file($arquivos["tmp_name"], $path);
+    $vo->setAnxUrl($nomeDoArquivo);
+    $vo->setAnxPath($path);
+    $ret = $ctrl->InserirAnxOrdemController($vo);
+
+    if ($_POST['btnAddAnx'] == 'ajx') {
         echo $ret;
     } else {
         $os = $ctrl->RetornarOsController();
@@ -148,38 +179,38 @@ if (isset($_POST['btn_cadastrar'])) {
             </tr>
         </thead>
         <tbody>
-                                    <?php for ($i = 0; $i < count($os); $i++) { ?>
-                                        <tr>
-                                            <td>
-                                                <a href="ordem_servico.php?OsID=<?= $os[$i]['OsID']?>"><i class="fas fa-edit"></i></a>
-                                                <a href="#" onclick="ExcluirModal('<?= $os[$i]['OsID'] ?>','<?= $os[$i]['nomeCliente'] ?>')" data-toggle="modal" data-target="#modalExcluir"><i style="color:red" class="fas fa-trash-alt"></i></a>
-                                                <a href="itens_os.php?OsID=<?= $os[$i]['OsID'] ?>"><i style="color:purple" title="Inserir os Itens na OS" class="fas fa-list"></i></a>
-                                                <a href="print_os.php?OsID=<?= $os[$i]['OsID'] ?>"><i style="color:black" title="Imprimir OS" class="fas fa-print"></i></a>
-                                            </td>
-                                            <td><?= $os[$i]['nomeCliente'] ?></td>
-                                            <td><?= Util::ExibirDataBr($os[$i]['OsDtInicial']) ?></td>
-                                            <td><?= Util::ExibirDataBr($os[$i]['OsDtFinal']) ?></td>
-                                            <td><?= $os[$i]['OsTecID'] ?></td>
+            <?php for ($i = 0; $i < count($os); $i++) { ?>
+                <tr>
+                    <td>
+                        <a href="ordem_servico.php?OsID=<?= $os[$i]['OsID'] ?>"><i class="fas fa-edit"></i></a>
+                        <a href="#" onclick="ExcluirModal('<?= $os[$i]['OsID'] ?>','<?= $os[$i]['nomeCliente'] ?>')" data-toggle="modal" data-target="#modalExcluir"><i style="color:red" class="fas fa-trash-alt"></i></a>
+                        <a href="itens_os.php?OsID=<?= $os[$i]['OsID'] ?>"><i style="color:purple" title="Inserir os Itens na OS" class="fas fa-list"></i></a>
+                        <a href="print_os.php?OsID=<?= $os[$i]['OsID'] ?>"><i style="color:black" title="Imprimir OS" class="fas fa-print"></i></a>
+                    </td>
+                    <td><?= $os[$i]['nomeCliente'] ?></td>
+                    <td><?= Util::ExibirDataBr($os[$i]['OsDtInicial']) ?></td>
+                    <td><?= Util::ExibirDataBr($os[$i]['OsDtFinal']) ?></td>
+                    <td><?= $os[$i]['OsTecID'] ?></td>
 
-                                            <td><?php
-                                                $status = '';
-                                                if ($os[$i]['OsStatus'] == "O") {
-                                                    $status = "<button class=\"btn btn-secondary btn-xs\">Orçamento</button>";
-                                                } else if ($os[$i]['OsStatus'] == "A") {
-                                                    $status = "<button class=\"btn btn-info btn-xs\">Aberto</button>";
-                                                } else if ($os[$i]['OsStatus'] == "EA") {
-                                                    $status = "<button class=\"btn btn-warning btn-xs\">Em aberto</button>";
-                                                } else if ($os[$i]['OsStatus'] == "F") {
-                                                    $status = "<button class=\"btn btn-success btn-xs\">Finalizada</button>";
-                                                } else if ($os[$i]['OsStatus'] == "C") {
-                                                    $status = "<button class=\"btn btn-danger btn-xs\">Cancelado</button>";
-                                                } ?>
-                                                <?= $status ?>
-                                                <?= ($os[$i]['OsFaturado']=="S"?'<span onclick="faturarOs('.$os[$i]['OsID'].')" class="btn btn-success btn-xs">Faturado</span>':'<span onclick="faturarOs('.$os[$i]['OsID'].')" class="btn btn-warning btn-xs">Faturar?</span>')?>
-                                            </td>
-                                        </tr>
-                                    <?php } ?>
-                                </tbody>
+                    <td><?php
+                        $status = '';
+                        if ($os[$i]['OsStatus'] == "O") {
+                            $status = "<button class=\"btn btn-secondary btn-xs\">Orçamento</button>";
+                        } else if ($os[$i]['OsStatus'] == "A") {
+                            $status = "<button class=\"btn btn-info btn-xs\">Aberto</button>";
+                        } else if ($os[$i]['OsStatus'] == "EA") {
+                            $status = "<button class=\"btn btn-warning btn-xs\">Em aberto</button>";
+                        } else if ($os[$i]['OsStatus'] == "F") {
+                            $status = "<button class=\"btn btn-success btn-xs\">Finalizada</button>";
+                        } else if ($os[$i]['OsStatus'] == "C") {
+                            $status = "<button class=\"btn btn-danger btn-xs\">Cancelado</button>";
+                        } ?>
+                        <?= $status ?>
+                        <?= ($os[$i]['OsFaturado'] == "S" ? '<span onclick="faturarOs(' . $os[$i]['OsID'] . ')" class="btn btn-success btn-xs">Faturado</span>' : '<span onclick="faturarOs(' . $os[$i]['OsID'] . ')" class="btn btn-warning btn-xs">Faturar?</span>') ?>
+                    </td>
+                </tr>
+            <?php } ?>
+        </tbody>
     </table>
 
 <?php } else if (isset($_POST['btn_consultar_item']) && $_POST['btn_consultar_item'] == 'ajx') {

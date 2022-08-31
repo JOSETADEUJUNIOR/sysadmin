@@ -59,7 +59,7 @@ use Src\_public\Util; ?>
                         </div>
                     </div>
                     <form id="form_os" action="ordem_servico.php" method="post">
-                        <input type="hidden" name="OsID" id="OsID" value="<?= ($ordemOS[0]['OsID']!=''?$ordemOS[0]['OsID']:'')?>">
+                        <input type="hidden" name="OsID" id="OsID" value="<?= ($ordemOS[0]['OsID'] != '' ? $ordemOS[0]['OsID'] : '') ?>">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
@@ -125,42 +125,42 @@ use Src\_public\Util; ?>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Descrição do Produto/Serviço</label>
-                                        <textarea class="form-control obg" id="descProd" name="descProd"  placeholder="Digite o aqui...."><?= ($ordemOS[0]['OsID'] == '' ? '' : $ordemOS[0]['OsDescProdServ']) ?></textarea>
+                                        <textarea class="form-control obg" id="descProd" name="descProd" placeholder="Digite o aqui...."><?= ($ordemOS[0]['OsID'] == '' ? '' : $ordemOS[0]['OsDescProdServ']) ?></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Defeito</label>
-                                        <textarea class="form-control obg" id="defeito" name="defeito"  placeholder="Digite o aqui...."><?= ($ordemOS[0]['OsID'] == '' ? '' : $ordemOS[0]['OsDefeito']) ?></textarea>
+                                        <textarea class="form-control obg" id="defeito" name="defeito" placeholder="Digite o aqui...."><?= ($ordemOS[0]['OsID'] == '' ? '' : $ordemOS[0]['OsDefeito']) ?></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Observações</label>
-                                        <textarea class="form-control " id="obs" name="obs"  placeholder="Digite o aqui...."><?= ($ordemOS[0]['OsID'] == '' ? '' : $ordemOS[0]['OsObs']) ?></textarea>
+                                        <textarea class="form-control " id="obs" name="obs" placeholder="Digite o aqui...."><?= ($ordemOS[0]['OsID'] == '' ? '' : $ordemOS[0]['OsObs']) ?></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Laudo Técnico</label>
-                                        <textarea class="form-control" id="laudo" name="laudo"  placeholder="Digite o aqui...."><?= ($ordemOS[0]['OsID'] == '' ? '' : $ordemOS[0]['OsLaudo']) ?></textarea>
+                                        <textarea class="form-control" id="laudo" name="laudo" placeholder="Digite o aqui...."><?= ($ordemOS[0]['OsID'] == '' ? '' : $ordemOS[0]['OsLaudo']) ?></textarea>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
-                                        <div class="form-group">
-                                <button class="btn btn-success col-md-12" onclick="return CadastrarOs('form_os')" name="btn_cadastrar">Cadastrar</button>
-                                </div>
+                                    <div class="form-group">
+                                        <button class="btn btn-success col-md-12" onclick="return CadastrarOs('form_os')" name="btn_cadastrar">Cadastrar</button>
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
-                                        <div class="form-group">
-                             
-                                <a href="ordem_servico.php" class="btn btn-warning col-md-12">Cadastrar</a>
-                                </div>
+                                    <div class="form-group">
+
+                                        <a href="ordem_servico.php" class="btn btn-warning col-md-12">Voltar</a>
+                                    </div>
                                 </div>
                             </div>
-                         
-                        </form>
+
+                    </form>
                 </div>
                 <div id="CadOsBody" class="card-body">
                     <div class="row">
@@ -218,9 +218,10 @@ use Src\_public\Util; ?>
                                     <?php for ($i = 0; $i < count($os); $i++) { ?>
                                         <tr>
                                             <td>
-                                                <a href="ordem_servico.php?OsID=<?= $os[$i]['OsID']?>"><i class="fas fa-edit"></i></a>
+                                                <a href="ordem_servico.php?OsID=<?= $os[$i]['OsID'] ?>"><i class="fas fa-edit"></i></a>
                                                 <a href="#" onclick="ExcluirModal('<?= $os[$i]['OsID'] ?>','<?= $os[$i]['nomeCliente'] ?>')" data-toggle="modal" data-target="#modalExcluir"><i style="color:red" class="fas fa-trash-alt"></i></a>
                                                 <a href="itens_os.php?OsID=<?= $os[$i]['OsID'] ?>"><i style="color:purple" title="Inserir os Itens na OS" class="fas fa-list"></i></a>
+                                                <a href="anexo_os.php?OsID=<?= $os[$i]['OsID'] ?>"><i style="color:black" title="Inserir os anexos na OS" class="fas fa-file-archive"></i></a>
                                                 <a href="print_os.php?OsID=<?= $os[$i]['OsID'] ?>"><i style="color:black" title="Imprimir OS" class="fas fa-print"></i></a>
                                             </td>
                                             <td><?= $os[$i]['nomeCliente'] ?></td>
@@ -242,7 +243,7 @@ use Src\_public\Util; ?>
                                                     $status = "<button class=\"btn btn-danger btn-xs\">Cancelado</button>";
                                                 } ?>
                                                 <?= $status ?>
-                                                <?= ($os[$i]['OsFaturado']=="S"?'<span onclick="faturarOs('.$os[$i]['OsID'].')" class="btn btn-success btn-xs">Faturado</span>':'<span onclick="faturarOs('.$os[$i]['OsID'].')" class="btn btn-warning btn-xs">Faturar?</span>')?>
+                                                <?= ($os[$i]['OsFaturado'] == "S" ? '<span onclick="faturarOs(' . $os[$i]['OsID'] . ')" class="btn btn-success btn-xs">Faturado</span>' : '<span onclick="faturarOs(' . $os[$i]['OsID'] . ')" class="btn btn-warning btn-xs">Faturar?</span>') ?>
                                             </td>
                                         </tr>
                                     <?php } ?>

@@ -25,6 +25,21 @@ function ConsultarItensOs(OsID) {
         }
     })
 }
+
+function ConsultarAnxOs(OsID) {
+    let idProd = OsID
+    $.ajax({
+        type: "POST",
+        url: BASE_URL_AJAX("Os_dataview"),
+        data: {
+            OsID: idProd,
+            btn_consultar_anx: 'ajx'
+        }, success: function (tabela_preenchida) {
+            $("#tabela_result_anx").html(tabela_preenchida);
+        }
+    })
+}
+
 function ConsultarServOs(OsID) {
     let idServOS = OsID
     $.ajax({
@@ -140,72 +155,6 @@ function faturarOs(id) {
     return false;
 }
 
-
-
-
-swal({
-    title: "Add Note",
-    input: "textarea",
-    showCancelButton: true,
-    confirmButtonColor: "#1FAB45",
-    confirmButtonText: "Save",
-    cancelButtonText: "Cancel",
-    buttonsStyling: true
-}).then(function () {       
-    $.ajax({
-        type: "POST",
-        url: BASE_URL_AJAX("Os_dataview"),
-        data: {
-            btnFaturar: 'ajx',
-            OsID: id
-        },
-        success: function (ret) {
-            swal(
-            "Sccess!",
-            "Your note has been saved!",
-            "success"
-            )
-        },
-        failure: function (response) {
-            swal(
-            "Internal Error",
-            "Oops, your note was not saved.", // had a missing comma
-            "error"
-            )
-        }
-    });
-}, 
-function (dismiss) {
-  if (dismiss === "cancel") {
-    swal(
-      "Cancelled",
-        "Canceled Note",
-      "error"
-    )
-  }
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function CadastrarOs(id_form) {
 
     if (NotificarCampos(id_form)) {
@@ -255,6 +204,37 @@ function CadastrarOs(id_form) {
     return false;
 }
 
+function InserirAnxOs(form_id) {
+    if (NotificarCampos(form_id)) {
+        var formData = new FormData();
+        formData.append("anxOsID", $("#OsAnxID").val());
+        formData.append("anxNome", $("#anxNome").val());
+        formData.append("arquivos", $("#anxImagem").prop("files")[0]);
+        formData.append("btnAddAnx", 'ajx');
+                
+        $.ajax({
+            type: "POST",
+            url: BASE_URL_AJAX("Os_dataview"),
+            data:
+                formData,
+            processData: false,
+            contentType: false,
+            success: function (ret) {
+                alert(ret);
+               RemoverLoad();
+                if (ret == 1) {
+                    MensagemSucesso();
+                    ConsultarAnxOs(OsID);
+                } else if (ret == -13) {
+                    alert('Estoque inferior');
+                    MensagemErro();
+                }
+            }
+        })
+    }
+    return false;
+}
+
 function InserirProd(form_id) {
     if (NotificarCampos(form_id)) {
         let produto = $("#produto").val();
@@ -289,6 +269,8 @@ function InserirProd(form_id) {
     }
     return false;
 }
+
+
 
 function InserirServ(form_id) {
     if (NotificarCampos(form_id)) {

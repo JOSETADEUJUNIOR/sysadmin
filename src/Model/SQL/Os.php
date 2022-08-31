@@ -64,6 +64,13 @@ class Os
      WHERE OsEmpID = ? And OsID = ?';
         return $sql;
     }
+    public static function RetornarAnxOSSQL()
+    {
+        $sql = 'SELECT AnxNome, AnxUrl, AnxPath, AnxOsID 
+                    FROM tb_anexo
+                        WHERE AnxEmpID = ? And AnxOsID = ?';
+        return $sql;
+    }
 
 
     public static function RetornarOrdemServSQL()
@@ -139,6 +146,11 @@ class Os
     public static function InserirItemOsSQL()
     {
         $sql = "INSERT into tb_produto_os (ProdOsQtd, ProdOs_osID, ProdOsProdID, ProdOsSubTotal, ProdOsEmpID) VALUES (?,?,?,?,?)";
+        return $sql;
+    }
+    public static function InserirAnxOsSQL()
+    {
+        $sql = "INSERT into tb_anexo (AnxNome, AnxUrl, AnxPath, AnxOsID, AnxUserID, AnxEmpID) VALUES (?,?,?,?,?,?)";
         return $sql;
     }
 

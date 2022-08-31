@@ -7,6 +7,7 @@ use Src\VO\OsVO;
 use Src\_public\Util;
 use Src\VO\ProdutoOSVO;
 use Src\VO\ServicoOSVO;
+use Src\VO\AnxOSVO;
 
 class OsController
 {
@@ -38,6 +39,16 @@ class OsController
         $vo->setIdLogado(Util::CodigoLogado());
 
         return $this->dao->InserirItemOsDAO($vo);
+    }
+    public function InserirAnxOrdemController(AnxOSVO $vo): int
+    {
+        if (empty($vo->getAnxNome()))
+            return 0;
+
+        $vo->setfuncao(CADASTRO_ANX_OS);
+        $vo->setIdLogado(Util::CodigoLogado());
+
+        return $this->dao->InserirAnxOsDAO($vo);
     }
     public function InserirServOrdemController(ServicoOSVO $vo): int
     {
@@ -74,6 +85,14 @@ class OsController
 
         return $this->dao->RetornarServOrdemDAO($vo);
     }
+    public function RetornaAnxOS(OsVO $vo): array
+    {
+
+        $vo->setfuncao(CADASTRO_OS);
+        $vo->setIdLogado(Util::CodigoLogado());
+
+        return $this->dao->RetornarAnxOSDAO($vo);
+    }
 
     public function ExcluirItemOSController(ProdutoOSVO $vo)
     {
@@ -88,7 +107,7 @@ class OsController
         return $this->dao->ExcluirOSDAO($vo);
     }
 
- public function ExcluirServOSController(ServicoOSVO $vo)
+    public function ExcluirServOSController(ServicoOSVO $vo)
     {
         $vo->setfuncao(EXCLUI_ITEM_OS);
         $vo->setIdLogado(Util::CodigoLogado());

@@ -8,6 +8,7 @@ use Src\Model\SQL\Os;
 use Src\_public\Util;
 use Src\VO\ProdutoOSVO;
 use Src\VO\ServicoOSVO;
+use Src\VO\AnxOSVO;
 
 class OsDAO extends Conexao
 {
@@ -89,7 +90,7 @@ class OsDAO extends Conexao
             $sql->bindValue(1, 'S');
             $sql->bindValue(2, Util::CodigoEmpresa());
             $sql->bindValue(3, $vo->getID());
-        }else {
+        } else {
             $sql = $this->conexao->prepare(Os::FaturarOsSQL());
             $sql->bindValue(1, 'N');
             $sql->bindValue(2, Util::CodigoEmpresa());
@@ -147,6 +148,28 @@ class OsDAO extends Conexao
             $sql->bindValue(3, Util::CodigoEmpresa());
             $sql->execute();
 
+            return 1;
+        } catch (\Exception $ex) {
+
+            $vo->setmsg_erro($ex->getMessage());
+            parent::GravarLogErro($vo);
+            return -1;
+        }
+    }
+
+    public function InserirAnxOsDAO(AnxOSVO $vo): int
+    {
+        $sql = $this->conexao->prepare(Os::InserirAnxOsSQL());
+        $sql->bindValue(1, $vo->getAnxNome());
+        $sql->bindValue(2, $vo->getAnxUrl());
+        $sql->bindValue(3, $vo->getAnxPath());
+        $sql->bindValue(4, $vo->getAnxOsID());
+        $sql->bindValue(5, Util::CodigoLogado());
+        $sql->bindValue(6, Util::CodigoEmpresa());
+
+
+        try {
+            $sql->execute();
             return 1;
         } catch (\Exception $ex) {
 
@@ -216,6 +239,20 @@ class OsDAO extends Conexao
         $sql->execute();
         return $sql->fetchAll(\PDO::FETCH_ASSOC);
     }
+public function RetornarAnxOSDAO(OsVO $vo): array
+    {
+        $sql = $this->conexao->prepare(Os::RetornarAnxOSSQL());
+        $sql->bindValue(1, Util::CodigoEmpresa());
+        $sql->bindValue(2, $vo->getID());
+        $sql->execute();
+        return $sql->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+
+
+
+
+
     public function RetornarOrdemServDAO(OsVO $vo): array
     {
         $sql = $this->conexao->prepare(Os::RetornarOrdemServSQL());
@@ -286,7 +323,7 @@ class OsDAO extends Conexao
     }
 
 
-public function ExcluirServOSDAO(ServicoOSVO $vo)
+    public function ExcluirServOSDAO(ServicoOSVO $vo)
     {
 
         $sql = $this->conexao->prepare(Os::BuscarServSQL());
@@ -307,7 +344,7 @@ public function ExcluirServOSDAO(ServicoOSVO $vo)
         $SubTotal = $valor * $qtd;
 
         try {
-           
+
             $sql = $this->conexao->prepare(Os::AtualizaExclusaoValorOsSQL());
             $sql->bindValue(1, $SubTotal);
             $sql->bindValue(2, $vo->getOsID());

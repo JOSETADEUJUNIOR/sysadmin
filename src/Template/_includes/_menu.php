@@ -114,7 +114,7 @@ $dados = $empresa->RetornarDadosCadastraisController();
           </a>
         </li>
         <li class="nav-item">
-          <a href="venda.php" class="nav-link">
+          <a href="financeiro.php" class="nav-link">
             <i class="nav-icon fa fa-book"></i>
             <p>
               Financeiro
