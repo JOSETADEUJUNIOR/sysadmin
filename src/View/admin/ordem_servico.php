@@ -32,12 +32,12 @@ use Src\_public\Util; ?>
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>cliente</h1>
+                            <h1>Ordens de Serviços</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Administrador</a></li>
-                                <li class="breadcrumb-item active">Gerenciar clientes</li>
+                                <li class="breadcrumb-item active">Gerenciar Ordem de Serviços</li>
                             </ol>
                         </div>
                     </div>
@@ -54,7 +54,7 @@ use Src\_public\Util; ?>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                                <i class="fa"><?= ($ordemOS[0]['OsID'] != '' ? 'Editar ' : 'Novo ') ?>Cliente</i></button>
+                                <?= ($ordemOS[0]['OsID'] != '' ? 'Editar ' : 'Add ') ?>Ordem</button>
 
                         </div>
                     </div>
@@ -67,7 +67,7 @@ use Src\_public\Util; ?>
                                         <label>Cliente</label>
                                         <select class="select2bs4 obg" data-placeholder="Selecione o cliente" id="Oscliente" name="Oscliente" style="width: 100%;">
                                             <?php foreach ($clientes as $cliente) { ?>
-                                                <option value="<?= $cliente['CliID'] ?>" <?= ($ordemOS[0]['OsID'] == '' ? '' : ($ordemOS[0]['CliID'] == $cliente['CliID'] ? 'selected' : '')) ?>><?= $cliente['CliNome'] ?></option>
+                                                <option value="<?= $cliente['CliID'] ?>" <?= ($ordemOS[0]['OsID'] == '' ? '' : ($ordemOS[0]['OsCliID'] == $cliente['CliID'] ? 'selected' : '')) ?>><?= $cliente['CliNome'] ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -147,9 +147,20 @@ use Src\_public\Util; ?>
                                     </div>
                                 </div>
 
+                                <div class="col-md-6">
+                                        <div class="form-group">
+                                <button class="btn btn-success col-md-12" onclick="return CadastrarOs('form_os')" name="btn_cadastrar">Cadastrar</button>
+                                </div>
+                                </div>
+                                <div class="col-md-6">
+                                        <div class="form-group">
+                             
+                                <a href="ordem_servico.php" class="btn btn-warning col-md-12">Cadastrar</a>
+                                </div>
+                                </div>
                             </div>
-                            <button class="btn btn-success col-md-12" onclick="return CadastrarOs('form_os')" name="btn_cadastrar">Cadastrar</button>
-                    </form>
+                         
+                        </form>
                 </div>
                 <div id="CadOsBody" class="card-body">
                     <div class="row">
@@ -209,8 +220,8 @@ use Src\_public\Util; ?>
                                             <td>
                                                 <a href="ordem_servico.php?OsID=<?= $os[$i]['OsID']?>"><i class="fas fa-edit"></i></a>
                                                 <a href="#" onclick="ExcluirModal('<?= $os[$i]['OsID'] ?>','<?= $os[$i]['nomeCliente'] ?>')" data-toggle="modal" data-target="#modalExcluir"><i style="color:red" class="fas fa-trash-alt"></i></a>
-                                                <a href="itens_os.php?OsID=<?= $os[$i]['OsID'] ?>"><i style="color:red" title="Inserir os Itens na OS" class="fas fa-list"></i></a>
-                                                <a href="print_os.php?OsID=<?= $os[$i]['OsID'] ?>"><i style="color:red" title="Imprimir OS" class="fas fa-print"></i></a>
+                                                <a href="itens_os.php?OsID=<?= $os[$i]['OsID'] ?>"><i style="color:purple" title="Inserir os Itens na OS" class="fas fa-list"></i></a>
+                                                <a href="print_os.php?OsID=<?= $os[$i]['OsID'] ?>"><i style="color:black" title="Imprimir OS" class="fas fa-print"></i></a>
                                             </td>
                                             <td><?= $os[$i]['nomeCliente'] ?></td>
                                             <td><?= Util::ExibirDataBr($os[$i]['OsDtInicial']) ?></td>
@@ -230,7 +241,9 @@ use Src\_public\Util; ?>
                                                 } else if ($os[$i]['OsStatus'] == "C") {
                                                     $status = "<button class=\"btn btn-danger btn-xs\">Cancelado</button>";
                                                 } ?>
-                                                <?= $status ?></td>
+                                                <?= $status ?>
+                                                <?= ($os[$i]['OsFaturado']=="S"?'<span onclick="faturarOs('.$os[$i]['OsID'].')" class="btn btn-success btn-xs">Faturado</span>':'<span onclick="faturarOs('.$os[$i]['OsID'].')" class="btn btn-warning btn-xs">Faturar?</span>')?>
+                                            </td>
                                         </tr>
                                     <?php } ?>
                                 </tbody>
@@ -250,7 +263,6 @@ use Src\_public\Util; ?>
 
     <!-- /.content-wrapper -->
     <form action="ordem_servico.php" id="form_alt_os" method="post">
-        <?php include_once 'modal/_alterar_os.php' ?>
         <?php include_once 'modal/_excluir.php' ?>
 
     </form>
@@ -264,6 +276,7 @@ use Src\_public\Util; ?>
     <?php include_once PATH_URL . '/Template/_includes/_msg.php' ?>
     <script src="../../Resource/ajax/os-ajx.js"></script>
     <script src="../../Template/plugins/select2/js/select2.full.min.js"></script>
+    <script src="../../Template/plugins/sweetalert2/sweetalert2.all.min.js"></script>
 
 
     <script>

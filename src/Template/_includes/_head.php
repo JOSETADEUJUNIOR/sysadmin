@@ -14,7 +14,8 @@
   <link rel="stylesheet" href="../../Template/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
+  <link rel="stylesheet" href="../../Template/plugins/sweetalert2/sweetalert2.min.css">
+  
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <!-- Adicionando JQuery -->

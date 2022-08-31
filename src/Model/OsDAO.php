@@ -60,10 +60,41 @@ class OsDAO extends Conexao
         $sql->bindValue(8, $vo->getOsTecID());
         $sql->bindValue(9, $vo->getOsStatus());
         $sql->bindValue(10, $vo->getOsLaudoTec());
-        $sql->bindValue(11, $vo->getOsFaturado());
-        $sql->bindValue(12, Util::CodigoEmpresa());
-        $sql->bindValue(13, $vo->getID());
+        $sql->bindValue(11, Util::CodigoEmpresa());
+        $sql->bindValue(12, $vo->getID());
 
+        try {
+            $sql->execute();
+            return 1;
+        } catch (\Exception $ex) {
+
+            $vo->setmsg_erro($ex->getMessage());
+            parent::GravarLogErro($vo);
+            return -1;
+        }
+    }
+    public function FaturarOsDAO(OsVO $vo): int
+    {
+        $sql = $this->conexao->prepare(Os::RetornarOrdemFaturadoSQL());
+        $sql->bindValue(1, Util::CodigoEmpresa());
+        $sql->bindValue(2, $vo->getID());
+        $sql->execute();
+
+        $dadosOS = $sql->fetchAll(\PDO::FETCH_ASSOC);
+
+        $statusFatura = $dadosOS[0]['OsFaturado'];
+
+        if ($statusFatura == 'N') {
+            $sql = $this->conexao->prepare(Os::FaturarOsSQL());
+            $sql->bindValue(1, 'S');
+            $sql->bindValue(2, Util::CodigoEmpresa());
+            $sql->bindValue(3, $vo->getID());
+        }else {
+            $sql = $this->conexao->prepare(Os::FaturarOsSQL());
+            $sql->bindValue(1, 'N');
+            $sql->bindValue(2, Util::CodigoEmpresa());
+            $sql->bindValue(3, $vo->getID());
+        }
         try {
             $sql->execute();
             return 1;

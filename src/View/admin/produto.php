@@ -97,7 +97,7 @@
                                         <input class="form-control obg" id="estoqueMin" name="estoqueMin" placeholder="Digite o aqui....">
                                     </div>
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-sm-12">
                                     <div class="form-group">
                                         <label>Imagem do produto </label>
                                         <div class="custom-file">
@@ -106,10 +106,21 @@
                                         </div>
                                     </div>
                                 </div>
+                            
+                            <div class="col-sm-6">
+                                <div class="form-group">
+
+                                    <button class=" form-control btn btn-success col-md-12" onclick="return CadastrarProduto('form_produto')" name="btn_cadastrar">Salvar</button>
+                                </div>
                             </div>
-                            <button class="btn btn-success" onclick="return CadastrarProduto('form_produto')" name="btn_cadastrar">Cadastrar</button>-->
-                            <button name="btnAlterar" class="btn btn-outline-dark">Salvar</button>
-                    </form>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <a href="produto.php" class="btn btn-warning col-md-12">Voltar</a>
+
+                                </div>
+                            </div>
+                            </div>
+                        </form>
 
                 </div>
                 <div id="CadProdutoBody" class="card-body">

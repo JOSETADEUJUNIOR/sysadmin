@@ -25,6 +25,7 @@ $clientes = $cliCtrl->RetornarClienteController();
 $ctrl = new OsController();
 
 if (isset($_GET['OsID'])) {
+    $OsID = $_GET['OsID'];
     $vo = new OsVO;
     $vo->setID($_GET['OsID']);
     $ordemOS = $ctrl->RetornaOrdem($vo);
@@ -44,13 +45,12 @@ if (isset($_POST['btn_cadastrar'])) {
     $vo->setOsTecID($_POST['tecnico']);
     $vo->setOsStatus($_POST['status']);
     $vo->setOsLaudoTec($_POST['laudo']);
-    if (isset($_POST['OsID'])) {
+    if ($_POST['OsID'] > 0) {
         $vo->setID($_POST['OsID']);
         $ret = $ctrl->AlterarOsController($vo);
-    } else {
-
+    } else{
         $ret = $ctrl->CadastrarOsController($vo);
-    }
+    } 
 
     if ($_POST['btn_cadastrar'] == 'ajx') {
         echo $ret;
@@ -123,22 +123,12 @@ if (isset($_POST['btn_cadastrar'])) {
     } else {
         $os = $ctrl->RetornarOsController();
     }
-} else if (isset($_POST['btnAlterar'])) {
+} else if (isset($_POST['btnFaturar'])) {
     $vo = new OsVO;
     $vo->setID($_POST['OsID']);
-    $vo->setDtInicial($_POST['dtInicial']);
-    $vo->setOsDtFinal($_POST['dtFinal']);
-    $vo->setOsDescProdServ($_POST['descProd']);
-    $vo->setOsGarantia($_POST['garantia']);
-    $vo->setOsDefeito($_POST['defeito']);
-    $vo->setOsObs($_POST['obs']);
-    $vo->setOsCliID($_POST['Oscliente']);
-    $vo->setOsTecID($_POST['tecnico']);
-    $vo->setOsStatus($_POST['status']);
-    $vo->setOsLaudoTec($_POST['laudo']);
-    $ret = $ctrl->AlterarOsController($vo);
+    $ret = $ctrl->FaturarOsController($vo);
 
-    if ($_POST['btnAlterar'] == 'ajx') {
+    if ($_POST['btnFaturar'] == 'ajx') {
         echo $ret;
     } else {
         $os = $ctrl->RetornarOsController();
@@ -158,34 +148,38 @@ if (isset($_POST['btn_cadastrar'])) {
             </tr>
         </thead>
         <tbody>
-            <?php for ($i = 0; $i < count($os); $i++) { ?>
-                <tr>
-                    <td>
-                        <a href="#" onclick="AlterarOsModal('<?= $os[$i]['OsID'] ?>', '<?= $os[$i]['OsDtInicial'] ?>','<?= $os[$i]['OsDtFinal'] ?>','<?= $os[$i]['OsGarantia'] ?>','<?= $os[$i]['OsDescProdServ'] ?>','<?= $os[$i]['OsDefeito'] ?>','<?= $os[$i]['OsObs'] ?>','<?= $os[$i]['OsCliID'] ?>','<?= $os[$i]['OsTecID'] ?>','<?= $os[$i]['OsStatus'] ?>','<?= $os[$i]['OsLaudoTec'] ?>','<?= $os[$i]['nomeCliente'] ?>')" data-toggle="modal" data-target="#alterarOs"><i class="fas fa-edit"></i></a>
-                        <a href="#" onclick="ExcluirModal('<?= $os[$i]['OsID'] ?>','<?= $os[$i]['nomeCliente'] ?>')" data-toggle="modal" data-target="#modalExcluir"><i style="color:red" class="fas fa-trash-alt"></i></a>
-                    </td>
-                    <td><?= $os[$i]['nomeCliente'] ?></td>
-                    <td><?= $os[$i]['OsDtInicial'] ?></td>
-                    <td><?= $os[$i]['OsDtFinal'] ?></td>
-                    <td><?= $os[$i]['OsTecID'] ?></td>
+                                    <?php for ($i = 0; $i < count($os); $i++) { ?>
+                                        <tr>
+                                            <td>
+                                                <a href="ordem_servico.php?OsID=<?= $os[$i]['OsID']?>"><i class="fas fa-edit"></i></a>
+                                                <a href="#" onclick="ExcluirModal('<?= $os[$i]['OsID'] ?>','<?= $os[$i]['nomeCliente'] ?>')" data-toggle="modal" data-target="#modalExcluir"><i style="color:red" class="fas fa-trash-alt"></i></a>
+                                                <a href="itens_os.php?OsID=<?= $os[$i]['OsID'] ?>"><i style="color:purple" title="Inserir os Itens na OS" class="fas fa-list"></i></a>
+                                                <a href="print_os.php?OsID=<?= $os[$i]['OsID'] ?>"><i style="color:black" title="Imprimir OS" class="fas fa-print"></i></a>
+                                            </td>
+                                            <td><?= $os[$i]['nomeCliente'] ?></td>
+                                            <td><?= Util::ExibirDataBr($os[$i]['OsDtInicial']) ?></td>
+                                            <td><?= Util::ExibirDataBr($os[$i]['OsDtFinal']) ?></td>
+                                            <td><?= $os[$i]['OsTecID'] ?></td>
 
-                    <td><?php
-                        $status = '';
-                        if ($os[$i]['OsStatus'] == "O") {
-                            $status = "<button class=\"btn btn-secondary btn-xs\">Orçamento</button>";
-                        } else if ($os[$i]['OsStatus'] == "A") {
-                            $status = "<button class=\"btn btn-info btn-xs\">Aberto</button>";
-                        } else if ($os[$i]['OsStatus'] == "EA") {
-                            $status = "<button class=\"btn btn-warning btn-xs\">Em aberto</button>";
-                        } else if ($os[$i]['OsStatus'] == "F") {
-                            $status = "<button class=\"btn btn-success btn-xs\">Finalizada</button>";
-                        } else if ($os[$i]['OsStatus'] == "C") {
-                            $status = "<button class=\"btn btn-danger btn-xs\">Cancelada</button>";
-                        } ?>
-                        <?= $status ?></td>
-                </tr>
-            <?php } ?>
-        </tbody>
+                                            <td><?php
+                                                $status = '';
+                                                if ($os[$i]['OsStatus'] == "O") {
+                                                    $status = "<button class=\"btn btn-secondary btn-xs\">Orçamento</button>";
+                                                } else if ($os[$i]['OsStatus'] == "A") {
+                                                    $status = "<button class=\"btn btn-info btn-xs\">Aberto</button>";
+                                                } else if ($os[$i]['OsStatus'] == "EA") {
+                                                    $status = "<button class=\"btn btn-warning btn-xs\">Em aberto</button>";
+                                                } else if ($os[$i]['OsStatus'] == "F") {
+                                                    $status = "<button class=\"btn btn-success btn-xs\">Finalizada</button>";
+                                                } else if ($os[$i]['OsStatus'] == "C") {
+                                                    $status = "<button class=\"btn btn-danger btn-xs\">Cancelado</button>";
+                                                } ?>
+                                                <?= $status ?>
+                                                <?= ($os[$i]['OsFaturado']=="S"?'<span onclick="faturarOs('.$os[$i]['OsID'].')" class="btn btn-success btn-xs">Faturado</span>':'<span onclick="faturarOs('.$os[$i]['OsID'].')" class="btn btn-warning btn-xs">Faturar?</span>')?>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
     </table>
 
 <?php } else if (isset($_POST['btn_consultar_item']) && $_POST['btn_consultar_item'] == 'ajx') {

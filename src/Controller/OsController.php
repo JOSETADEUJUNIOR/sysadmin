@@ -98,13 +98,23 @@ class OsController
 
     public function AlterarOsController(OsVO $vo): int
     {
-        if (empty($vo->getDtInicial()))
+        if (empty($vo->getID()))
             return 0;
 
         $vo->setfuncao(ALTERA_OS);
         $vo->setIdLogado(Util::CodigoLogado());
 
         return $this->dao->AlterarOsDAO($vo);
+    }
+    public function FaturarOsController(OsVO $vo): int
+    {
+        if (empty($vo->getID()))
+            return 0;
+
+        $vo->setfuncao(FATURA_OS);
+        $vo->setIdLogado(Util::CodigoLogado());
+
+        return $this->dao->FaturarOsDAO($vo);
     }
 
 

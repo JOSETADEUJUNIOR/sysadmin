@@ -118,39 +118,16 @@ function ExcluirServ() {
     return false;
 }
 
-function AlterarOs() {
-    let OsID = $("#AlteraID").val();
-    let Oscliente = $("#AlteraOscliente").val();
-    let tecnico = $("#Alteratecnico").val();
-    let status = $("#Alterastatus").val();
-    let dtInicial = $("#AlteradtInicial").val();
-    let dtFinal = $("#AlteradtFinal").val();
-    let garantia = $("#Alteragarantia").val();
-    let descProd = $("#AlteradescProd").val();
-    let defeito = $("#Alteradefeito").val();
-    let obs = $("#Alteraobs").val();
-    let laudo = $("#Alteralaudo").val();
-
+function faturarOs(id) {
+    let OsID = id;
     $.ajax({
         type: "POST",
         url: BASE_URL_AJAX("Os_dataview"),
         data: {
-            btnAlterar: 'ajx',
+            btnFaturar: 'ajx',
             OsID: OsID,
-            Oscliente: Oscliente,
-            tecnico: tecnico,
-            status: status,
-            dtInicial: dtInicial,
-            dtFinal: dtFinal,
-            garantia: garantia,
-            descProd: descProd,
-            defeito: defeito,
-            obs: obs,
-            laudo: laudo
-
         },
         success: function (ret) {
-            $("#alterarOs").modal("hide");
             if (ret == 1) {
                 MensagemSucesso();
                 ConsultarOs();
@@ -162,6 +139,71 @@ function AlterarOs() {
     })
     return false;
 }
+
+
+
+
+swal({
+    title: "Add Note",
+    input: "textarea",
+    showCancelButton: true,
+    confirmButtonColor: "#1FAB45",
+    confirmButtonText: "Save",
+    cancelButtonText: "Cancel",
+    buttonsStyling: true
+}).then(function () {       
+    $.ajax({
+        type: "POST",
+        url: BASE_URL_AJAX("Os_dataview"),
+        data: {
+            btnFaturar: 'ajx',
+            OsID: id
+        },
+        success: function (ret) {
+            swal(
+            "Sccess!",
+            "Your note has been saved!",
+            "success"
+            )
+        },
+        failure: function (response) {
+            swal(
+            "Internal Error",
+            "Oops, your note was not saved.", // had a missing comma
+            "error"
+            )
+        }
+    });
+}, 
+function (dismiss) {
+  if (dismiss === "cancel") {
+    swal(
+      "Cancelled",
+        "Canceled Note",
+      "error"
+    )
+  }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function CadastrarOs(id_form) {
@@ -178,7 +220,7 @@ function CadastrarOs(id_form) {
         let defeito = $("#defeito").val();
         let obs = $("#obs").val();
         let laudo = $("#laudo").val();
-
+        alert(status);
         $.ajax({
             type: "POST",
             url: BASE_URL_AJAX("Os_dataview"),
@@ -204,8 +246,6 @@ function CadastrarOs(id_form) {
                     ConsultarOs();
                     $("#CadOs").addClass('collapsed-card');
                     window.location.replace("ordem_servico.php")
-
-
                 } else {
                     MensagemErro();
                 }

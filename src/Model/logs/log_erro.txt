@@ -796,3 +796,33 @@ Hora:17:19:41
 Função:CadastrarOsController
 cod Logado:6
 Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_os`, CONSTRAINT `fk_tb_os_2` FOREIGN KEY (`OsTecID`) REFERENCES `tb_tecnico` (`tecnico_id`))
+--------------------------------------------------
+Data:30/08/2022
+Hora:22:26:10
+Função:AlterarOsController
+cod Logado:6
+Erro:SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+--------------------------------------------------
+Data:30/08/2022
+Hora:22:27:01
+Função:AlterarOsController
+cod Logado:6
+Erro:SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+--------------------------------------------------
+Data:30/08/2022
+Hora:22:27:43
+Função:AlterarOsController
+cod Logado:6
+Erro:SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+--------------------------------------------------
+Data:30/08/2022
+Hora:22:30:08
+Função:FaturarOsController
+cod Logado:6
+Erro:SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+--------------------------------------------------
+Data:30/08/2022
+Hora:22:31:47
+Função:FaturarOsController
+cod Logado:6
+Erro:SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens

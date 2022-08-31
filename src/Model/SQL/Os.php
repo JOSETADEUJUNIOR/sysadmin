@@ -32,6 +32,14 @@ class Os
         return $sql;
     }
 
+    public static function RetornarOrdemFaturadoSQL()
+    {
+        $sql = 'SELECT OsID, OsFaturado  
+                    FROM tb_os
+                        WHERE OsEmpID = ? And OsID = ?';
+        return $sql;
+    }
+
     public static function RetornarProdOrdemSQL()
     {
         $sql = 'SELECT OsID, ProdOsID, ProdValorVenda, ProdOsQtd, ProdOsProdID, ProdDescricao, ProdOsSubTotal  
@@ -119,7 +127,12 @@ class Os
 
     public static function AlterarOsSQL()
     {
-        $sql = 'UPDATE tb_os set OsDtInicial = ?, OsDtFinal = ?, OsGarantia = ?, OsDescProdServ = ?, OsDefeito = ?, OsObs = ?, OsCliID = ?, OsTecID = ?, OsStatus = ?, OsLaudoTec = ?, OsFaturado = ?, OsEmpID = ? WHERE OsID = ?';
+        $sql = 'UPDATE tb_os set OsDtInicial = ?, OsDtFinal = ?, OsGarantia = ?, OsDescProdServ = ?, OsDefeito = ?, OsObs = ?, OsCliID = ?, OsTecID = ?, OsStatus = ?, OsLaudoTec = ?, OsEmpID = ? WHERE OsID = ?';
+        return $sql;
+    }
+    public static function FaturarOsSQL()
+    {
+        $sql = 'UPDATE tb_os set OsFaturado = ? WHERE OsEmpID = ? AND OsID = ?';
         return $sql;
     }
 
