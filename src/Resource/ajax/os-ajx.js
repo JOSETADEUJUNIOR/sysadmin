@@ -13,7 +13,7 @@ function ConsultarOs() {
 }
 
 function ConsultarItensOs(OsID) {
-    let idProd = OsID
+    let idProd = OsID;
     $.ajax({
         type: "POST",
         url: BASE_URL_AJAX("Os_dataview"),
@@ -27,12 +27,13 @@ function ConsultarItensOs(OsID) {
 }
 
 function ConsultarAnxOs(OsID) {
-    let idProd = OsID
+    alert(OsID);
+    let idAnx = OsID;
     $.ajax({
         type: "POST",
         url: BASE_URL_AJAX("Os_dataview"),
         data: {
-            OsID: idProd,
+            OsID: idAnx,
             btn_consultar_anx: 'ajx'
         }, success: function (tabela_preenchida) {
             $("#tabela_result_anx").html(tabela_preenchida);
@@ -84,7 +85,6 @@ function ExcluirItemOs() {
 
 function Excluir() {
     let id = $("#ExcluirID").val();
-    alert(OsID);
     $.ajax({
         type: "POST",
         url: BASE_URL_AJAX("Os_dataview"),
@@ -97,7 +97,27 @@ function Excluir() {
                 MensagemSucesso();
                 ConsultarOS();
             } else {
-                alert(ret);
+                MensagemExcluirErro();
+            }
+        }
+    })
+    return false;
+}
+function ExcluirAnx() {
+    let id = $("#AnxID").val();
+    $.ajax({
+        type: "POST",
+        url: BASE_URL_AJAX("Os_dataview"),
+        data: {
+            btnExcluirAnx: 'ajx',
+            AnxID: id
+        }, success: function (ret) {
+            $("#modalExcluirAnx").modal("hide");
+            if (ret == 1) {
+                MensagemSucesso();
+                ConsultarAnxOs(id);
+            } else {
+                
                 MensagemExcluirErro();
             }
         }
@@ -206,12 +226,13 @@ function CadastrarOs(id_form) {
 
 function InserirAnxOs(form_id) {
     if (NotificarCampos(form_id)) {
+        let OsID = $("#OsAnxID").val();
         var formData = new FormData();
         formData.append("anxOsID", $("#OsAnxID").val());
         formData.append("anxNome", $("#anxNome").val());
         formData.append("arquivos", $("#anxImagem").prop("files")[0]);
         formData.append("btnAddAnx", 'ajx');
-                
+
         $.ajax({
             type: "POST",
             url: BASE_URL_AJAX("Os_dataview"),
@@ -220,7 +241,6 @@ function InserirAnxOs(form_id) {
             processData: false,
             contentType: false,
             success: function (ret) {
-                alert(ret);
                RemoverLoad();
                 if (ret == 1) {
                     MensagemSucesso();

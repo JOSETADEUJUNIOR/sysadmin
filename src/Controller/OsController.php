@@ -106,6 +106,12 @@ class OsController
         $vo->setIdLogado(Util::CodigoLogado());
         return $this->dao->ExcluirOSDAO($vo);
     }
+    public function ExcluirAnxOSController(AnxOSVO $vo)
+    {
+        $vo->setfuncao(EXCLUIR_ANX);
+        $vo->setIdLogado(Util::CodigoLogado());
+        return $this->dao->ExcluirAnxOSDAO($vo);
+    }
 
     public function ExcluirServOSController(ServicoOSVO $vo)
     {

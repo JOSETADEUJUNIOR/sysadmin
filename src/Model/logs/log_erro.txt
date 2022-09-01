@@ -826,3 +826,27 @@ Hora:22:31:47
 Função:FaturarOsController
 cod Logado:6
 Erro:SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+--------------------------------------------------
+Data:31/08/2022
+Hora:21:25:57
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+--------------------------------------------------
+Data:31/08/2022
+Hora:21:31:44
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+--------------------------------------------------
+Data:31/08/2022
+Hora:21:34:52
+Função:ExcluirItemOSController
+cod Logado:6
+Erro:SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+--------------------------------------------------
+Data:31/08/2022
+Hora:21:37:17
+Função:ExcluirAnxOSController
+cod Logado:6
+Erro:SQLSTATE[42S02]: Base table or view not found: 1146 Table 'db_os.tb_anex' doesn't exist

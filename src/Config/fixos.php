@@ -24,6 +24,7 @@ const FATURA_OS = 'FaturarOsController';
 const EXCLUI_OS = 'ExcluirOsController';
 const EXCLUI_ITEM_OS = 'ExcluirItemOSController';
 const CADASTRO_ANX_OS = 'InserirAnxOrdemController';
+const EXCLUIR_ANX = 'ExcluirAnxOSController';
 
 
 const CADASTRO_CIDADE = 'CadastrarCidadeController';

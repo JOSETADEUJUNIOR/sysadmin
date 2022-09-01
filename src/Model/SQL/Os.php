@@ -66,7 +66,7 @@ class Os
     }
     public static function RetornarAnxOSSQL()
     {
-        $sql = 'SELECT AnxNome, AnxUrl, AnxPath, AnxOsID 
+        $sql = 'SELECT AnxID, AnxNome, AnxUrl, AnxPath, AnxOsID 
                     FROM tb_anexo
                         WHERE AnxEmpID = ? And AnxOsID = ?';
         return $sql;
@@ -94,6 +94,11 @@ class Os
     public static function ExcluirOS()
     {
         $sql = 'DELETE FROM tb_os WHERE OsID = ?';
+        return $sql;
+    }
+    public static function ExcluirAnxOS()
+    {
+        $sql = 'DELETE FROM tb_anexo WHERE AnxID = ? AND AnxEmpID = ?';
         return $sql;
     }
     public static function ExcluirServOS()

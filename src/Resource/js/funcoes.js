@@ -14,9 +14,10 @@ function AlterarModeloModal(id, nome) {
     $("#AlteraNome").val(nome);
 }
 
-function ExcluirModal(id, nome) {
-    $("#ExcluirID").val(id);
-    $("#ExcluirNome").html(nome);
+function ExcluirModalAnx(idOS, id, nome) {
+    $("#AnxOsID").val(idOS);
+    $("#AnxID").val(id);
+    $("#AnxNome").html(nome);
 }
 function ExcluirModalItem(OsID, id, nome, idProduto, qtd) {
     $("#ExcluirOsID").val(OsID);

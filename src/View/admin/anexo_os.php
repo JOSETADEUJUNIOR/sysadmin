@@ -165,7 +165,7 @@ use Src\_public\Util;
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body table-responsive p-0">
-                                <table class="table table-hover" id="tabela_result_item">
+                                <table class="table table-hover" id="tabela_result_anx">
                                     <thead>
                                         <tr>
                                             <th>Ação</th>
@@ -181,7 +181,7 @@ use Src\_public\Util;
                                             if ($AnxOs[$i]['AnxOsID'] != '') { ?>
                                                 <tr>
                                                     <td>
-                                                        <a href="#" onclick="ExcluirModalItem('<?= $ProdOrdem[$i]['OsID'] ?>','<?= $ProdOrdem[$i]['ProdOsID'] ?>','<?= $ProdOrdem[$i]['ProdDescricao'] ?>','<?= $ProdOrdem[$i]['ProdOsProdID'] ?>','<?= $ProdOrdem[$i]['ProdOsQtd'] ?>')" data-toggle="modal" data-target="#modalExcluirItem"><i style="color:red" class="fas fa-trash-alt"></i></a>
+                                                        <a href="#" onclick="ExcluirModalAnx('<?= $AnxOs[$i]['AnxOsID'] ?>','<?= $AnxOs[$i]['AnxID'] ?>','<?= $AnxOs[$i]['AnxNome'] ?>')" data-toggle="modal" data-target="#modalExcluirAnx"><i style="color:red" class="fas fa-trash-alt"></i></a>
                                                     </td>
                                                     <td><?= $AnxOs[$i]['AnxNome'] ?></td>
                                                     <td><i style="color:red" class="<?= (explode('.', $AnxOs[$i]['AnxPath'])[1] == 'png' ? 'fas fa-image' : 'fa fa-file-pdf') ?>"></i></td>
@@ -197,7 +197,7 @@ use Src\_public\Util;
                                     </tbody>
 
                                 </table>
-                                <hr>
+                        
 
                             </div>
 
@@ -215,11 +215,8 @@ use Src\_public\Util;
         <!-- /.content -->
 
         <!-- /.content-wrapper -->
-        <form action="ordem_servico.php" id="form_alt_os" method="post">
-            <?php include_once 'modal/_alterar_os.php' ?>
-            <?php include_once 'modal/_excluirItem.php' ?>
-            <?php include_once 'modal/_excluirServ.php' ?>
-
+        <form action="anexo_os.php" id="form_anx_os" method="post">
+            <?php include_once 'modal/_excluir_anx.php' ?>
         </form>
         <?php include_once PATH_URL . '/Template/_includes/_footer.php' ?>
         <!-- /.control-sidebar -->

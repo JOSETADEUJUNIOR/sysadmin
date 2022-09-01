@@ -311,6 +311,22 @@ public function RetornarAnxOSDAO(OsVO $vo): array
 
         $sql = $this->conexao->prepare(Os::ExcluirOS());
         $sql->bindValue(1, $vo->getID());
+        
+        try {
+            $sql->execute();
+            return 1;
+        } catch (\Exception $ex) {
+            $vo->setmsg_erro($ex->getMessage());
+            parent::GravarLogErro($vo);
+            return -2;
+        }
+    }
+    public function ExcluirAnxOSDAO(AnxOSVO $vo)
+    {
+        
+        $sql = $this->conexao->prepare(Os::ExcluirAnxOS());
+        $sql->bindValue(1, $vo->getAnxID());
+        $sql->bindValue(2, Util::CodigoEmpresa());
 
         try {
             $sql->execute();
