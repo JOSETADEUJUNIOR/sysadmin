@@ -66,7 +66,7 @@ use Src\_public\Util; ?>
                                     <div class="col-sm-4 invoice-col">
                                         Dados Empresa
                                         <address>
-                                            <strong><?= $dadosEmp[0]['EmpNome'] ?></strong><br>
+                                            <strong><?= $dadosEmp[0]['EmpNome'] . ' - </strong> [' . $dadosEmp[0]['EmpCNPJ'] . ']'  ?></strong><br>
                                             <?= $dadosEmp[0]['EmpEnd'] . ', ' . $dadosEmp[0]['EmpNumero'] ?><br>
                                             <?= 'Cep: ' . $dadosEmp[0]['EmpCep'] . ' - ' . $dadosEmp[0]['EmpCidade'] ?><br>
                                             Telefone: <?= $dadosEmp[0]['telefone'] ?><br>
@@ -109,6 +109,93 @@ use Src\_public\Util; ?>
 
                                 <!-- Table row -->
                                 <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="card card-default">
+                                            <div class="card-header">
+                                                <h3 class="card-title">
+                                                    <i class="fas fa-bullhorn"></i>
+                                                    Descrição do Produto ou Serviço
+                                                </h3>
+                                            </div>
+                                            <!-- /.card-header -->
+                                            <div class="card-body">
+                                                <div class="callout callout-info">
+                                                    <h5>Descrições da OS!</h5>
+                                                    <p><?= ($ordemOS[0]['OsDescProdServ'] != '' ? $ordemOS[0]['OsDescProdServ'] : '') ?>.</p>
+                                                </div>
+                                            </div>
+
+                                            <!-- /.card-body -->
+                                        </div>
+
+                                        <!-- /.card -->
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card card-default">
+                                            <div class="card-header">
+                                                <h3 class="card-title">
+                                                    <i class="fas fa-bullhorn"></i>
+                                                    Defeito!
+                                                </h3>
+                                            </div>
+                                            <!-- /.card-header -->
+                                            <div class="card-body">
+                                                <div class="callout callout-danger">
+                                                    <h5>Defeito!</h5>
+
+                                                    <p><?= ($ordemOS[0]['OsDefeito'] != '' ? $ordemOS[0]['OsDefeito'] : '') ?></p>
+                                                </div>
+                                            </div>
+
+                                            <!-- /.card-body -->
+                                        </div>
+
+                                        <!-- /.card -->
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card card-default">
+                                            <div class="card-header">
+                                                <h3 class="card-title">
+                                                    <i class="fas fa-bullhorn"></i>
+                                                    Observações gerais!
+                                                </h3>
+                                            </div>
+                                            <!-- /.card-header -->
+                                            <div class="card-body">
+                                                <div class="callout callout-warning">
+                                                    <h5>Observações!</h5>
+
+                                                    <p><?= ($ordemOS[0]['OsObs'] != '' ? $ordemOS[0]['OsObs'] : 'Nenhuma observação inserida') ?>.</p>
+                                                </div>
+                                            </div>
+
+                                            <!-- /.card-body -->
+                                        </div>
+
+                                        <!-- /.card -->
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card card-default">
+                                            <div class="card-header">
+                                                <h3 class="card-title">
+                                                    <i class="fas fa-bullhorn"></i>
+                                                    Laudo Técnico
+                                                </h3>
+                                            </div>
+                                            <!-- /.card-header -->
+                                            <div class="card-body">
+                                                <div class="callout callout-success">
+                                                    <h5>Laudo Técnico!</h5>
+
+                                                    <p><?= ($ordemOS[0]['OsLaudoTec'] != '' ? $ordemOS[0]['OsLaudoTec'] : 'Laudo Técnico não informado') ?>.</p>
+                                                </div>
+                                            </div>
+
+                                            <!-- /.card-body -->
+                                        </div>
+
+                                        <!-- /.card -->
+                                    </div>
                                     <div class="col-12 table-responsive">
                                         <table class="table table-striped">
                                             <thead>
@@ -202,11 +289,11 @@ use Src\_public\Util; ?>
                                 <!-- this row will not appear when printing -->
                                 <div class="row no-print">
                                     <div class="col-12">
-                                        <a href="invoice-print.php?OsID= <?= $ordemOS[0]['OsID']?>" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Imprimir a Ordem</a>
+                                        <a href="invoice-print.php?OsID= <?= $ordemOS[0]['OsID'] ?>" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Imprimir a Ordem</a>
                                         <a href="ordem_servico.php" class="btn btn-warning float-right"> Voltar para OS
                                         </a>
                                         <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
-                                           <i class="far fa-credit-card"></i> Realizar o pagamento
+                                            <i class="far fa-credit-card"></i> Realizar o pagamento
                                         </button>
                                     </div>
                                 </div>

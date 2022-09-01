@@ -239,7 +239,7 @@ class OsDAO extends Conexao
         $sql->execute();
         return $sql->fetchAll(\PDO::FETCH_ASSOC);
     }
-public function RetornarAnxOSDAO(OsVO $vo): array
+    public function RetornarAnxOSDAO(OsVO $vo): array
     {
         $sql = $this->conexao->prepare(Os::RetornarAnxOSSQL());
         $sql->bindValue(1, Util::CodigoEmpresa());
@@ -311,7 +311,7 @@ public function RetornarAnxOSDAO(OsVO $vo): array
 
         $sql = $this->conexao->prepare(Os::ExcluirOS());
         $sql->bindValue(1, $vo->getID());
-        
+
         try {
             $sql->execute();
             return 1;
@@ -323,7 +323,7 @@ public function RetornarAnxOSDAO(OsVO $vo): array
     }
     public function ExcluirAnxOSDAO(AnxOSVO $vo)
     {
-        
+
         $sql = $this->conexao->prepare(Os::ExcluirAnxOS());
         $sql->bindValue(1, $vo->getAnxID());
         $sql->bindValue(2, Util::CodigoEmpresa());

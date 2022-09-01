@@ -35,11 +35,11 @@ use Src\_public\Util; ?>
         <div class="col-sm-4 invoice-col">
           Dados Empresa
           <address>
-            <strong><?= $dadosEmp[0]['EmpNome'] ?></strong><br>
-            <?= $dadosEmp[0]['EmpEnd'] . ', ' . $dadosEmp[0]['EmpNumero'] ?><br>
-            <?= 'Cep: ' . $dadosEmp[0]['EmpCep'] . ' - ' . $dadosEmp[0]['EmpCidade'] ?><br>
-            Telefone: <?= $dadosEmp[0]['telefone'] ?><br>
-            Email: <?= $dadosEmp[0]['login'] ?>
+            <strong><?= $dadosEmp[0]['EmpNome'] . ' - </strong> [' . $dadosEmp[0]['EmpCNPJ'] . ']' ?><br>
+              <?= $dadosEmp[0]['EmpEnd'] . ', ' . $dadosEmp[0]['EmpNumero'] ?><br>
+              <?= 'Cep: ' . $dadosEmp[0]['EmpCep'] . ' - ' . $dadosEmp[0]['EmpCidade'] ?><br>
+              Telefone: <?= $dadosEmp[0]['telefone'] ?><br>
+              Email: <?= $dadosEmp[0]['login'] ?>
           </address>
         </div>
         <!-- /.col -->
@@ -78,6 +78,96 @@ use Src\_public\Util; ?>
 
       <!-- Table row -->
       <div class="row">
+        <div class="col-md-6">
+          <div class="card card-default">
+            <div class="card-header">
+              <h3 class="card-title">
+                <i class="fas fa-bullhorn"></i>
+                Descrição do Produto ou Serviço
+              </h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <div class="callout callout-info">
+                <h5>Descrições da OS!</h5>
+                <p><?= ($ordemOS[0]['OsDescProdServ'] != '' ? $ordemOS[0]['OsDescProdServ'] : '') ?>.</p>
+              </div>
+            </div>
+
+            <!-- /.card-body -->
+          </div>
+
+          <!-- /.card -->
+        </div>
+        <div class="col-md-6">
+          <div class="card card-default">
+            <div class="card-header">
+              <h3 class="card-title">
+                <i class="fas fa-bullhorn"></i>
+                Defeito!
+              </h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <div class="callout callout-danger">
+                <h5>Defeito!</h5>
+
+                <p><?= ($ordemOS[0]['OsDefeito'] != '' ? $ordemOS[0]['OsDefeito'] : '') ?>.</p>
+              </div>
+            </div>
+
+            <!-- /.card-body -->
+          </div>
+
+          <!-- /.card -->
+        </div>
+        <div class="col-md-6">
+          <div class="card card-default">
+            <div class="card-header">
+              <h3 class="card-title">
+                <i class="fas fa-bullhorn"></i>
+                Observações gerais!
+              </h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <div class="callout callout-warning">
+                <h5>Observações!</h5>
+
+                <p><?= ($ordemOS[0]['OsObs'] != '' ? $ordemOS[0]['OsObs'] : 'Nenhuma observação inserida') ?>.</p>
+              </div>
+            </div>
+
+            <!-- /.card-body -->
+          </div>
+
+          <!-- /.card -->
+        </div>
+        <div class="col-md-6">
+          <div class="card card-default">
+            <div class="card-header">
+              <h3 class="card-title">
+                <i class="fas fa-bullhorn"></i>
+                Laudo Técnico
+              </h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <div class="callout callout-success">
+                <h5>Laudo Técnico!</h5>
+
+                <p><?= ($ordemOS[0]['OsLaudoTec'] != '' ? $ordemOS[0]['OsLaudoTec'] : 'Laudo Técnico não informado') ?>.</p>
+              </div>
+            </div>
+
+            <!-- /.card-body -->
+          </div>
+
+          <!-- /.card -->
+        </div>
+
+
+
         <div class="col-12 table-responsive">
           <table class="table table-striped">
             <thead>
@@ -124,7 +214,7 @@ use Src\_public\Util; ?>
               <?php } ?>
 
             </tbody>
-            
+
           </table>
         </div>
         <!-- /.col -->
@@ -141,18 +231,18 @@ use Src\_public\Util; ?>
           <img src="../../Template/dist/img/credit/paypal2.png" alt="Paypal">
 
           <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
-           <strong>Garantia: <?= ($ordemOS[0]['OsGarantia'] != '' ? $ordemOS[0]['OsGarantia'] : '') ?></strong>
+            <strong>Garantia: <?= ($ordemOS[0]['OsGarantia'] != '' ? $ordemOS[0]['OsGarantia'] : '') ?></strong>
           </p>
         </div>
         <!-- /.col -->
         <div class="col-6">
-          <p class="lead">Valor a ser pago em: <?= date('d/m/Y')?></p>
+          <p class="lead">Valor a ser pago em: <?= date('d/m/Y') ?></p>
 
           <div class="table-responsive">
             <table class="table">
               <tr>
                 <th style="width:50%">Subtotal:</th>
-                <td><?= ($subTotal!=''? $subTotal:'0,00')?></td>
+                <td><?= ($subTotal != '' ? $subTotal : '0,00') ?></td>
               </tr>
               <!--<tr>
                 <th>Shipping:</th>

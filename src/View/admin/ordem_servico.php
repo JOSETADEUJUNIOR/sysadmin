@@ -243,7 +243,7 @@ use Src\_public\Util; ?>
                                                     $status = "<button class=\"btn btn-danger btn-xs\">Cancelado</button>";
                                                 } ?>
                                                 <?= $status ?>
-                                                <?= ($os[$i]['OsFaturado'] == "S" ? '<span onclick="faturarOs(' . $os[$i]['OsID'] . ')" class="btn btn-success btn-xs">Faturado</span>' : '<span onclick="faturarOs(' . $os[$i]['OsID'] . ')" class="btn btn-warning btn-xs">Faturar?</span>') ?>
+                                                <?= ($os[$i]['OsStatus']!="F"?'':($os[$i]['OsFaturado'] == "S" ? '<span onclick="faturarOs(' . $os[$i]['OsID'] . ')" class="btn btn-success btn-xs">Faturado</span>' : '<span onclick="faturarOs(' . $os[$i]['OsID'] . ')" class="btn btn-warning btn-xs">Faturar?</span>')) ?>
                                             </td>
                                         </tr>
                                     <?php } ?>

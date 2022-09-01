@@ -27,7 +27,6 @@ function ConsultarItensOs(OsID) {
 }
 
 function ConsultarAnxOs(OsID) {
-    alert(OsID);
     let idAnx = OsID;
     $.ajax({
         type: "POST",
@@ -105,6 +104,7 @@ function Excluir() {
 }
 function ExcluirAnx() {
     let id = $("#AnxID").val();
+    let OsID = $("#AnxOsID").val();
     $.ajax({
         type: "POST",
         url: BASE_URL_AJAX("Os_dataview"),
@@ -115,9 +115,9 @@ function ExcluirAnx() {
             $("#modalExcluirAnx").modal("hide");
             if (ret == 1) {
                 MensagemSucesso();
-                ConsultarAnxOs(id);
+                ConsultarAnxOs(OsID);
             } else {
-                
+
                 MensagemExcluirErro();
             }
         }
@@ -129,7 +129,6 @@ function ExcluirServ() {
     let OsID = $("#ExcluirOsID").val();
     let id = $("#ExcluirID").val();
     let qtd = $("#ExcluirQtd").val();
-    alert(qtd);
     let servico = $("#ExcluirServID").val();
     $.ajax({
         type: "POST",
@@ -189,7 +188,6 @@ function CadastrarOs(id_form) {
         let defeito = $("#defeito").val();
         let obs = $("#obs").val();
         let laudo = $("#laudo").val();
-        alert(status);
         $.ajax({
             type: "POST",
             url: BASE_URL_AJAX("Os_dataview"),
@@ -241,12 +239,11 @@ function InserirAnxOs(form_id) {
             processData: false,
             contentType: false,
             success: function (ret) {
-               RemoverLoad();
+                RemoverLoad();
                 if (ret == 1) {
                     MensagemSucesso();
                     ConsultarAnxOs(OsID);
                 } else if (ret == -13) {
-                    alert('Estoque inferior');
                     MensagemErro();
                 }
             }
@@ -281,7 +278,7 @@ function InserirProd(form_id) {
                     ConsultarItensOs(OsID);
                     ConsultarServOs(OsID);
                 } else if (ret == -13) {
-                    alert('Estoque inferior');
+                    alert('Você não possui estoque suficiênte!');
                     MensagemErro();
                 }
             }

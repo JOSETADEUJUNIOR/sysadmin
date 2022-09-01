@@ -33,7 +33,6 @@ if (isset($_GET['OsID'])) {
     $ProdOrdem = $ctrl->RetornaProdOrdem($vo);
     $ProdServOrdem = $ctrl->RetornaServOrdem($vo);
     $AnxOs = $ctrl->RetornaAnxOS($vo);
-    
 }
 
 if (isset($_POST['btn_cadastrar'])) {
@@ -128,7 +127,7 @@ if (isset($_POST['btn_cadastrar'])) {
     } else {
         $os = $ctrl->RetornarOsController();
     }
-}else if (isset($_POST['btnExcluirAnx'])) {
+} else if (isset($_POST['btnExcluirAnx'])) {
     $vo = new AnxOSVO;
     $vo->setAnxID($_POST['AnxID']);
     $ret = $ctrl->ExcluirAnxOSController($vo);
@@ -137,10 +136,7 @@ if (isset($_POST['btn_cadastrar'])) {
     } else {
         $os = $ctrl->RetornarOsController();
     }
-}
-
-
-else if (isset($_POST['btnExcluirItemOs'])) {
+} else if (isset($_POST['btnExcluirItemOs'])) {
     $vo = new ProdutoOSVO;
     $vo->setOsID($_POST['OsID']);
     $vo->setProdQtd($_POST['qtd']);
@@ -295,48 +291,49 @@ else if (isset($_POST['btnExcluirItemOs'])) {
     </table>
 
 
-<?php }else if (isset($_POST['btn_consultar_anx']) && $_POST['btn_consultar_anx'] == 'ajx') {
+<?php } else if (isset($_POST['btn_consultar_anx']) && $_POST['btn_consultar_anx'] == 'ajx') {
 
-$vo = new AnxOSVO;
-$vo->setAnxOsID($_POST['OsID']);
-$AnxOs = $ctrl->RetornaAnxOS($vo);
+    $vo = new OsVO;
+    $vo->setID($_POST['OsID']);
+    $AnxOs = $ctrl->RetornaAnxOS($vo);
+
 ?>
 
-<table class="table table-hover" id="tabela_result_anx">
-    <thead>
-        <tr>
-            <th>Ação</th>
-            <th>Nome</th>
-            <th>Tipo</th>
-            <th>Arquivo</th>
+    <table class="table table-hover" id="tabela_result_anx">
+        <thead>
+            <tr>
+                <th>Ação</th>
+                <th>Nome</th>
+                <th>Tipo</th>
+                <th>Arquivo</th>
 
-        </tr>
-    </thead>
-    <tbody>
-        <?php $subTotal = 0;
-        for ($i = 0; $i < count($AnxOs); $i++) {
-            if ($AnxOs[$i]['AnxOsID'] != '') { ?>
-                <tr>
-                    <td>
-                        <a href="#" onclick="ExcluirModal('<?= $AnxOs[$i]['AnxID'] ?>','<?= $AnxOs[$i]['AnxNome'] ?>')" data-toggle="modal" data-target="#modalExcluirAnx"><i style="color:red" class="fas fa-trash-alt"></i></a>
-                    </td>
-                    <td><?= $AnxOs[$i]['AnxNome'] ?></td>
-                    <td><i style="color:red" class="<?= (explode('.', $AnxOs[$i]['AnxPath'])[1] == 'png' ? 'fas fa-image' : 'fa fa-file-pdf') ?>"></i></td>
-                    <td><a href="../../Resource/dataview/<?= $AnxOs[$i]['AnxPath'] ?>" target="_blank" rel="noopener noreferrer">visualizar arquivo </a>
-                    </td>
-
-
-
-                </tr>
-        <?php }
-        } ?>
-
-    </tbody>
-
-</table>
+            </tr>
+        </thead>
+        <tbody>
+            <?php $subTotal = 0;
+            for ($i = 0; $i < count($AnxOs); $i++) {
+                if ($AnxOs[$i]['AnxOsID'] != '') { ?>
+                    <tr>
+                        <td>
+                            <a href="#" onclick="ExcluirModalAnx('<?= $AnxOs[$i]['AnxOsID'] ?>','<?= $AnxOs[$i]['AnxID'] ?>','<?= $AnxOs[$i]['AnxNome'] ?>')" data-toggle="modal" data-target="#modalExcluirAnx"><i style="color:red" class="fas fa-trash-alt"></i></a>
+                        </td>
+                        <td><?= $AnxOs[$i]['AnxNome'] ?></td>
+                        <td><i style="color:red" class="<?= (explode('.', $AnxOs[$i]['AnxPath'])[1] == 'png' ? 'fas fa-image' : 'fa fa-file-pdf') ?>"></i></td>
+                        <td><a href="../../Resource/dataview/<?= $AnxOs[$i]['AnxPath'] ?>" target="_blank" rel="noopener noreferrer">visualizar arquivo </a>
+                        </td>
 
 
-<?php }else if (isset($_POST['btn_consultar_serv']) && $_POST['btn_consultar_serv'] == 'ajx') {
+
+                    </tr>
+            <?php }
+            } ?>
+
+        </tbody>
+
+    </table>
+
+
+<?php } else if (isset($_POST['btn_consultar_serv']) && $_POST['btn_consultar_serv'] == 'ajx') {
 
     $vo = new OsVO;
     $vo->setID($_POST['OsID']);

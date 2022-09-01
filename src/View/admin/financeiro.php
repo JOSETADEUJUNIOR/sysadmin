@@ -29,8 +29,8 @@
                     <div class="row mb-2">
                         <div class="col-sm-6">
                             <h1>Financeiro</h1>
-                            <button class="btn btn-success btn-xs">Nova Receita</button>
-                            <button class="btn btn-danger btn-xs">Nova Receita</button>
+                            <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#faturar">>Nova Receita</button>
+                            <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#faturar">>Nova Receita</button>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -135,6 +135,10 @@
     </div>
     <!-- /.content-wrapper -->
 
+    <form action="financeiro.php" id="form_financeiro" method="post">
+        <?php include_once 'modal/_faturar.php' ?>
+
+    </form>
     <?php include_once PATH_URL . '/Template/_includes/footer.php' ?>
     <!-- /.control-sidebar -->
     </div>

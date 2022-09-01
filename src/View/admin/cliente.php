@@ -127,12 +127,23 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Descrição</label>
-                                        <textarea class="form-control obg" id="descricao" name="descricao" placeholder="Digite o aqui...."></textarea>
+                                        <textarea class="form-control" id="descricao" name="descricao" placeholder="Digite o aqui...."></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <button class="btn btn-success col-md-12" onclick="return CadastrarCliente('form_cliente')" name="btn_cadastrar">Cadastrar</button>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+
+                                        <a href="cliente.php" class="btn btn-warning col-md-12">Voltar</a>
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn btn-success" onclick="return CadastrarCliente('form_cliente')" name="btn_cadastrar">Cadastrar</button>
-
                     </form>
 
                 </div>

@@ -40,6 +40,7 @@ class ServicoDAO extends Conexao
     public function RetornarServicoDAO()
     {
         $sql = $this->conexao->prepare(Servico::RetornarServico());
+        $sql->bindValue(1, Util::CodigoEmpresa());
         $sql->execute();
         return $sql->fetchAll(\PDO::FETCH_ASSOC);
     }

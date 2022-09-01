@@ -15,7 +15,7 @@ class Servico
     public static function RetornarServico()
     {
         $sql = 'SELECT ServID, ServNome, ServValor, ServDescricao, ServEmpID, ServUserID
-                    FROM tb_servico';
+                    FROM tb_servico WHERE ServEmpID = ?' ;
         return $sql;
     }
 
