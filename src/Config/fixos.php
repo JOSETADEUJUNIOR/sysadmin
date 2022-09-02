@@ -18,6 +18,8 @@ const CADASTRO_SERVICO = 'CadastrarServicoController';
 const ALTERA_SERVICO = 'AlterarServicoController';
 const EXCLUI_SERVICO = 'ExcluirServicoController';
 
+const CADASTRO_LANCAMENTO = 'InserirLancamentoController';
+
 const CADASTRO_OS = 'CadastrarOsController';
 const ALTERA_OS = 'AlterarOsController';
 const FATURA_OS = 'FaturarOsController';

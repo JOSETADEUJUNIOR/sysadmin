@@ -4,7 +4,7 @@ namespace Src\VO;
 use Src\_public\Util;
 use Src\VO\LogErro;
 
-class ServicoVO extends LogErro{
+class LancamentoVO extends LogErro{
 
 private $LancID;
 private $LancDescricao;

@@ -1,4 +1,4 @@
-<?php require_once dirname(__DIR__, 2) . '/Resource/dataview/equipamento_dataview.php'; ?>
+<?php require_once dirname(__DIR__, 2) . '/Resource/dataview/financeiro_dataview.php'; ?>
 
 <!DOCTYPE html>
 <html>
@@ -104,18 +104,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php foreach ($equipamento as $equip) { ?>
-                                                <tr>
-                                                    <td><?= $equip['nomeTipo'] ?></td>
-                                                    <td><?= $equip['nomeModelo'] ?></td>
-                                                    <td><?= $equip['identificacao'] ?></td>
-                                                    <td><?= $equip['descricao'] ?></td>
-                                                    <td>
-                                                        <a href="equipamento.php?id=<?= $equip['idEquip'] ?>" class="btn btn-warning btn-xs">Alterar</a>
-                                                        <a href="#" class="btn btn-danger btn-xs">Excluir</a>
-                                                    </td>
-                                                </tr>
-                                            <?php } ?>
+
 
                                         </tbody>
                                     </table>
@@ -135,19 +124,20 @@
     </div>
     <!-- /.content-wrapper -->
 
-    <form action="financeiro.php" id="form_financeiro" method="post">
+    <!-- /.control-sidebar -->
+    <form action="financeiro.php" method="post">
         <?php include_once 'modal/_faturar.php' ?>
 
-    </form>
-    <?php include_once PATH_URL . '/Template/_includes/footer.php' ?>
-    <!-- /.control-sidebar -->
-    </div>
-    <!-- ./wrapper -->
+        <?php include_once PATH_URL . '/Template/_includes/_footer.php' ?>
 
-    <!-- jQuery -->
-    <?php include_once PATH_URL . '/Template/_includes/_scripts.php' ?>
-    <?php include_once PATH_URL . '/Template/_includes/_msg.php' ?>
-    <script src="../../Resource/ajax/equipamento-ajx.js"></script>
+        </div>
+        <!-- ./wrapper -->
+
+        <!-- jQuery -->
+        <?php include_once PATH_URL . '/Template/_includes/_scripts.php' ?>
+        <?php include_once PATH_URL . '/Template/_includes/_msg.php' ?>
+    </form>
+    <script src="../../Resource/ajax/financeiro-ajx.js"></script>
 </body>
 
 </html>

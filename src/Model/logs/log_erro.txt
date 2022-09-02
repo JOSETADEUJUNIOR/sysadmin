@@ -850,3 +850,21 @@ Hora:21:37:17
 Função:ExcluirAnxOSController
 cod Logado:6
 Erro:SQLSTATE[42S02]: Base table or view not found: 1146 Table 'db_os.tb_anex' doesn't exist
+--------------------------------------------------
+Data:02/09/2022
+Hora:15:14:16
+Função:InserirLancamentoController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'LancBaixado' cannot be null
+--------------------------------------------------
+Data:02/09/2022
+Hora:15:21:49
+Função:InserirLancamentoController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'LancBaixado' cannot be null
+--------------------------------------------------
+Data:02/09/2022
+Hora:15:27:14
+Função:InserirLancamentoController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'LancBaixado' cannot be null

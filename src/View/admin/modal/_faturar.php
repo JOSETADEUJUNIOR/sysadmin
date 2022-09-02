@@ -12,7 +12,7 @@
                         <div class="form-group">
                             <label>Descrição</label>
                             <input type="hidden" name="faturaID" id="faturaID">
-                            <input class="form-control obg" id="Alteranome" name="Alteranome" placeholder="Digite o aqui....">
+                            <input class="form-control obg" id="descricao" name="descricao" placeholder="Digite o aqui....">
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -20,8 +20,10 @@
                             <label>Cliente</label>
                             <select class="form-control obg" id="faturaCliente" name="faturaCliente">
                                 <option value="">Selecione</option>
-                                <option value="A">Sim</option>
-                                <option value="I">Não</option>
+                                <?php foreach ($cliente as $cl) { ?>
+                                    <option value="<?= $cl['CliID']?>"><?= $cl['CliNome']?></option>
+                                <?php } ?>
+                                
                             </select>
                         </div>
                     </div>
@@ -64,7 +66,7 @@
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
-                <button name="nova_receita" class="btn btn-outline-dark" onclick="return NovaReceita()">Salvar</button>
+                <button name="btn_inserir" class="btn btn-outline-dark" onclick="return NovaReceita()">Salvar</button>
             </div>
         </div>
         <!-- /.modal-content -->
