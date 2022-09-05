@@ -5,7 +5,7 @@ namespace Src\Model;
 // Configurações do Site
 define('HOST','localhost'); //IP
 define('USER','root'); //usuario
-define('PASS', NULL); //senha
+define('PASS', 'ac9711'); //senha
 define('DB', 'db_os'); //banco
 
 /**

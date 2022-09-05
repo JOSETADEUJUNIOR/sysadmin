@@ -20,7 +20,15 @@ function ExcluirModalAnx(idOS, id, nome) {
     $("#AnxNome").html(nome);
 }
 function ExcluirModalItem(OsID, id, nome, idProduto, qtd) {
-    $("#ExcluirOsID").val(OsID);
+    $("#ExcluirVendaID").val(OsID);
+    $("#ExcluirID").val(id);
+    $("#ExcluirNome").html(nome);
+    $("#ExcluirProdID").val(idProduto);
+    $("#ExcluirQtd").val(qtd);
+}
+function ExcluirModalItemVenda(VendaID, id, nome, idProduto, qtd) {
+    alert(nome);
+    $("#ExcluirOsID").val(VendaID);
     $("#ExcluirID").val(id);
     $("#ExcluirNome").html(nome);
     $("#ExcluirProdID").val(idProduto);
@@ -33,18 +41,18 @@ function ModalDespesa(id, descricao, idCliente, valor, dtVenc, dtPgto) {
     $("#AlteraDespValor").val(valor);
     $("#AlteraDespDtVenc").val(dtVenc);
     $("#AlteraDespDtPgto").val(dtPgto);
-   
+
 }
 
 function ModalFatura(id, descricao, idCliente, valor, dtVenc, dtPgto) {
-     $("#AlterafaturaID").val(id);
-     $("#AlteraDescricao").val(descricao);
-     $("#AlterafaturaCliente").val(idCliente);
-     $("#AlterafaturaValor").val(valor);
-     $("#AlterafaturaDtVenc").val(dtVenc);
-     $("#AlterafaturaDtPgto").val(dtPgto);
-    
- }
+    $("#AlterafaturaID").val(id);
+    $("#AlteraDescricao").val(descricao);
+    $("#AlterafaturaCliente").val(idCliente);
+    $("#AlterafaturaValor").val(valor);
+    $("#AlterafaturaDtVenc").val(dtVenc);
+    $("#AlterafaturaDtPgto").val(dtPgto);
+
+}
 function ExcluirModalServ(OsID, id, nomeServ, idServ, qtd) {
     $("#ExcluirOsID").val(OsID);
     $("#ExcluirID").val(id);
@@ -55,7 +63,7 @@ function ExcluirModalServ(OsID, id, nomeServ, idServ, qtd) {
 function ExcluirModal(id, nome) {
     $("#ExcluirID").val(id);
     $("#ExcluirNome").html(nome);
-  
+
 }
 
 function AlterarTipoEquipamentoModal(id, nome) {
@@ -110,7 +118,7 @@ function AlterarOsModal(id, dtInicial, dtFinal, garantia, descriProd, defeito, o
     $("#Alterastatus").val(Status);
     $("#Alteralaudo").val(Laudo);
     $("#NomeCli").val(clienteNome);
-    
+
 
 }
 

@@ -22,6 +22,12 @@ const EXCLUI_SERVICO = 'ExcluirServicoController';
 const CADASTRO_LANCAMENTO = 'InserirLancamentoController';
 const EXCLUI_LANCAMENTO = 'ExcluirLancamentoController';
 
+
+const CADASTRO_VENDA = 'CadastrarVendaController';
+const EXCLUI_ITEM_VENDA = 'ExcluirItemVendaController';
+
+
+
 const CADASTRO_OS = 'CadastrarOsController';
 const ALTERA_OS = 'AlterarOsController';
 const FATURA_OS = 'FaturarOsController';
