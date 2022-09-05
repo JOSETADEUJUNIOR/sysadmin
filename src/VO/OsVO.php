@@ -3,9 +3,9 @@
 namespace Src\VO;
 
 use Src\_public\Util;
-use Src\VO\LogErro;
+use Src\VO\LancamentoVO;
 
-class OsVO extends LogErro
+class OsVO extends LancamentoVO
 {
 
     private $OsID;

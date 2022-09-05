@@ -5,6 +5,7 @@ namespace Src\Controller;
 use Src\Model\EquipamentoDAO;
 use Src\VO\EquipamentoVO;
 use Src\_public\Util;
+use Src\VO\AlocarVO;
 
 class EquipamentoController{
 
@@ -27,6 +28,20 @@ class EquipamentoController{
        
     }
 
+    public function AlocarEquipamentoController(AlocarVO $vo): int
+    {
+        if (empty($vo->getEquipamentoID())) 
+            return 0 ;
+            
+            $vo->setfuncao(CADASTRO_ALOCAR);
+            $vo->setDataAlocacao(Util::DataAtual());
+            $vo->setSituacao(SITUACAO_ALOCADO);
+            $vo->setIdLogado(Util::CodigoLogado());
+            
+
+        return $this->dao->AlocarEquipamentoDAO($vo);
+    }
+
     public function ConsultarEquipamentoController($BuscarTipo, $filtro_palavra): array
     {
         if (empty(trim($filtro_palavra))) {
@@ -41,6 +56,11 @@ class EquipamentoController{
             return 0;
         }
         return $this->dao->DetalharEquipamentoDAO($id);
+    }
+
+    public function RetornarEquipamentoController()
+    {
+        return $this->dao->RetornarEquipamentoDAO();
     }
 
 }

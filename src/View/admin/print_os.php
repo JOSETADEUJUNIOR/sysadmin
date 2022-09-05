@@ -292,9 +292,6 @@ use Src\_public\Util; ?>
                                         <a href="invoice-print.php?OsID= <?= $ordemOS[0]['OsID'] ?>" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Imprimir a Ordem</a>
                                         <a href="ordem_servico.php" class="btn btn-warning float-right"> Voltar para OS
                                         </a>
-                                        <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
-                                            <i class="far fa-credit-card"></i> Realizar o pagamento
-                                        </button>
                                     </div>
                                 </div>
                             </div>

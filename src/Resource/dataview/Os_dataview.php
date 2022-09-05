@@ -24,6 +24,7 @@ $produtos = $ctrlProd->RetornarProdutoController();
 $clientes = $cliCtrl->RetornarClienteController();
 
 $ctrl = new OsController();
+$dadosOS = $ctrl->RetornarDadosOsController();
 
 if (isset($_GET['OsID'])) {
     $OsID = $_GET['OsID'];
@@ -165,6 +166,8 @@ if (isset($_POST['btn_cadastrar'])) {
 } else if (isset($_POST['btnFaturar'])) {
     $vo = new OsVO;
     $vo->setID($_POST['OsID']);
+    $vo->setOsCliID($_POST['CliID']);
+    $vo->setOsValorTotal($_POST['OsValor']);
     $ret = $ctrl->FaturarOsController($vo);
 
     if ($_POST['btnFaturar'] == 'ajx') {
@@ -190,9 +193,12 @@ if (isset($_POST['btn_cadastrar'])) {
             <?php for ($i = 0; $i < count($os); $i++) { ?>
                 <tr>
                     <td>
+                        <?php if ($os[$i]['OsFaturado']=='N') { ?>
                         <a href="ordem_servico.php?OsID=<?= $os[$i]['OsID'] ?>"><i class="fas fa-edit"></i></a>
                         <a href="#" onclick="ExcluirModal('<?= $os[$i]['OsID'] ?>','<?= $os[$i]['nomeCliente'] ?>')" data-toggle="modal" data-target="#modalExcluir"><i style="color:red" class="fas fa-trash-alt"></i></a>
                         <a href="itens_os.php?OsID=<?= $os[$i]['OsID'] ?>"><i style="color:purple" title="Inserir os Itens na OS" class="fas fa-list"></i></a>
+                        <a href="anexo_os.php?OsID=<?= $os[$i]['OsID'] ?>"><i style="color:black" title="Inserir os anexos na OS" class="fas fa-file-archive"></i></a>
+                        <?php }?>
                         <a href="print_os.php?OsID=<?= $os[$i]['OsID'] ?>"><i style="color:black" title="Imprimir OS" class="fas fa-print"></i></a>
                     </td>
                     <td><?= $os[$i]['nomeCliente'] ?></td>
@@ -214,7 +220,7 @@ if (isset($_POST['btn_cadastrar'])) {
                             $status = "<button class=\"btn btn-danger btn-xs\">Cancelado</button>";
                         } ?>
                         <?= $status ?>
-                        <?= ($os[$i]['OsFaturado'] == "S" ? '<span onclick="faturarOs(' . $os[$i]['OsID'] . ')" class="btn btn-success btn-xs">Faturado</span>' : '<span onclick="faturarOs(' . $os[$i]['OsID'] . ')" class="btn btn-warning btn-xs">Faturar?</span>') ?>
+                        <?= ($os[$i]['OsStatus']!="F"?'':($os[$i]['OsFaturado'] == "S" ? '<span class="btn btn-success btn-xs">Faturado</span>' : '<span onclick="faturarOs(' . $os[$i]['OsID'] . ',' . $os[$i]['OsCliID'] . ',' . $os[$i]['OsValorTotal'] . ')" class="btn btn-warning btn-xs">Faturar?</span>')) ?>
                     </td>
                 </tr>
             <?php } ?>

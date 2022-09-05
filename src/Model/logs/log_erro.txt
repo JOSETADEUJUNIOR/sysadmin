@@ -868,3 +868,15 @@ Hora:15:27:14
 Função:InserirLancamentoController
 cod Logado:6
 Erro:SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'LancBaixado' cannot be null
+--------------------------------------------------
+Data:04/09/2022
+Hora:01:27:34
+Função:InserirLancamentoController
+cod Logado:6
+Erro:SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+--------------------------------------------------
+Data:04/09/2022
+Hora:20:19:32
+Função:ExcluirSetorController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_lancamentos`, CONSTRAINT `fk_tb_lancamentos_1` FOREIGN KEY (`LancClienteID`) REFERENCES `tb_cliente` (`CliID`))

@@ -52,6 +52,19 @@ class Os
      WHERE OsEmpID = ? And OsID = ?';
         return $sql;
     }
+
+    public static function RetornarDadosOS()
+    {
+        $sql = 'SELECT OsID, ProdOs_osID, ServOs_osID, AnxOsID
+
+        FROM tb_os
+            Left JOIN tb_produto_os on tb_os.OsID = tb_produto_os.ProdOs_osID 
+            Left JOIN tb_servico_os on tb_os.OsID = tb_servico_os.ServOs_osID
+            Left JOIN tb_anexo on tb_os.OsID = tb_anexo.AnxOsID WHERE OsEmpID = ?';
+        return $sql;
+    }
+
+
     public static function RetornarServOrdemSQL()
     {
         $sql = 'SELECT OsID, ServOsID, ServValor, ServOsQtd, ServOsServID, ServNome, ServOsSubTotal  
@@ -144,7 +157,7 @@ class Os
     }
     public static function FaturarOsSQL()
     {
-        $sql = 'UPDATE tb_os set OsFaturado = ? WHERE OsEmpID = ? AND OsID = ?';
+        $sql = 'UPDATE tb_os set OsFaturado = ?, OsLancamentoID= ? WHERE OsEmpID = ? AND OsID = ?';
         return $sql;
     }
 

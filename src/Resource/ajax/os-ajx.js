@@ -152,14 +152,18 @@ function ExcluirServ() {
     return false;
 }
 
-function faturarOs(id) {
+function faturarOs(id, clienteID, valor) {
     let OsID = id;
+    let CliID = clienteID;
+    let OsValor = valor;
     $.ajax({
         type: "POST",
         url: BASE_URL_AJAX("Os_dataview"),
         data: {
             btnFaturar: 'ajx',
             OsID: OsID,
+            CliID: CliID,
+            OsValor: OsValor
         },
         success: function (ret) {
             if (ret == 1) {

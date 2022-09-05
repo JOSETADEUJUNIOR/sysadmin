@@ -69,9 +69,13 @@ class OsController
 
         return $this->dao->RetornarOrdemDAO($vo);
     }
+
+    public function RetornarDadosOsController(): array
+    {
+        return $this->dao->RetornarDadosOsDAO();
+    }
     public function RetornaProdOrdem(OsVO $vo): array
     {
-
         $vo->setfuncao(CADASTRO_OS);
         $vo->setIdLogado(Util::CodigoLogado());
 

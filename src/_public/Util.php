@@ -116,4 +116,9 @@ class Util
     }
     }
 
+    public static function FormatarValor($number)
+    {
+        return  number_format($number, 2, ',', '');
+    }
+
 }

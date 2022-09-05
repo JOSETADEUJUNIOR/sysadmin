@@ -1,9 +1,9 @@
 
-<div class="modal fade" id="faturar">
+<div class="modal fade" id="Alterafatura">
     <div class="modal-dialog">
         <div class="modal-content bg-white">
             <div class="modal-header bg-success">
-                <h4 class="modal-title">Lançar Receita</h4>
+                <h4 class="modal-title">Alterar Receita</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
             </div>
@@ -12,14 +12,14 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Descrição</label>
-                            <input type="hidden" name="faturaID" id="faturaID" value="<?=$id?>">
-                            <input class="form-control obg" id="descricao" name="descricao" placeholder="Digite o aqui....">
+                            <input type="hidden" name="AlterafaturaID" id="AlterafaturaID">
+                            <input class="form-control obg" id="AlteraDescricao" name="AlteraDescricao" placeholder="Digite o aqui....">
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Cliente</label>
-                            <select class="form-control obg" id="faturaCliente" name="faturaCliente">
+                            <select class="form-control obg" id="AlterafaturaCliente" name="AlterafaturaCliente">
                                 <option value="">Selecione</option>
                                 <?php foreach ($cliente as $cl) { ?>
                                     <option value="<?= $cl['CliID'] ?>"><?= $cl['CliNome'] ?></option>
@@ -31,19 +31,19 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Valor</label>
-                            <input type="text" class="form-control obg" id="faturaValor" name="faturaValor" placeholder="Digite o aqui...." data-inputmask='"mask": "(99) 9 9999-9999"' data-mask>
+                            <input type="text" class="form-control obg" id="AlterafaturaValor" name="AlterafaturaValor" placeholder="Digite o aqui....">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Dt Vencimento</label>
-                            <input type="date" class="form-control obg" id="faturaDtVenc" name="faturaDtVenc" placeholder="Digite o aqui....">
+                            <input type="date" class="form-control obg" id="AlterafaturaDtVenc" name="AlterafaturaDtVenc" placeholder="Digite o aqui....">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Dt Vencimento</label>
-                            <input type="date" class="form-control obg" id="faturaDtPgto" name="faturaDtPgto" placeholder="Digite o aqui....">
+                            <label>Dt Pagamento</label>
+                            <input type="date" class="form-control obg" id="AlterafaturaDtPgto" name="AlterafaturaDtPgto" placeholder="Digite o aqui....">
                         </div>
                     </div>
 
@@ -77,7 +77,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <button name="btn_inserir" class="btn btn-success col-md-12" onclick="return NovaReceita()">Salvar</button>
+                        <button name="btn_inserir" class="btn btn-success col-md-12" onclick="return AlterarReceita()">Salvar</button>
                     </div>
                 </div>
 
@@ -85,5 +85,6 @@
         </div>
         <!-- /.modal-content -->
     </div>
+    
+    
     <!-- /.modal-dialog -->
-</div>

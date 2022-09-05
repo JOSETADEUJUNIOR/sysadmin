@@ -218,10 +218,21 @@ use Src\_public\Util; ?>
                                     <?php for ($i = 0; $i < count($os); $i++) { ?>
                                         <tr>
                                             <td>
+                                                <?php if ($os[$i]['OsFaturado']=='N') { ?>
                                                 <a href="ordem_servico.php?OsID=<?= $os[$i]['OsID'] ?>"><i class="fas fa-edit"></i></a>
+                                                <?php foreach ($dadosOS as $do) {
+                                                   if ($do['OsID']==$os[$i]['OsID']) {
+                                                    $prodOS = $do['ProdOs_osID'];
+                                                    $servOS = $do['ServOs_osID'];
+                                                    $anxOS = $do['AnxOsID'];
+                                                   }
+                                                } ?>
+                                                <?php if ($prodOS=='' && $servOS=='' && $anxOS=='') {?>
                                                 <a href="#" onclick="ExcluirModal('<?= $os[$i]['OsID'] ?>','<?= $os[$i]['nomeCliente'] ?>')" data-toggle="modal" data-target="#modalExcluir"><i style="color:red" class="fas fa-trash-alt"></i></a>
+                                               <?php }?>
                                                 <a href="itens_os.php?OsID=<?= $os[$i]['OsID'] ?>"><i style="color:purple" title="Inserir os Itens na OS" class="fas fa-list"></i></a>
                                                 <a href="anexo_os.php?OsID=<?= $os[$i]['OsID'] ?>"><i style="color:black" title="Inserir os anexos na OS" class="fas fa-file-archive"></i></a>
+                                                <?php }?>
                                                 <a href="print_os.php?OsID=<?= $os[$i]['OsID'] ?>"><i style="color:black" title="Imprimir OS" class="fas fa-print"></i></a>
                                             </td>
                                             <td><?= $os[$i]['nomeCliente'] ?></td>
@@ -243,7 +254,7 @@ use Src\_public\Util; ?>
                                                     $status = "<button class=\"btn btn-danger btn-xs\">Cancelado</button>";
                                                 } ?>
                                                 <?= $status ?>
-                                                <?= ($os[$i]['OsStatus']!="F"?'':($os[$i]['OsFaturado'] == "S" ? '<span onclick="faturarOs(' . $os[$i]['OsID'] . ')" class="btn btn-success btn-xs">Faturado</span>' : '<span onclick="faturarOs(' . $os[$i]['OsID'] . ')" class="btn btn-warning btn-xs">Faturar?</span>')) ?>
+                                                <?= ($os[$i]['OsStatus']!="F"?'':($os[$i]['OsFaturado'] == "S" ? '<span class="btn btn-success btn-xs">Faturado</span>' : '<span onclick="faturarOs(' . $os[$i]['OsID'] . ',' . $os[$i]['OsCliID'] . ',' . $os[$i]['OsValorTotal'] . ')" class="btn btn-warning btn-xs">Faturar?</span>')) ?>
                                             </td>
                                         </tr>
                                     <?php } ?>

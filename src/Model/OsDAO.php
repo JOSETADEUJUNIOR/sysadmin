@@ -6,6 +6,7 @@ use Src\Model\Conexao;
 use Src\VO\OsVO;
 use Src\Model\SQL\Os;
 use Src\_public\Util;
+use Src\Model\SQL\Financeiro;
 use Src\VO\ProdutoOSVO;
 use Src\VO\ServicoOSVO;
 use Src\VO\AnxOSVO;
@@ -76,6 +77,22 @@ class OsDAO extends Conexao
     }
     public function FaturarOsDAO(OsVO $vo): int
     {
+
+        $sql= $this->conexao->prepare(Financeiro::InserirLancamentoSQL());
+        $sql->bindValue(1, 'Receita da OS:'.$vo->getID().'');
+        $sql->bindValue(2, $vo->getOsValorTotal());
+        $sql->bindValue(3, date('Y-m-d'));
+        $sql->bindValue(4, date('Y-m-d'));
+        $sql->bindValue(5, 'N');
+        $sql->bindValue(6, 'D');
+        $sql->bindValue(7, 1);
+        $sql->bindValue(8, $vo->getOsCliID());
+        $sql->bindValue(9, Util::CodigoEmpresa());
+        $sql->bindValue(10, Util::CodigoLogado());
+        $sql->execute();
+
+        $UltimoLancID = $this->conexao->lastInsertId();
+       
         $sql = $this->conexao->prepare(Os::RetornarOrdemFaturadoSQL());
         $sql->bindValue(1, Util::CodigoEmpresa());
         $sql->bindValue(2, $vo->getID());
@@ -88,8 +105,9 @@ class OsDAO extends Conexao
         if ($statusFatura == 'N') {
             $sql = $this->conexao->prepare(Os::FaturarOsSQL());
             $sql->bindValue(1, 'S');
-            $sql->bindValue(2, Util::CodigoEmpresa());
-            $sql->bindValue(3, $vo->getID());
+            $sql->bindValue(2, $UltimoLancID);
+            $sql->bindValue(3, Util::CodigoEmpresa());
+            $sql->bindValue(4, $vo->getID());
         } else {
             $sql = $this->conexao->prepare(Os::FaturarOsSQL());
             $sql->bindValue(1, 'N');
@@ -98,6 +116,7 @@ class OsDAO extends Conexao
         }
         try {
             $sql->execute();
+
             return 1;
         } catch (\Exception $ex) {
 
@@ -248,11 +267,6 @@ class OsDAO extends Conexao
         return $sql->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-
-
-
-
-
     public function RetornarOrdemServDAO(OsVO $vo): array
     {
         $sql = $this->conexao->prepare(Os::RetornarOrdemServSQL());
@@ -321,6 +335,16 @@ class OsDAO extends Conexao
             return -2;
         }
     }
+
+    public function RetornarDadosOsDAO()
+    {
+        $sql = $this->conexao->prepare(Os::RetornarDadosOS());
+        $sql->bindValue(1, Util::CodigoEmpresa());
+        $sql->execute();
+        return $sql->fetchAll(\PDO::FETCH_ASSOC);
+
+    }
+
     public function ExcluirAnxOSDAO(AnxOSVO $vo)
     {
 

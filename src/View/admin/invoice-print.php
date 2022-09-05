@@ -78,7 +78,7 @@ use Src\_public\Util; ?>
 
       <!-- Table row -->
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 col-sm-6">
           <div class="card card-default">
             <div class="card-header">
               <h3 class="card-title">
@@ -99,7 +99,7 @@ use Src\_public\Util; ?>
 
           <!-- /.card -->
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 col-sm-6">
           <div class="card card-default">
             <div class="card-header">
               <h3 class="card-title">
@@ -121,7 +121,7 @@ use Src\_public\Util; ?>
 
           <!-- /.card -->
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 col-sm-6">
           <div class="card card-default">
             <div class="card-header">
               <h3 class="card-title">
@@ -143,7 +143,7 @@ use Src\_public\Util; ?>
 
           <!-- /.card -->
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 col-sm-6">
           <div class="card card-default">
             <div class="card-header">
               <h3 class="card-title">

@@ -2,8 +2,9 @@
 
 namespace Src\VO;
 use Src\_public\Util;
+use Src\VO\LogErro;
 
-class AlocarVO
+class AlocarVO extends LogErro
 {
     private $idAlocar;
     private $situacao;

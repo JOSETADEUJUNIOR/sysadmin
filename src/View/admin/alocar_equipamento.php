@@ -64,8 +64,9 @@
                                     <label>Equipamento</label>
                                     <select class="form-control" id="equipamento" name="equipamento">
                                         <option value="">Selecione</option>
-                                        <option value="1">Equipamento1</option>
-
+                                       <?php foreach($equip as $eq) { ?>
+                                        <option value="<?= $eq['id']?>"><?= $eq['identificacao'].' - '.$eq['descricao']?></option>
+                                        <?php } ?>
                                     </select>
                                 </div>
                             </div>

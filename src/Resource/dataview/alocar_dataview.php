@@ -4,6 +4,11 @@ require_once dirname(__DIR__, 3) . '/vendor/autoload.php';
 
 use Src\Controller\AlocarEquipamentoController;
 use Src\VO\AlocarVO;
+use Src\Controller\EquipamentoController;
+
+$equipamento = new EquipamentoController;
+$equip = $equipamento->RetornarEquipamentoController();
+var_dump($equip);
 
 $alocar = new AlocarEquipamentoController;
 

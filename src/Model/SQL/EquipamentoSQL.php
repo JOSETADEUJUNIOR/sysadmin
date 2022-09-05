@@ -23,10 +23,23 @@ class EquipamentoSQL{
         return $sql;
     }
 
+    public static function AlocarEquipamento()
+    {
+        $sql = 'INSERT INTO tb_alocar (situacao, data_alocacao, equipamento_id, setor_id) VALUES (?,?,?,?)';
+        return $sql;
+    }
+
     public static function DetalharEquipamentoSQL()
     {
         $sql = 'SELECT id, identificacao, descricao, tipoequip_id, modeloequip_id
                     FROM tb_equipamento WHERE id = ?';
+        return $sql;
+
+    }
+    public static function RetornarEquipamentoSQL()
+    {
+        $sql = 'SELECT id, identificacao, descricao, tipoequip_id, modeloequip_id
+                    FROM tb_equipamento';
         return $sql;
 
     }

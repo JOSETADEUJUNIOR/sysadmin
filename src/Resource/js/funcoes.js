@@ -26,12 +26,36 @@ function ExcluirModalItem(OsID, id, nome, idProduto, qtd) {
     $("#ExcluirProdID").val(idProduto);
     $("#ExcluirQtd").val(qtd);
 }
+function ModalDespesa(id, descricao, idCliente, valor, dtVenc, dtPgto) {
+    $("#AlteraDespID").val(id);
+    $("#AlteraDespDescricao").val(descricao);
+    $("#AlteraDespCliente").val(idCliente);
+    $("#AlteraDespValor").val(valor);
+    $("#AlteraDespDtVenc").val(dtVenc);
+    $("#AlteraDespDtPgto").val(dtPgto);
+   
+}
+
+function ModalFatura(id, descricao, idCliente, valor, dtVenc, dtPgto) {
+     $("#AlterafaturaID").val(id);
+     $("#AlteraDescricao").val(descricao);
+     $("#AlterafaturaCliente").val(idCliente);
+     $("#AlterafaturaValor").val(valor);
+     $("#AlterafaturaDtVenc").val(dtVenc);
+     $("#AlterafaturaDtPgto").val(dtPgto);
+    
+ }
 function ExcluirModalServ(OsID, id, nomeServ, idServ, qtd) {
     $("#ExcluirOsID").val(OsID);
     $("#ExcluirID").val(id);
     $("#ExcluirNomeServ").html(nomeServ);
     $("#ExcluirServID").val(idServ);
     $("#ExcluirQtd").val(qtd);
+}
+function ExcluirModal(id, nome) {
+    $("#ExcluirID").val(id);
+    $("#ExcluirNome").html(nome);
+  
 }
 
 function AlterarTipoEquipamentoModal(id, nome) {

@@ -5,6 +5,7 @@
 const CADASTRO_TIPO_EQUIPAMENTO = "CadastrarTipoEquipamento";
 const ALTERAR_TIPO_EQUIPAMENTO = "AlterarTipoEquipamentoController";
 const EXCLUIR_TIPO_EQUIPAMENTO = "ExcluirTipoEquipamento";
+const CADASTRO_ALOCAR = 'AlocarEquipamentoController';
 
 const CADASTRO_SETOR = 'CadastrarSetor';
 const ALTERA_SETOR = 'AlterarSetor';
@@ -19,6 +20,7 @@ const ALTERA_SERVICO = 'AlterarServicoController';
 const EXCLUI_SERVICO = 'ExcluirServicoController';
 
 const CADASTRO_LANCAMENTO = 'InserirLancamentoController';
+const EXCLUI_LANCAMENTO = 'ExcluirLancamentoController';
 
 const CADASTRO_OS = 'CadastrarOsController';
 const ALTERA_OS = 'AlterarOsController';
@@ -47,6 +49,14 @@ const FILTRO_MODELO = 2;
 const FILTRO_IDENTIFICACAO = 3;
 const FILTRO_DESCRICAO = 4;
 
+# Tipo de lançamento
+const LANCAMENTO_RECEITA = 1;
+const LANCAMENTO_DESPESA = 2;
+
+
+const SITUACAO_ALOCADO = 1;
+const SITUACAO_REMOVIDO = 2;
+const SITUACAO_MANUTENCAO = 3;
 
 const CADASTRO_USUARIO = 'CadastrarUsuarioController';
 const ALTERA_EMPRESA = 'AlterarEmpresaController';

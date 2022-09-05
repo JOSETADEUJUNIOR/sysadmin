@@ -1,3 +1,30 @@
+function ConsultarLancamentos(id_form) {
+    if (NotificarCampos(id_form)) {
+    let tipo = $("#tipo").val();
+    let dtInicio = $("#dtInicio").val();
+    let dtFinal = $("#dtFinal").val();
+    $.ajax({
+        type: "POST",
+        url: BASE_URL_AJAX("financeiro_dataview"),
+        data: {
+            btn_consultar: 'ajx',
+            tipo: tipo,
+            dtInicio: dtInicio,
+            dtFinal: dtFinal
+        }, success: function (tabela_preenchida) {
+          if (tabela_preenchida !="") {
+            $("#tabela_result_financeiro").html(tabela_preenchida);
+          }
+          
+        }
+    })
+}
+return false;
+}
+
+
+
+
 
 function ConsultarCliente() {
     $.ajax({
@@ -11,11 +38,12 @@ function ConsultarCliente() {
     })
 }
 
+
 function Excluir() {
     let id = $("#ExcluirID").val();
     $.ajax({
         type: "POST",
-        url: BASE_URL_AJAX("cliente_dataview"),
+        url: BASE_URL_AJAX("financeiro_dataview"),
         data: {
             btnExcluir: 'ajx',
             ExcluirID: id
@@ -23,7 +51,6 @@ function Excluir() {
             $("#modalExcluir").modal("hide");
             if (ret == 1) {
                 MensagemSucesso();
-                ConsultarCliente();
             } else {
                 MensagemExcluirErro();
             }
@@ -88,7 +115,6 @@ function NovaReceita(id_form) {
     let dtVencimento = $("#faturaDtVenc").val();
     let dtPgto = $("#faturaDtPgto").val();
     let formPgto = $("#FaturaFormPgto").val();
-    alert(formPgto);
     $.ajax({
         type: "POST",
         url: BASE_URL_AJAX("financeiro_dataview"),
@@ -103,8 +129,82 @@ function NovaReceita(id_form) {
             tipo: tipo
         },
         success: function (ret) {
-            alert(ret);
             $("#faturar").modal('hide');
+            RemoverLoad();
+            if (ret == 1) {
+                MensagemSucesso();
+             
+            } else {
+                MensagemErro();
+            }
+        }
+    })
+    return false;
+}
+
+function AlterarReceita(id_form) {
+    let tipo = 1;
+    let id = $("#AlterafaturaID").val();
+    let descricao = $("#AlteraDescricao").val();
+    let cliente = $("#AlterafaturaCliente").val();
+    let valor = $("#AlterafaturaValor").val();
+    let dtVencimento = $("#AlterafaturaDtVenc").val();
+    let dtPgto = $("#AlterafaturaDtPgto").val();
+    let formPgto = $("#FaturaFormPgto").val();
+    $.ajax({
+        type: "POST",
+        url: BASE_URL_AJAX("financeiro_dataview"),
+        data: {
+            btn_alterar: 'ajx',
+            ID: id,
+            descricao: descricao,
+            cliente: cliente,
+            valor: valor,
+            dtVencimento: dtVencimento,
+            dtPgto: dtPgto,
+            formPgto: formPgto,
+            tipo: tipo
+        },
+        success: function (ret) {
+            $("#Alterafatura").modal('hide');
+            RemoverLoad();
+            if (ret == 1) {
+                MensagemSucesso();
+            
+            } else {
+                MensagemErro();
+            }
+        }
+    })
+    return false;
+}
+
+
+
+
+function NovaDespesa(id_form) {
+    let tipo = 2;
+    let descricao = $("#DespDescricao").val();
+    let cliente = $("#DespCliente").val();
+    let valor = $("#DespValor").val();
+    let dtVencimento = $("#DespDtVenc").val();
+    let dtPgto = $("#DespDtPgto").val();
+    let formPgto = $("#DespFormPgto").val();
+    $.ajax({
+        type: "POST",
+        url: BASE_URL_AJAX("financeiro_dataview"),
+        data: {
+            btn_inserir: 'ajx',
+            descricao: descricao,
+            cliente: cliente,
+            valor: valor,
+            dtVencimento: dtVencimento,
+            dtPgto: dtPgto,
+            formPgto: formPgto,
+            tipo: tipo
+        },
+        success: function (ret) {
+            $("#FaturaDespesa").modal('hide');
             RemoverLoad();
             if (ret == 1) {
                 MensagemSucesso();
@@ -113,6 +213,43 @@ function NovaReceita(id_form) {
                 $("#CadClienteBody").hide();
 
 
+            } else {
+                MensagemErro();
+            }
+        }
+    })
+    return false;
+}
+
+function AlterarDespesa(id_form) {
+    let tipo = 2;
+    let id = $("#AlteraDespID").val();
+    let descricao = $("#AlteraDespDescricao").val();
+    let cliente = $("#AlteraDespCliente").val();
+    let valor = $("#AlteraDespValor").val();
+    let dtVencimento = $("#AlteraDespDtVenc").val();
+    let dtPgto = $("#AlteraDespDtPgto").val();
+    let formPgto = $("#AlteraDespFormPgto").val();
+    $.ajax({
+        type: "POST",
+        url: BASE_URL_AJAX("financeiro_dataview"),
+        data: {
+            btn_alterar_desp: 'ajx',
+            ID: id,
+            descricao: descricao,
+            cliente: cliente,
+            valor: valor,
+            dtVencimento: dtVencimento,
+            dtPgto: dtPgto,
+            formPgto: formPgto,
+            tipo: tipo
+        },
+        success: function (ret) {
+            $("#Alterar_despesa").modal('hide');
+            RemoverLoad();
+            if (ret == 1) {
+                MensagemSucesso();
+                
             } else {
                 MensagemErro();
             }
