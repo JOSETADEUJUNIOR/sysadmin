@@ -5,7 +5,7 @@ namespace Src\VO;
 use Src\_public\Util;
 use Src\VO\LogErro;
 
-class ItensVendaVO extends VendaVO
+class ItensVendaVO extends LogErro
 {
 
     private $ItensID;

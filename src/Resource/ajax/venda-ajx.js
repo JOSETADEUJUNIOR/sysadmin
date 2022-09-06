@@ -51,8 +51,6 @@ function InserirProdVenda(form_id) {
                 produto: produto,
                 qtdProd: qtdProd,
                 VendaID: VendaID
-
-
             },
             success: function (ret) {
                 RemoverLoad();
@@ -60,6 +58,7 @@ function InserirProdVenda(form_id) {
                     MensagemSucesso();
                     $("#produto").val('');
                     $("#qtdProd").val('');
+                    ConsultarItensVenda(VendaID);     
                 } else if (ret == -13) {
                     alert('Você não possui estoque suficiênte!');
                     MensagemErro();

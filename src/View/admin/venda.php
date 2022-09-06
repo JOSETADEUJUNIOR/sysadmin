@@ -153,18 +153,18 @@ use Src\_public\Util; ?>
                                             <td>
                                                 <?php if ($vendas[$i]['VendaFaturado'] == 'N') { ?>
                                                     <a href="venda.php?VendaID=<?= $vendas[$i]['VendaID'] ?>"><i class="fas fa-edit"></i></a>
-                                                    <?php foreach ($dadosOS as $do) {
-                                                        if ($vendas['OsID'] == $vendas[$i]['OsID']) {
-                                                            $prodOS = $do['ProdOs_osID'];
+                                                    <?php foreach ($dadosVenda as $dv) {
+                                                        if ($dv['VendaID'] == $vendas[$i]['VendaID']) {
+                                                            $prodVenda = $dv['ItensVendaID'];
                                                            
                                                         }
                                                     } ?>
-                                                    <?php if ($prodOS == '' && $servOS == '' && $anxOS == '') { ?>
+                                                    <?php if ($prodVenda == '') { ?>
                                                         <a href="#" onclick="ExcluirModal('<?= $vendas[$i]['VendaID'] ?>','<?= $vendas[$i]['nomeCliente'] ?>')" data-toggle="modal" data-target="#modalExcluir"><i style="color:red" class="fas fa-trash-alt"></i></a>
                                                     <?php } ?>
-                                                    <a href="itens_venda.php?VendaID=<?= $vendas[$i]['VendaID'] ?>"><i style="color:purple" title="Inserir os Itens na OS" class="fas fa-list"></i></a>
+                                                    <a href="itens_venda.php?VendaID=<?= $vendas[$i]['VendaID'] ?>"><i style="color:purple" title="Inserir os Itens da venda" class="fas fa-list"></i></a>
                                                 <?php } ?>
-                                                <a href="print_os.php?OsID=<?= $vendas[$i]['VendaID'] ?>"><i style="color:black" title="Imprimir OS" class="fas fa-print"></i></a>
+                                                <a href="print_venda.php?VendaID=<?= $vendas[$i]['VendaID'] ?>"><i style="color:black" title="Imprimir venda" class="fas fa-print"></i></a>
                                             </td>
                                             <td><?= $vendas[$i]['CliNome'] ?></td>
                                             <td><?= Util::ExibirDataBr($vendas[$i]['VendaDT']) ?></td>

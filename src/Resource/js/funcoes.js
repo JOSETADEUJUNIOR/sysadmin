@@ -27,8 +27,7 @@ function ExcluirModalItem(OsID, id, nome, idProduto, qtd) {
     $("#ExcluirQtd").val(qtd);
 }
 function ExcluirModalItemVenda(VendaID, id, nome, idProduto, qtd) {
-    alert(nome);
-    $("#ExcluirOsID").val(VendaID);
+    $("#ExcluirVendaID").val(VendaID);
     $("#ExcluirID").val(id);
     $("#ExcluirNome").html(nome);
     $("#ExcluirProdID").val(idProduto);
@@ -105,7 +104,6 @@ function AlterarClienteModal(id, nome, dtnascimento, telefone, email, cep, ender
 
 }
 function AlterarOsModal(id, dtInicial, dtFinal, garantia, descriProd, defeito, obs, clienteID, tecnicoID, Status, Laudo, clienteNome) {
-    alert(clienteID);
     $("#AlteraID").val(id);
     $("#AlteradtInicial").val(dtInicial);
     $("#AlteradtFinal").val(dtFinal);

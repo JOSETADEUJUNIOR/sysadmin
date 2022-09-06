@@ -77,7 +77,7 @@ class VendaDAO extends Conexao
         $sql->execute();
 
         $sql = $this->conexao->prepare(Venda::ExcluirItemVenda());
-        $sql->bindValue(1, $vo->getProdID());
+        $sql->bindValue(1, $vo->getProdVendaID());
 
         $sql->execute();
 
@@ -85,8 +85,6 @@ class VendaDAO extends Conexao
         $SubTotal = $valor * $qtd;
 
         try {
-            $sql->execute();
-
             $sql = $this->conexao->prepare(Venda::AtualizaExclusaoValorVendaSQL());
             $sql->bindValue(1, $SubTotal);
             $sql->bindValue(2, $vo->getVendaID());
@@ -116,6 +114,13 @@ class VendaDAO extends Conexao
     public function RetornarTodasVendaDAO(): array
     {
         $sql = $this->conexao->prepare(Venda::RetornarTodasVendaSQL());
+        $sql->bindValue(1, Util::CodigoEmpresa());
+        $sql->execute();
+        return $sql->fetchAll(\PDO::FETCH_ASSOC);
+    }
+    public function RetornaDadosVendaDAO():array
+    {
+        $sql = $this->conexao->prepare(Venda::RetornarDadosVenda());
         $sql->bindValue(1, Util::CodigoEmpresa());
         $sql->execute();
         return $sql->fetchAll(\PDO::FETCH_ASSOC);

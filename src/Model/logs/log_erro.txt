@@ -880,3 +880,27 @@ Hora:20:19:32
 Função:ExcluirSetorController
 cod Logado:6
 Erro:SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_os`.`tb_lancamentos`, CONSTRAINT `fk_tb_lancamentos_1` FOREIGN KEY (`LancClienteID`) REFERENCES `tb_cliente` (`CliID`))
+--------------------------------------------------
+Data:05/09/2022
+Hora:19:58:38
+Função:ExcluirItemVendaController
+cod Logado:6
+Erro:SQLSTATE[42S02]: Base table or view not found: 1146 Table 'db_os.tb_venda' doesn't exist
+--------------------------------------------------
+Data:05/09/2022
+Hora:23:27:07
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_itens_venda`, CONSTRAINT `fk_tb_Itens_venda_1` FOREIGN KEY (`ItensVendaID`) REFERENCES `tb_vendas` (`VendaID`))
+--------------------------------------------------
+Data:05/09/2022
+Hora:23:27:13
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_itens_venda`, CONSTRAINT `fk_tb_Itens_venda_1` FOREIGN KEY (`ItensVendaID`) REFERENCES `tb_vendas` (`VendaID`))
+--------------------------------------------------
+Data:05/09/2022
+Hora:23:31:35
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_itens_venda`, CONSTRAINT `fk_tb_Itens_venda_1` FOREIGN KEY (`ItensVendaID`) REFERENCES `tb_vendas` (`VendaID`))

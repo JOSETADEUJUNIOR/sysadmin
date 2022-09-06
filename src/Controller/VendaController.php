@@ -40,6 +40,9 @@ class VendaController
 
     public function ExcluirItemVendaController(ItensVendaVO $vo)
     {
+        $vo->setfuncao(EXCLUI_ITEM_VENDA);
+        $vo->setIdLogado(Util::CodigoLogado());
+
         return $this->dao->ExcluirItemVendaDAO($vo);
     }
 
@@ -51,6 +54,14 @@ class VendaController
 
         return $this->dao->RetornarVendaDAO($vo);
     }
+    
+    
+    public function RetornarDadosVendaController(): array
+    {
+        return $this->dao->RetornaDadosVendaDAO();
+    }
+    
+    
     public function RetornarTodasVendaController(): array
     {
 

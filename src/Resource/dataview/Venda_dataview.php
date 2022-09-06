@@ -1,14 +1,17 @@
 <?php
 include_once '_include_autoload.php';
 
+use Src\_public\Util;
+Util::VerLogado();
 use Src\Controller\VendaController;
 use Src\Controller\ClienteController;
 use Src\Controller\ProdutoController;
+use Src\Controller\UsuarioController;
 use Src\VO\VendaVO;
 use Src\VO\ItensVendaVO;
-use Src\_public\Util;
 
-Util::VerLogado();
+$ctrlEmp = new UsuarioController();
+$dadosEmp = $ctrlEmp->RetornarDadosCadastraisController();
 
 $cliCtrl = new ClienteController();
 $ctrlProd = new ProdutoController();
@@ -16,16 +19,14 @@ $produtos = $ctrlProd->RetornarProdutoController();
 $clientes = $cliCtrl->RetornarClienteController();
 
 $ctrl = new VendaController();
-
+$dadosVenda = $ctrl->RetornarDadosVendaController();
 if (isset($_GET['VendaID'])) {
     $VendaID = $_GET['VendaID'];
     $vo = new VendaVO;
     $vo->setID($_GET['VendaID']);
     $venda = $ctrl->RetornarVendaController($vo);
     $ProdVenda = $ctrl->RetornaProdVendaController($vo);
-    Util::debug($ProdVenda);
 }
-
 if (isset($_POST['btn_cadastrar'])) {
     $vo = new VendaVO;
     $vo->setDtVenda($_POST['VendaDT']);
@@ -57,7 +58,7 @@ if (isset($_POST['btn_cadastrar'])) {
     $vo = new ItensVendaVO;
     $vo->setVendaID($_POST['VendaID']);
     $vo->setProdQtd($_POST['qtd']);
-    $vo->setID($_POST['ExcluirID']);
+    $vo->setProdVendaID($_POST['ExcluirID']);
     $vo->setProdID($_POST['produto']);
     $ret = $ctrl->ExcluirItemVendaController($vo);
 
@@ -66,7 +67,7 @@ if (isset($_POST['btn_cadastrar'])) {
     } else {
         $vendas = $ctrl->RetornarTodasVendaController();
     }
-} else if (isset($_POST['btn_consultar_item']) && $_POST['btn_consultar_item'] == 'ajx') {
+} else if (isset($_POST['btn_consultar_item_venda']) && $_POST['btn_consultar_item_venda'] == 'ajx') {
 
     $vo = new VendaVO;
     $vo->setID($_POST['VendaID']);

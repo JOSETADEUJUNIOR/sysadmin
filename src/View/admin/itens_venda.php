@@ -38,7 +38,7 @@ use Src\_public\Util;
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Administrador</a></li>
-                                <li class="breadcrumb-item active">Gerenciar Vendas</li>
+                                <li class="bread crumb-item active">Gerenciar Vendas</li>
                             </ol>
                         </div>
                     </div>
@@ -152,7 +152,7 @@ use Src\_public\Util;
                             <tbody>
                                 <?php $subTotal = 0; 
                                 for ($i = 0; $i < count($ProdVenda); $i++) {
-                                    if ($ProdVenda[$i]['ItensProdID'] != '') { $subTotal = $subTotal + $ProdVenda[$i]['ProdValorVenda'] ?>
+                                    if ($ProdVenda[$i]['ItensProdID'] !='') { $subTotal = $subTotal + $ProdVenda[$i]['ProdValorVenda'] ?>
                                         <tr>
                                             <td>
                                                 <a href="#" onclick="ExcluirModalItemVenda('<?= $ProdVenda[$i]['VendaID'] ?>','<?= $ProdVenda[$i]['ItensID'] ?>','<?= $ProdVenda[$i]['ProdDescricao'] ?>','<?= $ProdVenda[$i]['ItensProdID'] ?>','<?= $ProdVenda[$i]['ItensQtd'] ?>')" data-toggle="modal" data-target="#modalExcluirItemVenda"><i style="color:red" class="fas fa-trash-alt"></i></a>
