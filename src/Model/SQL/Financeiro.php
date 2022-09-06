@@ -37,31 +37,40 @@ class Financeiro
     }
 
 
-    public static function RetornaLancamentoSQL($tipo, $dtInicio='2022-01-01', $dtFinal)
+    public static function RetornaLancamentoSQL($tipo, $dtInicio, $dtFinal)
     {
         $sql = 'SELECT LancID, LancDescricao, LancValor, LancDtVencimento, LancDtPagamento, LancBaixado, LancFormPgto, Tipo, LancClienteID, CliNome
                     FROM tb_lancamentos
-                        Inner Join tb_cliente on tb_lancamentos.LancClienteID =  tb_cliente.CliID';
-
-                
-                if ($tipo==1) {
-                    $sql .= ' WHERE Tipo = 1';
-                }else if ($tipo==2){
-                    $sql .= ' WHERE Tipo = 2';
-                }else if ($tipo == 3){
-                    $sql .= ' WHERE Tipo in (1,2)';
-                }
-        
-                if ($dtInicio !='' || $dtFinal !=''){
-                    $sql .= " AND LancDtVencimento between '$dtInicio' and '$dtFinal' ";
-                }
-
-                $sql .= ' Order By LancDtVencimento asc';
-
-                return $sql;
-     }
+                        Inner Join tb_cliente on tb_lancamentos.LancClienteID =  tb_cliente.CliID
+                           ';
 
 
+        if ($tipo == 1) {
+            $sql .= ' WHERE Tipo = 1 AND LancEmpID = ?';
+        } else if ($tipo == 2) {
+            $sql .= ' WHERE Tipo = 2 AND LancEmpID = ?';
+        } else if ($tipo == 3) {
+            $sql .= ' WHERE Tipo in (1,2) AND LancEmpID = ?';
+        }
+
+        if ($dtInicio != '' || $dtFinal != '') {
+            $sql .= " AND LancDtVencimento between '$dtInicio' and '$dtFinal' ";
+        }
+
+        $sql .= ' Order By LancDtVencimento asc';
+
+        return $sql;
+    }
+
+    public static function RetornaTodosLancamentoSQL()
+    {
+        $sql = 'SELECT LancID, LancDescricao, LancValor, LancDtVencimento, LancDtPagamento, LancBaixado, LancFormPgto, Tipo, LancClienteID, CliNome
+                    FROM tb_lancamentos
+                        Inner Join tb_cliente on tb_lancamentos.LancClienteID =  tb_cliente.CliID
+                           WHERE LancEmpID = ? Order By LancDtVencimento asc';
+
+        return $sql;
+    }
     public static function ConsultarEquipamentoBuscaSQL($BuscarTipo, $filtro_palavra)
     {
         $sql = 'SELECT  equip.id as idEquip,
@@ -75,21 +84,18 @@ class Financeiro
 
         switch ($BuscarTipo) {
             case FILTRO_TIPO:
-                $sql .= ' WHERE tb_tipoequip.nome LIKE ?';    
+                $sql .= ' WHERE tb_tipoequip.nome LIKE ?';
                 break;
             case FILTRO_DESCRICAO:
-                $sql .= ' WHERE identificacao LIKE ?';    
+                $sql .= ' WHERE identificacao LIKE ?';
                 break;
             case FILTRO_IDENTIFICACAO:
-                $sql .= ' WHERE descricao LIKE ?';    
+                $sql .= ' WHERE descricao LIKE ?';
                 break;
             case FILTRO_MODELO:
-                $sql .= ' WHERE tb_modeloequip.nome LIKE ?';    
+                $sql .= ' WHERE tb_modeloequip.nome LIKE ?';
                 break;
-            
         }
         return $sql;
     }
-
-
 }

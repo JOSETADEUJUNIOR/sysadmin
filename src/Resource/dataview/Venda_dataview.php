@@ -25,6 +25,7 @@ if (isset($_GET['VendaID'])) {
     $vo = new VendaVO;
     $vo->setID($_GET['VendaID']);
     $venda = $ctrl->RetornarVendaController($vo);
+Util::debug($venda);
     $ProdVenda = $ctrl->RetornaProdVendaController($vo);
 }
 if (isset($_POST['btn_cadastrar'])) {
@@ -54,7 +55,19 @@ if (isset($_POST['btn_cadastrar'])) {
     } else {
         $vendas = $ctrl->RetornarTodasVendaController();
     }
-} else if (isset($_POST['btnExcluirItemVenda'])) {
+}else if (isset($_POST['btnFaturar'])) {
+    $vo = new VendaVO;
+    $vo->setID($_POST['VendaID']);
+    $vo->setCliID($_POST['CliID']);
+    $vo->setValorTotal($_POST['VendaValor']);
+    $ret = $ctrl->FaturarVendaController($vo);
+
+    if ($_POST['btnFaturar'] == 'ajx') {
+        echo $ret;
+    } else {
+        $vendas = $ctrl->RetornarTodasVendaController();
+    }
+}else if (isset($_POST['btnExcluirItemVenda'])) {
     $vo = new ItensVendaVO;
     $vo->setVendaID($_POST['VendaID']);
     $vo->setProdQtd($_POST['qtd']);

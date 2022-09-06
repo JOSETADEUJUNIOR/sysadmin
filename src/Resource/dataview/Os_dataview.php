@@ -26,6 +26,7 @@ $clientes = $cliCtrl->RetornarClienteController();
 $ctrl = new OsController();
 $dadosOS = $ctrl->RetornarDadosOsController();
 
+
 if (isset($_GET['OsID'])) {
     $OsID = $_GET['OsID'];
     $vo = new OsVO;

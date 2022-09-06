@@ -904,3 +904,75 @@ Hora:23:31:35
 Função:CadastrarOsController
 cod Logado:6
 Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_itens_venda`, CONSTRAINT `fk_tb_Itens_venda_1` FOREIGN KEY (`ItensVendaID`) REFERENCES `tb_vendas` (`VendaID`))
+--------------------------------------------------
+Data:06/09/2022
+Hora:15:14:58
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_Itens_venda`, CONSTRAINT `fk_tb_Itens_venda_1` FOREIGN KEY (`ItensVendaID`) REFERENCES `tb_vendas` (`VendaID`))
+--------------------------------------------------
+Data:06/09/2022
+Hora:15:15:11
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_Itens_venda`, CONSTRAINT `fk_tb_Itens_venda_1` FOREIGN KEY (`ItensVendaID`) REFERENCES `tb_vendas` (`VendaID`))
+--------------------------------------------------
+Data:06/09/2022
+Hora:15:20:17
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_Itens_venda`, CONSTRAINT `fk_tb_Itens_venda_1` FOREIGN KEY (`ItensVendaID`) REFERENCES `tb_vendas` (`VendaID`))
+--------------------------------------------------
+Data:06/09/2022
+Hora:15:23:12
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_Itens_venda`, CONSTRAINT `fk_tb_Itens_venda_1` FOREIGN KEY (`ItensVendaID`) REFERENCES `tb_vendas` (`VendaID`))
+--------------------------------------------------
+Data:06/09/2022
+Hora:15:24:00
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_Itens_venda`, CONSTRAINT `fk_tb_Itens_venda_1` FOREIGN KEY (`ItensVendaID`) REFERENCES `tb_vendas` (`VendaID`))
+--------------------------------------------------
+Data:06/09/2022
+Hora:15:24:23
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_Itens_venda`, CONSTRAINT `fk_tb_Itens_venda_1` FOREIGN KEY (`ItensVendaID`) REFERENCES `tb_vendas` (`VendaID`))
+--------------------------------------------------
+Data:06/09/2022
+Hora:15:27:46
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_Itens_venda`, CONSTRAINT `fk_tb_Itens_venda_1` FOREIGN KEY (`ItensVendaID`) REFERENCES `tb_vendas` (`VendaID`))
+--------------------------------------------------
+Data:06/09/2022
+Hora:15:28:33
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_Itens_venda`, CONSTRAINT `fk_tb_Itens_venda_1` FOREIGN KEY (`ItensVendaID`) REFERENCES `tb_vendas` (`VendaID`))
+--------------------------------------------------
+Data:06/09/2022
+Hora:15:36:57
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_Itens_venda`, CONSTRAINT `fk_tb_Itens_venda_1` FOREIGN KEY (`ItensVendaID`) REFERENCES `tb_vendas` (`VendaID`))
+--------------------------------------------------
+Data:06/09/2022
+Hora:15:37:38
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_Itens_venda`, CONSTRAINT `fk_tb_Itens_venda_1` FOREIGN KEY (`ItensVendaID`) REFERENCES `tb_vendas` (`VendaID`))
+--------------------------------------------------
+Data:06/09/2022
+Hora:15:40:03
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_Itens_venda`, CONSTRAINT `fk_tb_Itens_venda_1` FOREIGN KEY (`ItensVendaID`) REFERENCES `tb_vendas` (`VendaID`))
+--------------------------------------------------
+Data:06/09/2022
+Hora:15:43:55
+Função:CadastrarOsController
+cod Logado:6
+Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_Itens_venda`, CONSTRAINT `fk_tb_Itens_venda_1` FOREIGN KEY (`ItensVendaID`) REFERENCES `tb_vendas` (`VendaID`))

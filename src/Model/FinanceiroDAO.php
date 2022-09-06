@@ -19,11 +19,11 @@ class FinanceiroDAO extends Conexao
         $this->conexao = parent::retornaConexao();
     }
 
-    
+
 
     public function AlterarReceitaLancamentoDAO(LancamentoVO $vo): int
     {
-        
+
         $sql = $this->conexao->prepare(Financeiro::AlterarReceitaLancamentoSQL());
         $sql->bindValue(1, $vo->getDescricao());
         $sql->bindValue(2, $vo->getValor());
@@ -36,7 +36,7 @@ class FinanceiroDAO extends Conexao
         $sql->bindValue(9, Util::CodigoLogado());
         $sql->bindValue(10, $vo->getID());
 
-        
+
         try {
             $sql->execute();
             return 1;
@@ -50,7 +50,7 @@ class FinanceiroDAO extends Conexao
 
     public function AlterarDespesaLancamentoDAO(LancamentoVO $vo): int
     {
-        
+
         $sql = $this->conexao->prepare(Financeiro::AlterarDespesaLancamentoSQL());
         $sql->bindValue(1, $vo->getDescricao());
         $sql->bindValue(2, $vo->getValor());
@@ -63,7 +63,7 @@ class FinanceiroDAO extends Conexao
         $sql->bindValue(9, Util::CodigoLogado());
         $sql->bindValue(10, $vo->getID());
 
-        
+
         try {
             $sql->execute();
             return 1;
@@ -83,7 +83,7 @@ class FinanceiroDAO extends Conexao
 
         $OsID = $sql->fetchAll(\PDO::FETCH_ASSOC);
 
-        if (count($OsID) >0) {
+        if (count($OsID) > 0) {
             $sql = $this->conexao->prepare(Os::FaturarOsSQL());
             $sql->bindValue(1, 'N');
             $sql->bindValue(2, '');
@@ -91,7 +91,7 @@ class FinanceiroDAO extends Conexao
             $sql->bindValue(4, $OsID[0]['OsID']);
             $sql->execute();
         }
-        
+
         $sql = $this->conexao->prepare(Financeiro::ExcluirLancamentoSQL());
         $sql->bindValue(1, $vo->getID());
 
@@ -114,7 +114,7 @@ class FinanceiroDAO extends Conexao
 
     public function InserirLancamentoDAO(LancamentoVO $vo): int
     {
-        
+
         $sql = $this->conexao->prepare(Financeiro::InserirLancamentoSQL());
         $sql->bindValue(1, $vo->getDescricao());
         $sql->bindValue(2, $vo->getValor());
@@ -126,7 +126,7 @@ class FinanceiroDAO extends Conexao
         $sql->bindValue(8, $vo->getClienteID());
         $sql->bindValue(9, Util::CodigoEmpresa());
         $sql->bindValue(10, Util::CodigoLogado());
-        
+
         try {
             $sql->execute();
             return 1;
@@ -139,18 +139,18 @@ class FinanceiroDAO extends Conexao
 
     public function RetornaLancamentoDAO($tipo, $dtInicio, $dtFinal): array
     {
-        
-            $sql = $this->conexao->prepare(Financeiro::RetornaLancamentoSQL($tipo, $dtInicio, $dtFinal));
-            $sql->execute();
-            return $sql->fetchAll(\PDO::FETCH_ASSOC); 
-        
+
+        $sql = $this->conexao->prepare(Financeiro::RetornaLancamentoSQL($tipo, $dtInicio, $dtFinal));
+        $sql->bindValue(1, Util::CodigoEmpresa());
+        $sql->execute();
+        return $sql->fetchAll(\PDO::FETCH_ASSOC);
     }
+    public function RetornaTodosLancamentoDAO(): array
+    {
 
+        $sql = $this->conexao->prepare(Financeiro::RetornaTodosLancamentoSQL());
+        $sql->bindValue(1, Util::CodigoEmpresa());
+        $sql->execute();
+        return $sql->fetchAll(\PDO::FETCH_ASSOC);
+    }
 }
-
-
-
-
-
-
-

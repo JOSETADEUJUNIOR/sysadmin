@@ -1,13 +1,13 @@
 <?php
 include_once '_include_autoload.php';
 
-use Src\Controller\ClienteController;
-use Src\Controller\UsuarioController;
-use Src\VO\ClienteVO;
+
 use Src\_public\Util;
-
 Util::VerLogado();
+use Src\Controller\ClienteController;
+use Src\VO\ClienteVO;
 
+use Src\Controller\UsuarioController;
 $ctrlEmpresa = new UsuarioController();
 $empresa = $ctrlEmpresa->RetornarDadosCadastraisController();
 

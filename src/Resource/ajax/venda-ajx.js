@@ -39,6 +39,7 @@ function CadastrarVenda(id_form) {
     return false;
 }
 function InserirProdVenda(form_id) {
+    
     if (NotificarCampos(form_id)) {
         let produto = $("#produto").val();
         let qtdProd = $("#qtdProd").val();
@@ -89,6 +90,32 @@ function ExcluirItemVenda() {
                 ConsultarItensVenda(VendaID);
             } else {
                 MensagemExcluirErro();
+            }
+        }
+    })
+    return false;
+}
+
+function faturarVenda(id, clienteID, valor) {
+    let VendaID = id;
+    let CliID = clienteID;
+    let VendaValor = valor;
+    $.ajax({
+        type: "POST",
+        url: BASE_URL_AJAX("Venda_dataview"),
+        data: {
+            btnFaturar: 'ajx',
+            VendaID: VendaID,
+            CliID: CliID,
+            VendaValor: VendaValor
+        },
+        success: function (ret) {
+            if (ret == 1) {
+                MensagemSucesso();
+                
+
+            } else {
+                MensagemErro();
             }
         }
     })

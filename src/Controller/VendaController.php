@@ -54,14 +54,23 @@ class VendaController
 
         return $this->dao->RetornarVendaDAO($vo);
     }
-    
-    
+
+
     public function RetornarDadosVendaController(): array
     {
         return $this->dao->RetornaDadosVendaDAO();
     }
-    
-    
+
+    public function FaturarVendaController(VendaVO $vo): int
+    {
+        if (empty($vo->getID()))
+            return 0;
+
+       
+        return $this->dao->FaturarVendaDAO($vo);
+    }
+
+
     public function RetornarTodasVendaController(): array
     {
 

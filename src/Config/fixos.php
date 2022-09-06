@@ -24,6 +24,7 @@ const EXCLUI_LANCAMENTO = 'ExcluirLancamentoController';
 
 
 const CADASTRO_VENDA = 'CadastrarVendaController';
+const FATURA_VENDA = 'FaturarVendaController';
 const EXCLUI_ITEM_VENDA = 'ExcluirItemVendaController';
 
 

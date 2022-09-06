@@ -70,5 +70,10 @@ class FinanceiroController{
         return $this->dao->RetornaLancamentoDAO($tipo, $dtInicio, $dtFinal);
     }
     
+    public function RetornaTodosLancamentoController(): array
+    {
+        
+        return $this->dao->RetornaTodosLancamentoDAO();
+    }
     
 }

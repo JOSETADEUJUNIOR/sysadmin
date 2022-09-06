@@ -137,31 +137,31 @@ $dados = $empresa->RetornarDadosCadastraisController();
               </a>
             </li>
             <li class="nav-item">
-              <a href="consulta_equipamento.php" class="nav-link">
+              <a href="pdfProduto.php" target="_blank" class="nav-link">
                 <i class="fa fa-barcode nav-icon"></i>
                 <p>Produto</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="../../index3.html" class="nav-link">
+              <a href="pdfServico.php" target="_blank" class="nav-link">
                 <i class="fa fa-wrench nav-icon"></i>
                 <p>Serviços</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="../../index3.html" class="nav-link">
+              <a href="pdfOS.php" target="_blank" class="nav-link">
                 <i class="fa fa-tags nav-icon"></i>
                 <p>Ordens de Serviços</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="../../index3.html" class="nav-link">
+              <a href="pdfVenda.php" target="_blank" class="nav-link">
                 <i class="fa fa-shopping-cart nav-icon"></i>
                 <p>Vendas</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="../../index3.html" class="nav-link">
+              <a href="pdfFinanceiro.php" target="_blank" class="nav-link">
                 <i class="fa fa-book nav-icon"></i>
                 <p>Financeiro</p>
               </a>

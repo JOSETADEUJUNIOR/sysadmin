@@ -11,22 +11,34 @@ class Venda
         $sql = 'INSERT into tb_vendas (VendaDT, VendaCliID, VendaEmpID, VendaUserID) VALUES (?,?,?,?)';
         return $sql;
     }
-    
+
     public static function AlterarVendaSQL()
     {
         $sql = 'UPDATE tb_vendas set VendaDT = ?, VendaCliID = ?, VendaEmpID = ?, VendaUserID = ?
                  WHERE VendaID = ?';
         return $sql;
     }
-    
-    
+
+    public static function FaturarVendaSQL()
+    {
+        $sql = 'UPDATE tb_vendas set VendaFaturado = ?, VendaLancamentoID= ? WHERE VendaEmpID = ? AND VendaID = ?';
+        return $sql;
+    }
+
+    public static function RetornarVendaFaturadoSQL()
+    {
+        $sql = 'SELECT VendaID, VendaFaturado  
+                    FROM tb_vendas
+                        WHERE VendaEmpID = ? And VendaID = ?';
+        return $sql;
+    }
     public static function RetornarVendaSQL()
     {
         $sql = 'SELECT VendaID, VendaDT, VendaValorTotal, ItensVendaID, VendaFaturado, VendaCliID, CliNome, CliTelefone, CliEmail, CliCep, CliEndereco, CliNumero, CliBairro, CliCidade VendaEmpID, VendaUserID, ProdDescricao, ItensQtd
                    FROM tb_vendas
                          INNER JOIN tb_cliente on tb_vendas.VendaCliID = tb_cliente.CliID 
-                         INNER JOIN tb_Itens_venda on tb_Itens_venda.ItensVendaID = tb_vendas.VendaID
-                         INNER JOIN tb_produto on tb_produto.ProdID = tb_Itens_venda.ItensProdID
+                         Left JOIN tb_Itens_venda on tb_Itens_venda.ItensVendaID = tb_vendas.VendaID
+                         Left JOIN tb_produto on tb_produto.ProdID = tb_Itens_venda.ItensProdID
                          WHERE VendaEmpID = ? AND VendaID = ?';
         return $sql;
     }

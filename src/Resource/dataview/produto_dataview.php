@@ -2,10 +2,13 @@
 include_once '_include_autoload.php';
 
 use Src\Controller\ProdutoController;
+use Src\Controller\UsuarioController;
 use Src\VO\ProdutoVO;
 use Src\_public\Util;
 
 Util::VerLogado();
+$ctrlEmpresa = new UsuarioController();
+$empresa = $ctrlEmpresa->RetornarDadosCadastraisController();
 
 $ctrl = new ProdutoController();
 

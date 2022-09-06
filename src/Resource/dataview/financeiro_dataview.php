@@ -1,17 +1,22 @@
 <?php
 include_once '_include_autoload.php';
+use Src\_public\Util;
+
+Util::VerLogado();
 
 use Src\Controller\ClienteController;
 use Src\Controller\FinanceiroController;
 use Src\VO\LancamentoVO;
-use Src\_public\Util;
 
-Util::VerLogado();
+use Src\Controller\UsuarioController;
+$ctrlEmpresa = new UsuarioController();
+$empresa = $ctrlEmpresa->RetornarDadosCadastraisController();
 
 $ctrlCliente = new ClienteController();
 $cliente = $ctrlCliente->RetornarClienteController();
 
 $ctrl = new FinanceiroController();
+$TotalLancamentos = $ctrl->RetornaTodosLancamentoController();
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
