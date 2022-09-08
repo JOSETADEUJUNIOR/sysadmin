@@ -111,6 +111,28 @@ function ExcluirItemVenda() {
     return false;
 }
 
+function Excluir() {
+alert('venda aqui');
+    let id = $("#ExcluirID").val();
+    $.ajax({
+        type: "POST",
+        url: BASE_URL_AJAX("Venda_dataview"),
+        data: {
+            btnExcluir: 'ajx',
+            ExcluirID: id
+        }, success: function (ret) {
+            $("#modalExcluir").modal("hide");
+            if (ret == 1) {
+                MensagemSucesso();
+                ConsultarVendas();
+            } else {
+                MensagemExcluirErro();
+            }
+        }
+    })
+    return false;
+}
+
 function faturarVenda(id, clienteID, valor) {
     let VendaID = id;
     let CliID = clienteID;

@@ -24,6 +24,11 @@ class Venda
         $sql = 'UPDATE tb_vendas set VendaFaturado = ?, VendaLancamentoID= ? WHERE VendaEmpID = ? AND VendaID = ?';
         return $sql;
     }
+    public static function ExcluirFaturarVendaSQL()
+    {
+        $sql = 'UPDATE tb_vendas set VendaDesconto = ?, VendaFaturado = ?, VendaLancamentoID= ? WHERE VendaEmpID = ? AND VendaID = ?';
+        return $sql;
+    }
 
     public static function RetornarVendaFaturadoSQL()
     {
@@ -34,7 +39,7 @@ class Venda
     }
     public static function RetornarVendaSQL()
     {
-        $sql = 'SELECT VendaID, VendaDT, VendaValorTotal, ItensVendaID, VendaFaturado, VendaCliID, CliNome, CliTelefone, CliEmail, CliCep, CliEndereco, CliNumero, CliBairro, CliCidade VendaEmpID, VendaUserID, ProdDescricao, ItensQtd
+        $sql = 'SELECT VendaID, VendaDT, VendaValorTotal, ItensVendaID, VendaFaturado, VendaDesconto, VendaCliID, CliNome, CliTelefone, CliEmail, CliCep, CliEndereco, CliNumero, CliBairro, CliCidade VendaEmpID, VendaUserID, ProdDescricao, ItensQtd
                    FROM tb_vendas
                          INNER JOIN tb_cliente on tb_vendas.VendaCliID = tb_cliente.CliID 
                          Left JOIN tb_Itens_venda on tb_Itens_venda.ItensVendaID = tb_vendas.VendaID
@@ -44,7 +49,7 @@ class Venda
     }
     public static function RetornarTodasVendaSQL()
     {
-        $sql = 'SELECT VendaID, VendaDT, VendaFaturado, VendaValorTotal, VendaCliID, CliNome, VendaEmpID, VendaUserID
+        $sql = 'SELECT VendaID, VendaDT, VendaFaturado, VendaDesconto, VendaValorTotal, VendaCliID, CliNome, VendaEmpID, VendaUserID
                    FROM tb_vendas
                         INNER JOIN tb_cliente on tb_vendas.VendaCliID = tb_cliente.CliID    
                      WHERE VendaEmpID = ?';
@@ -63,7 +68,11 @@ class Venda
         return $sql;
     }
 
-
+    public static function ExcluirVenda()
+    {
+        $sql = 'DELETE FROM tb_vendas WHERE VendaID = ?';
+        return $sql;
+    }
 
 
 

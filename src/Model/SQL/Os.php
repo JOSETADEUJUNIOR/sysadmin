@@ -160,6 +160,11 @@ class Os
         $sql = 'UPDATE tb_os set OsFaturado = ?, OsLancamentoID= ? WHERE OsEmpID = ? AND OsID = ?';
         return $sql;
     }
+    public static function ExcluiFaturarOsSQL()
+    {
+        $sql = 'UPDATE tb_os set OsFaturado = ?, OsLancamentoID= ?, OsDesconto =? WHERE OsEmpID = ? AND OsID = ?';
+        return $sql;
+    }
 
     public static function InserirItemOsSQL()
     {

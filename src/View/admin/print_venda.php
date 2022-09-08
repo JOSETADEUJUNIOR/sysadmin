@@ -96,7 +96,7 @@ use Src\_public\Util; ?>
 
                                 <!-- Table row -->
                                 <div class="row">
-                                    
+
                                     <div class="col-12 table-responsive">
                                         <table class="table table-striped">
                                             <thead>
@@ -149,16 +149,20 @@ use Src\_public\Util; ?>
                                         <div class="table-responsive">
                                             <table class="table">
                                                 <tr>
-                                                    <th style="width:50%">Subtotal:</th>
+                                                    <th style="width:50%">Subtotal Produtos:</th>
                                                     <td><?= ($subTotal != '' ? Util::FormatarValor($subTotal) : '0,00') ?></td>
                                                 </tr>
-                                                <!--<tr>
-                <th>Shipping:</th>
-                <td>$5.80</td>
-              </tr-->
                                                 <tr>
-                                                    <th>Total:</th>
+                                                    <th>Total Produtos:</th>
                                                     <td><?= ($venda[0]['VendaValorTotal'] != '' ? Util::FormatarValor($venda[0]['VendaValorTotal']) : '') ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Desconto:</th>
+                                                    <td><?= ($venda[0]['VendaDesconto'] != '' ? Util::FormatarValor($venda[0]['VendaDesconto']) : '') ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Total Venda:</th>
+                                                    <td><?= ($venda[0]['VendaValorTotal'] != '' ? Util::FormatarValor($venda[0]['VendaValorTotal'] - $venda[0]['VendaDesconto']) : '') ?></td>
                                                 </tr>
                                             </table>
                                         </div>

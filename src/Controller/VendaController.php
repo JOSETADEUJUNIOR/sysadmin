@@ -66,7 +66,7 @@ class VendaController
         if (empty($vo->getID()))
             return 0;
 
-       
+
         return $this->dao->FaturarVendaDAO($vo);
     }
 
@@ -93,5 +93,11 @@ class VendaController
         $vo->setIdLogado(Util::CodigoLogado());
 
         return $this->dao->RetornarProdVendaDAO($vo);
+    }
+    public function ExcluirVendaController(VendaVO $vo)
+    {
+        $vo->setfuncao(EXCLUI_VENDA);
+        $vo->setIdLogado(Util::CodigoLogado());
+        return $this->dao->ExcluirVendaDAO($vo);
     }
 }

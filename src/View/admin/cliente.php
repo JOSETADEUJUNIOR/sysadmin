@@ -47,9 +47,8 @@
                         <h3 class="card-title">Dados Cliente</h3>
 
                         <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <button type="button" class="btn btn-outline-info" style="color:white" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                                 <i class="fa">Novo Cliente</i></button>
-
                         </div>
                     </div>
                     <form action="cliente.php" method="post" id="form_cliente">
@@ -190,6 +189,8 @@
                             </div>
                         </div>
                         <!-- /.card-header -->
+                        <!--<div class="card-body ">-->
+                        <!--<table class="table table-bordered table-hover" id="tabela_result_cliente">-->
                         <div class="card-body table-responsive p-0">
                             <table class="table table-hover" id="tabela_result_cliente">
                                 <thead>
@@ -205,7 +206,7 @@
                                     <?php for ($i = 0; $i < count($cliente); $i++) { ?>
                                         <tr>
                                             <td>
-                                            <a href="#" onclick="AlterarClienteModal('<?= $cliente[$i]['CliID'] ?>', '<?= $cliente[$i]['CliNome'] ?>','<?= $cliente[$i]['CliDtNasc'] ?>','<?= $cliente[$i]['CliTelefone'] ?>','<?= $cliente[$i]['CliEmail'] ?>','<?= $cliente[$i]['CliCep'] ?>','<?= $cliente[$i]['CliEndereco'] ?>','<?= $cliente[$i]['CliNumero'] ?>','<?= $cliente[$i]['CliBairro'] ?>','<?= $cliente[$i]['CliCidade'] ?>','<?= $cliente[$i]['CliEstado'] ?>','<?= $cliente[$i]['CliDescricao'] ?>','<?= $cliente[$i]['CliStatus'] ?>','<?= $cliente[$i]['CliCpfCnpj'] ?>','<?= $cliente[$i]['CliTipo'] ?>')" data-toggle="modal" data-target="#alterarCliente"><i class="fas fa-edit"></i></a>
+                                                <a href="#" onclick="AlterarClienteModal('<?= $cliente[$i]['CliID'] ?>', '<?= $cliente[$i]['CliNome'] ?>','<?= $cliente[$i]['CliDtNasc'] ?>','<?= $cliente[$i]['CliTelefone'] ?>','<?= $cliente[$i]['CliEmail'] ?>','<?= $cliente[$i]['CliCep'] ?>','<?= $cliente[$i]['CliEndereco'] ?>','<?= $cliente[$i]['CliNumero'] ?>','<?= $cliente[$i]['CliBairro'] ?>','<?= $cliente[$i]['CliCidade'] ?>','<?= $cliente[$i]['CliEstado'] ?>','<?= $cliente[$i]['CliDescricao'] ?>','<?= $cliente[$i]['CliStatus'] ?>','<?= $cliente[$i]['CliCpfCnpj'] ?>','<?= $cliente[$i]['CliTipo'] ?>')" data-toggle="modal" data-target="#alterarCliente"><i class="fas fa-edit"></i></a>
                                                 <a href="#" onclick="ExcluirModal('<?= $cliente[$i]['CliID'] ?>', '<?= $cliente[$i]['CliNome'] ?>')" data-toggle="modal" data-target="#modalExcluir"><i style="color:red" class="fas fa-trash-alt"></i></a>
                                             </td>
                                             <td><?= $cliente[$i]['CliNome'] ?></td>
@@ -249,34 +250,35 @@
             $('[data-mask]').inputmask()
         })
     </script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
     <script type="text/javascript">
- 
-var options = {
-    onKeyPress: function (cpf, ev, el, op) {
-        var masks = ['000.000.000-000', '00.000.000/0000-00'];
-        $('#cpfCnpj').mask((cpf.length > 14) ? masks[1] : masks[0], op);
-    }
-}
+        var options = {
+            onKeyPress: function(cpf, ev, el, op) {
+                var masks = ['000.000.000-000', '00.000.000/0000-00'];
+                $('#cpfCnpj').mask((cpf.length > 14) ? masks[1] : masks[0], op);
+            }
+        }
 
-$('#cpfCnpj').length > 11 ? $('$cpfCnpj').mask('00.000.000/0000-00', options) : $('#cpfCnpj').mask('000.000.000-00#', options);
-var options = {
-    onKeyPress: function (cpf, ev, el, op) {
-        var masks = ['000.000.000-000', '00.000.000/0000-00'];
-        $('#AlteracpfCnpj').mask((cpf.length > 14) ? masks[1] : masks[0], op);
-    }
-}
+        $('#cpfCnpj').length > 11 ? $('$cpfCnpj').mask('00.000.000/0000-00', options) : $('#cpfCnpj').mask('000.000.000-00#', options);
+        var options = {
+            onKeyPress: function(cpf, ev, el, op) {
+                var masks = ['000.000.000-000', '00.000.000/0000-00'];
+                $('#AlteracpfCnpj').mask((cpf.length > 14) ? masks[1] : masks[0], op);
+            }
+        }
 
-$('#AlteracpfCnpj').length > 11 ? $('$AlteracpfCnpj').mask('00.000.000/0000-00', options) : $('#AlteracpfCnpj').mask('000.000.000-00#', options);
+        $('#AlteracpfCnpj').length > 11 ? $('$AlteracpfCnpj').mask('00.000.000/0000-00', options) : $('#AlteracpfCnpj').mask('000.000.000-00#', options);
 
-$(document).ready(function() {
+        $(document).ready(function() {
             $("#telefone").mask('(00) 0 0000-0000')
             $("#Alteratelefone").mask('(00) 0 0000-0000')
             $("#AlteraCep").mask('00.000-000')
             $("#cep").mask('00.000-000')
-            
+
         });
-</script>
+    </script>
+
+
 </body>
 
 </html>

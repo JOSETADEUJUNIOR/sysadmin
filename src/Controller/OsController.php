@@ -106,7 +106,7 @@ class OsController
     }
     public function ExcluirOSController(OSVO $vo)
     {
-        $vo->setfuncao(EXCLUI_ITEM_OS);
+        $vo->setfuncao(EXCLUI_OS);
         $vo->setIdLogado(Util::CodigoLogado());
         return $this->dao->ExcluirOSDAO($vo);
     }

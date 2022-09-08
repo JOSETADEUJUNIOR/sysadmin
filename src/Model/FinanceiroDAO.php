@@ -6,6 +6,7 @@ use Src\Model\Conexao;
 use Src\VO\LancamentoVO;
 use Src\Model\SQL\Financeiro;
 use Src\Model\SQL\Os;
+use Src\Model\SQL\Venda;
 use Src\_public\Util;
 
 
@@ -26,12 +27,11 @@ class FinanceiroDAO extends Conexao
 
         $sql = $this->conexao->prepare(Financeiro::AlterarReceitaLancamentoSQL());
         $sql->bindValue(1, $vo->getDescricao());
-        if ($vo->getDesconto()!='') {
-        $valorDesconto = $vo->getValor() - $vo->getDesconto(); 
-           $sql->bindValue(2, $valorDesconto);
-           
-        }else {
-            
+        if ($vo->getDesconto() != '') {
+            $valorDesconto = $vo->getValor() - $vo->getDesconto();
+            $sql->bindValue(2, $valorDesconto);
+        } else {
+
             $sql->bindValue(2, $vo->getValor());
         }
         $sql->bindValue(3, $vo->getDtVencimento());
@@ -43,7 +43,7 @@ class FinanceiroDAO extends Conexao
         $sql->bindValue(9, Util::CodigoLogado());
         $sql->bindValue(10, $vo->getID());
         $sql->execute();
-        
+
         $sql = $this->conexao->prepare(Financeiro::ConsultarVendaOS());
         $sql->bindValue(1, $vo->getID());
         $sql->execute();
@@ -51,13 +51,20 @@ class FinanceiroDAO extends Conexao
         try {
             if ($ret[0]['VendaLancamentoID'] > 0) {
                 $idVenda = $ret[0]['VendaID'];
-               
-            $sql = $this->conexao->prepare(Financeiro::AtualizaValorVendaSQL());
+
+                $sql = $this->conexao->prepare(Financeiro::AtualizaValorVendaSQL());
                 $sql->bindValue(1, $vo->getDesconto());
                 $sql->bindValue(2, $idVenda);
                 $sql->bindValue(3, Util::CodigoEmpresa());
+                $sql->execute();
+            } else if ($ret[0]['OsLancamentoID'] > 0) {
+                $OsID = $ret[0]['OsID'];
+                $sql = $this->conexao->prepare(Financeiro::AtualizaValorOSSQL());
+                $sql->bindValue(1, $vo->getDesconto());
+                $sql->bindValue(2, $OsID);
+                $sql->bindValue(3, Util::CodigoEmpresa());
+                $sql->execute();
             }
-            $sql->execute();
             return 1;
         } catch (\Exception $ex) {
             $vo->setmsg_erro($ex->getMessage());
@@ -96,18 +103,29 @@ class FinanceiroDAO extends Conexao
     public function ExcluirLancamentoDAO(LancamentoVO $vo): int
     {
 
-        $sql = $this->conexao->prepare(Financeiro::BuscarOsFaturadaSQL());
+        $sql = $this->conexao->prepare(Financeiro::ConsultarVendaOS());
         $sql->bindValue(1, $vo->getID());
         $sql->execute();
 
-        $OsID = $sql->fetchAll(\PDO::FETCH_ASSOC);
+        $VendaOsID = $sql->fetchAll(\PDO::FETCH_ASSOC);
 
-        if (count($OsID) > 0) {
-            $sql = $this->conexao->prepare(Os::FaturarOsSQL());
+        $VendaID = $VendaOsID[0]['VendaID'];
+        $OsID = $VendaOsID[0]['OsID'];
+        if ($OsID > 0) {
+            $sql = $this->conexao->prepare(Os::ExcluiFaturarOsSQL());
             $sql->bindValue(1, 'N');
-            $sql->bindValue(2, '');
-            $sql->bindValue(3, Util::CodigoEmpresa());
-            $sql->bindValue(4, $OsID[0]['OsID']);
+            $sql->bindValue(2, 0);
+            $sql->bindValue(3, 0.00);
+            $sql->bindValue(4, Util::CodigoEmpresa());
+            $sql->bindValue(5, $OsID);
+            $sql->execute();
+        } else if ($VendaID > 0) {
+            $sql = $this->conexao->prepare(Venda::ExcluirFaturarVendaSQL());
+            $sql->bindValue(1, 'N');
+            $sql->bindValue(2, 0.00);
+            $sql->bindValue(3, 0);
+            $sql->bindValue(4, Util::CodigoEmpresa());
+            $sql->bindValue(5, $VendaID);
             $sql->execute();
         }
 
@@ -119,17 +137,9 @@ class FinanceiroDAO extends Conexao
 
             return 1;
         } catch (\Exception $ex) {
-            $vo->setmsg_erro($ex->getMessage());
-            parent::GravarLogErro($vo);
             return -2;
         }
     }
-
-
-
-
-
-
 
     public function InserirLancamentoDAO(LancamentoVO $vo): int
     {

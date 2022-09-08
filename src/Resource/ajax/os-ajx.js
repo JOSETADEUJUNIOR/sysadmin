@@ -92,9 +92,9 @@ function Excluir() {
             ExcluirID: id
         }, success: function (ret) {
             $("#modalExcluir").modal("hide");
-            if (ret == -2) {
+            if (ret == 1) {
                 MensagemSucesso();
-                ConsultarOS();
+                ConsultarOs();
             } else {
                 MensagemExcluirErro();
             }

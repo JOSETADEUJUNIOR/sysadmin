@@ -26,28 +26,32 @@ ob_start();
 <table style="width:100%">
   <tr>
     <th><img src="../../Resource/dataview/<?= $dadosEmp[0]['EmpLogoPath'] ?>" height="100px" width="150px" alt="Photo 2" class="img-fluid"></th>
-    <th colspan="3">
+    <th colspan="5">
       <p><?= $dadosEmp[0]['EmpNome'] ?></p>
       <p><?= $dadosEmp[0]['EmpCNPJ'] ?></p>
       <p><?= $dadosEmp[0]['EmpEnd'] ?></p>
     </th>
   </tr>
   <tr>
-    <td align="center" colspan="4"><strong>Relação de Vendas</strong></td>
+    <td align="center" colspan="6"><strong>Relação de Vendas</strong></td>
   </tr>
   <tr>
     <td colspan="2"><strong>Cliente</strong></td>
     <td><strong>Data Venda</strong></td>
     <td><strong>Valor</strong></td>
+    <td><strong>Desconto</strong></td>
+    <td><strong>Total</strong></td>
   </tr>
   <?php for ($i = 0; $i < count($vendas); $i++) { ?>
     <?php
 
-    $vendasZ++; $TotValor = $TotValor + $vendas[$i]['VendaValorTotal'];?>
+    $vendasZ++; $TotValor = $TotValor + ($vendas[$i]['VendaValorTotal'] - $vendas[$i]['VendaDesconto']);?>
     <tr>
       <td colspan="2" style="font-size: 12px;"><?= $vendas[$i]['CliNome'] ?></td>
       <td style="font-size: 12px;"><?= Util::ExibirDataBr($vendas[$i]['VendaDT']) ?></td>
       <td style="font-size: 12px;"><?= Util::FormatarValor($vendas[$i]['VendaValorTotal']) ?></td>
+      <td style="font-size: 12px;"><?= Util::FormatarValor($vendas[$i]['VendaDesconto']) ?></td>
+      <td style="font-size: 12px;"><?= Util::FormatarValor($vendas[$i]['VendaValorTotal'] - $vendas[$i]['VendaDesconto']) ?></td>
       
     </tr>
   <?php   } ?>

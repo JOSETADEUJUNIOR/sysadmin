@@ -20,7 +20,7 @@ function ExcluirModalAnx(idOS, id, nome) {
     $("#AnxNome").html(nome);
 }
 function ExcluirModalItem(OsID, id, nome, idProduto, qtd) {
-    $("#ExcluirVendaID").val(OsID);
+    $("#ExcluirOsID").val(OsID);
     $("#ExcluirID").val(id);
     $("#ExcluirNome").html(nome);
     $("#ExcluirProdID").val(idProduto);

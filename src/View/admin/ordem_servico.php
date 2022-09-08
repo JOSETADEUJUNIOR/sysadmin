@@ -48,18 +48,18 @@ use Src\_public\Util; ?>
             <section class="content">
 
                 <!-- Default box -->
-                <div id="CadOs" class="card card-secondary <?= ($ordemOS[0]['OsID'] != '' ? '' : 'collapsed-card') ?>">
+                <div id="CadOs" class="card card-secondary <?= $OsID==''?'collapsed-card':'' ?>">
                     <div class="card-header">
                         <h3 class="card-title">Dados da Ordem</h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                                <?= ($ordemOS[0]['OsID'] != '' ? 'Editar ' : 'Add ') ?>Ordem</button>
+                                <?= $OsID=='' ? 'Add' : 'Editar' ?>Ordem</button>
 
                         </div>
                     </div>
                     <form id="form_os" action="ordem_servico.php" method="post">
-                        <input type="hidden" name="OsID" id="OsID" value="<?= ($ordemOS[0]['OsID'] != '' ? $ordemOS[0]['OsID'] : '') ?>">
+                        <input type="hidden" name="OsID" id="OsID" value="<?= $OsID!='' ? $ordemOS[0]['OsID'] : '' ?>">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
@@ -67,7 +67,7 @@ use Src\_public\Util; ?>
                                         <label>Cliente</label>
                                         <select class="select2bs4 obg" data-placeholder="Selecione o cliente" id="Oscliente" name="Oscliente" style="width: 100%;">
                                             <?php foreach ($clientes as $cliente) { ?>
-                                                <option value="<?= $cliente['CliID'] ?>" <?= ($ordemOS[0]['OsID'] == '' ? '' : ($ordemOS[0]['OsCliID'] == $cliente['CliID'] ? 'selected' : '')) ?>><?= $cliente['CliNome'] ?></option>
+                                                <option value="<?= $cliente['CliID'] ?>" <?= $OsID == '' ? '' : ($ordemOS[0]['OsCliID'] == $cliente['CliID'] ? 'selected' : '') ?>><?= $cliente['CliNome'] ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -75,7 +75,7 @@ use Src\_public\Util; ?>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Técnico</label>
-                                        <input class="form-control obg" id="tecnico" name="tecnico" value="<?= ($ordemOS[0]['OsID'] == '' ? '' : $ordemOS[0]['OsTecID']) ?>">
+                                        <input class="form-control obg" id="tecnico" name="tecnico" value="<?= $OsID == '' ? '' : $ordemOS[0]['OsTecID'] ?>">
                                     </div>
                                 </div>
                                 <?php
@@ -95,7 +95,7 @@ use Src\_public\Util; ?>
                                     <div class="form-group">
                                         <label>Status</label>
                                         <select class="form-control obg" id="status" name="status">
-                                            <option value="<?= ($ordemOS[0]['OsID'] != '' ? $ordemOS[0]['OsStatus'] : 'O') ?>"><?= ($status != '' ? $status : 'Orçamento') ?></option>
+                                            <option value="<?= $OsID != ''? $ordemOS[0]['OsStatus'] : 'O' ?>"><?= ($status != '' ? $status : 'Orçamento') ?></option>
                                             <option value="A">Aberto</option>
                                             <option value="EA">Em andamento</option>
                                             <option value="F">Finalizado</option>
@@ -106,44 +106,44 @@ use Src\_public\Util; ?>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Data inicial</label>
-                                        <input type="date" class="form-control obg" id="dtInicial" name="dtInicial" value="<?= ($ordemOS[0]['OsID'] == '' ? '' : $ordemOS[0]['OsDtInicial']) ?>" placeholder="Digite o aqui....">
+                                        <input type="date" class="form-control obg" id="dtInicial" name="dtInicial" value="<?= $OsID == ' ' ? '' : $ordemOS[0]['OsDtInicial'] ?>" placeholder="Digite o aqui....">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Data final</label>
-                                        <input type="date" class="form-control" id="dtFinal" name="dtFinal" value="<?= ($ordemOS[0]['OsID'] == '' ? '' : $ordemOS[0]['OsDtFinal']) ?>" placeholder="Digite o aqui....">
+                                        <input type="date" class="form-control" id="dtFinal" name="dtFinal" value="<?= $OsID == '' ? '' : $ordemOS[0]['OsDtFinal'] ?>" placeholder="Digite o aqui....">
                                     </div>
                                 </div>
 
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Garantia</label>
-                                        <input class="form-control obg" id="garantia" name="garantia" value="<?= ($ordemOS[0]['OsID'] == '' ? '' : $ordemOS[0]['OsGarantia']) ?>" placeholder="Digite o aqui....">
+                                        <input class="form-control obg" id="garantia" name="garantia" value="<?= $OsID == '' ? '' : $ordemOS[0]['OsGarantia'] ?>" placeholder="Digite o aqui....">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Descrição do Produto/Serviço</label>
-                                        <textarea class="form-control obg" id="descProd" name="descProd" placeholder="Digite o aqui...."><?= ($ordemOS[0]['OsID'] == '' ? '' : $ordemOS[0]['OsDescProdServ']) ?></textarea>
+                                        <textarea class="form-control obg" id="descProd" name="descProd" placeholder="Digite o aqui...."><?= $OsID == '' ? '' : $ordemOS[0]['OsDescProdServ'] ?></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Defeito</label>
-                                        <textarea class="form-control obg" id="defeito" name="defeito" placeholder="Digite o aqui...."><?= ($ordemOS[0]['OsID'] == '' ? '' : $ordemOS[0]['OsDefeito']) ?></textarea>
+                                        <textarea class="form-control obg" id="defeito" name="defeito" placeholder="Digite o aqui...."><?= $OsID == '' ? '' : $ordemOS[0]['OsDefeito'] ?></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Observações</label>
-                                        <textarea class="form-control " id="obs" name="obs" placeholder="Digite o aqui...."><?= ($ordemOS[0]['OsID'] == '' ? '' : $ordemOS[0]['OsObs']) ?></textarea>
+                                        <textarea class="form-control " id="obs" name="obs" placeholder="Digite o aqui...."><?= $OsID == '' ? '' : $ordemOS[0]['OsObs'] ?></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Laudo Técnico</label>
-                                        <textarea class="form-control" id="laudo" name="laudo" placeholder="Digite o aqui...."><?= ($ordemOS[0]['OsID'] == '' ? '' : $ordemOS[0]['OsLaudo']) ?></textarea>
+                                        <textarea class="form-control" id="laudo" name="laudo" placeholder="Digite o aqui...."><?= $OsID == '' ? '' : $ordemOS[0]['OsLaudo'] ?></textarea>
                                     </div>
                                 </div>
 

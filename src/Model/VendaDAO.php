@@ -234,4 +234,19 @@ class VendaDAO extends Conexao
         $sql->execute();
         return $sql->fetchAll(\PDO::FETCH_ASSOC);
     }
+    public function ExcluirVendaDAO(VendaVO $vo)
+    {
+
+        $sql = $this->conexao->prepare(Venda::ExcluirVenda());
+        $sql->bindValue(1, $vo->getID());
+
+        try {
+            $sql->execute();
+            return 1;
+        } catch (\Exception $ex) {
+            $vo->setmsg_erro($ex->getMessage());
+            parent::GravarLogErro($vo);
+            return -2;
+        }
+    }
 }

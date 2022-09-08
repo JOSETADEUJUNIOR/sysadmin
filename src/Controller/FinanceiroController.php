@@ -58,8 +58,7 @@ class FinanceiroController{
         if (empty($vo->getID()))
             return 0;
         
-            $vo->setfuncao(EXCLUI_LANCAMENTO);
-            $vo->setIdLogado(Util::CodigoLogado());
+          
         return $this->dao->ExcluirLancamentoDAO($vo);
     }
 

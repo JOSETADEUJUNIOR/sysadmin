@@ -42,7 +42,7 @@ use Src\_public\Util; ?>
 
       <!-- Main content -->
       <section class="content">
-        <?php for ($i = 0; $i < count($os); $i++) {
+        <?php $totalOS=0; $ValorTotal=0; for ($i = 0; $i < count($os); $i++) {
           if ($os[$i]['OsFaturado']=='S') {
           $totalOS = $totalOS + count($os[$i]['OsID']);
           $ValorTotal = $ValorTotal + $os[$i]['OsValorTotal'];
@@ -88,7 +88,7 @@ use Src\_public\Util; ?>
                 </div>
               </div>
               <!-- ./col -->
-             <?php for ($i=0; $i < count($lancamentos) ; $i++) { 
+             <?php $receita=0; $despesa=0; for ($i=0; $i < count($lancamentos) ; $i++) { 
                 if ($lancamentos[$i]['Tipo']==1) {
 
                   $receita = $receita + $lancamentos[$i]['LancValor'];

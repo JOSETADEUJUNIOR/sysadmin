@@ -13,7 +13,7 @@ use Src\VO\ProdutoOSVO;
 use Src\VO\AnxOSVO;
 
 Util::VerLogado();
-
+$ordemOS = 0;
 $ctrlEmp = new UsuarioController();
 $dadosEmp = $ctrlEmp->RetornarDadosCadastraisController();
 $cliCtrl = new ClienteController();
@@ -27,7 +27,7 @@ $ctrl = new OsController();
 $dadosOS = $ctrl->RetornarDadosOsController();
 
 
-if (isset($_GET['OsID'])) {
+if (isset($_GET['OsID'])&&  is_numeric($_GET['OsID'])) {
     $OsID = $_GET['OsID'];
     $vo = new OsVO;
     $vo->setID($_GET['OsID']);
@@ -177,7 +177,8 @@ if (isset($_POST['btn_cadastrar'])) {
         $os = $ctrl->RetornarOsController();
     }
 } else if (isset($_POST['btn_consultar']) && $_POST['btn_consultar'] == 'ajx') {
-    $os = $ctrl->RetornarOsController(); ?>
+    $os = $ctrl->RetornarOsController();?>
+    
 
     <table class="table table-hover" id="tabela_result_os">
         <thead>
@@ -233,6 +234,7 @@ if (isset($_POST['btn_cadastrar'])) {
     $vo = new OsVO;
     $vo->setID($_POST['OsID']);
     $ProdOrdem = $ctrl->RetornaProdOrdem($vo);
+    Util::debug($ProdOrdem);
     $ordemOS = $ctrl->RetornaOrdem($vo);
     $ProdServOrdem = $ctrl->RetornaServOrdem($vo); ?>
 

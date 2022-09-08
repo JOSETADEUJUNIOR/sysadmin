@@ -58,7 +58,7 @@ use Src\_public\Util; ?>
           <b>Ordem #<?= ($venda[0]['VendaID'] != '' ? '00' . $venda[0]['VendaID'] : '') ?></b><br>
           <br>
           <b>Data da Venda: </b><?= ($venda[0]['VendaDT'] != '' ? Util::ExibirDataBr($venda[0]['VendaDT']) : '') ?> <br>
-      
+
         </div>
         <!-- /.col -->
       </div>
@@ -66,7 +66,7 @@ use Src\_public\Util; ?>
 
       <!-- Table row -->
       <div class="row">
-        
+
 
 
 
@@ -122,16 +122,20 @@ use Src\_public\Util; ?>
           <div class="table-responsive">
             <table class="table">
               <tr>
-                <th style="width:50%">Subtotal:</th>
+                <th style="width:50%">Subtotal Produtos:</th>
                 <td><?= ($subTotal != '' ? Util::FormatarValor($subTotal) : '0,00') ?></td>
               </tr>
-              <!--<tr>
-                <th>Shipping:</th>
-                <td>$5.80</td>
-              </tr-->
               <tr>
-                <th>Total:</th>
+                <th>Total Produtos:</th>
                 <td><?= ($venda[0]['VendaValorTotal'] != '' ? Util::FormatarValor($venda[0]['VendaValorTotal']) : '') ?></td>
+              </tr>
+              <tr>
+                <th>Desconto:</th>
+                <td><?= ($venda[0]['VendaDesconto'] != '' ? Util::FormatarValor($venda[0]['VendaDesconto']) : '') ?></td>
+              </tr>
+              <tr>
+                <th>Total Venda:</th>
+                <td><?= ($venda[0]['VendaValorTotal'] != '' ? Util::FormatarValor($venda[0]['VendaValorTotal'] - $venda[0]['VendaDesconto']) : '') ?></td>
               </tr>
             </table>
           </div>

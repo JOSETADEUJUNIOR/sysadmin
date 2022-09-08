@@ -19,7 +19,7 @@ class Financeiro
     }
     public static function ConsultarVendaOS()
     {
-        $sql = 'SELECT LancID, VendaLancamentoID, VendaID, OsLancamentoID
+        $sql = 'SELECT LancID, VendaLancamentoID, VendaID, OsLancamentoID, OsID
 		FROM db_os.tb_lancamentos
 			left join tb_vendas on tb_lancamentos.LancID = tb_vendas.VendaLancamentoID
             left Join tb_os on tb_lancamentos.LancID = tb_os.OsLancamentoID
@@ -30,6 +30,11 @@ class Financeiro
     public static function AtualizaValorVendaSQL()
     {
         $sql = 'UPDATE tb_vendas set VendaDesconto = VendaDesconto + ? WHERE VendaID = ? and VendaEmpID = ?';
+        return $sql;
+    }
+    public static function AtualizaValorOSSQL()
+    {
+        $sql = 'UPDATE tb_os set OsDesconto = OsDesconto + ? WHERE OsID = ? and OsEmpID = ?';
         return $sql;
     }
 

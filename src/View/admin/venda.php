@@ -160,7 +160,7 @@ use Src\_public\Util; ?>
                                                         }
                                                     } ?>
                                                     <?php if ($prodVenda == '') { ?>
-                                                        <a href="#" onclick="ExcluirModal('<?= $vendas[$i]['VendaID'] ?>','<?= $vendas[$i]['nomeCliente'] ?>')" data-toggle="modal" data-target="#modalExcluir"><i style="color:red" class="fas fa-trash-alt"></i></a>
+                                                        <a href="#" onclick="ExcluirModal('<?= $vendas[$i]['VendaID'] ?>','<?= $vendas[$i]['CliNome'] ?>')" data-toggle="modal" data-target="#modalExcluir"><i style="color:red" class="fas fa-trash-alt"></i></a>
                                                     <?php } ?>
                                                     <a href="itens_venda.php?VendaID=<?= $vendas[$i]['VendaID'] ?>"><i style="color:purple" title="Inserir os Itens da venda" class="fas fa-list"></i></a>
                                                 <?php } ?>
@@ -172,7 +172,7 @@ use Src\_public\Util; ?>
                                             <td><?= Util::FormatarValor($vendas[$i]['VendaValorTotal']) ?></td>
 
                                             <td><?=
-                                              ($vendas[$i]['VendaFaturado'] == "S" ? '<span class="btn btn-success btn-xs">Faturado</span>' : '<span onclick="faturarVenda(' . $vendas[$i]['VendaID'] . ',' . $vendas[$i]['VendaCliID'] . ',' . $vendas[$i]['VendaValorTotal'] . ')" class="btn btn-warning btn-xs">Faturar?</span>') ?>
+                                              $vendas[$i]['VendaValorTotal']== 0?'<span class="btn btn-info btn-xs">Em andamento</span>':($vendas[$i]['VendaFaturado'] == "S" ? '<span class="btn btn-success btn-xs">Faturado</span>' : '<span onclick="faturarVenda(' . $vendas[$i]['VendaID'] . ',' . $vendas[$i]['VendaCliID'] . ',' . $vendas[$i]['VendaValorTotal'] . ')" class="btn btn-warning btn-xs">Faturar?</span>') ?>
                                             </td>
                                         </tr>
                                     <?php } ?>
@@ -192,7 +192,7 @@ use Src\_public\Util; ?>
     <!-- /.content -->
 
     <!-- /.content-wrapper -->
-    <form action="ordem_servico.php" id="form_alt_os" method="post">
+    <form action="venda.php" id="form_alt_venda" method="post">
         <?php include_once 'modal/_excluir.php' ?>
 
     </form>
