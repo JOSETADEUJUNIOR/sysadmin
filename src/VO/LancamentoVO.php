@@ -9,6 +9,7 @@ class LancamentoVO extends LogErro{
 private $LancID;
 private $LancDescricao;
 private $LancValor;
+private $LancDesconto;
 private $LancDtVencimento;
 private $LancDtPagamento;
 private $LancBaixado;
@@ -41,6 +42,15 @@ public function setValor($p){
 
 public function getValor(){
     return $this->LancValor;
+}
+
+public function setDesconto($p){
+
+    $this->LancDesconto = Util::TratarDados($p);
+}
+
+public function getDesconto(){
+    return $this->LancDesconto;
 }
 
 public function setDtVencimento($p){

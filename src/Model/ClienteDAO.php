@@ -35,7 +35,9 @@ class ClienteDAO extends Conexao
         $sql->bindValue(12, Util::CodigoEmpresa());
         $sql->bindValue(13, $vo->getStatus());
         $sql->bindValue(14, Util::CodigoLogado());
-
+        $sql->bindValue(15, $vo->getCpfCnpj());
+        $sql->bindValue(16, $vo->getTipo());
+        
 
         try {
             $sql->execute();
@@ -84,7 +86,9 @@ class ClienteDAO extends Conexao
         $sql->bindValue(12, Util::CodigoEmpresa());
         $sql->bindValue(13, $vo->getStatus());
         $sql->bindValue(14, Util::CodigoLogado());
-        $sql->bindValue(15, $vo->getID());
+        $sql->bindValue(15, $vo->getCpfCnpj());
+        $sql->bindValue(16, $vo->getTipo());
+        $sql->bindValue(17, $vo->getID());
         try {
             $sql->execute();
             return 1;

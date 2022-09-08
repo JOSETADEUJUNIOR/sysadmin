@@ -18,12 +18,13 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Cliente</label>
+                            <label>Fornecedor</label>
                             <select class="form-control obg" id="DespCliente" name="DespCliente">
                                 <option value="">Selecione</option>
-                                <?php foreach ($cliente as $cl) { ?>
+                                <?php foreach ($cliente as $cl) {
+                                    if ($cl['CliTipo'] == 'F') {?>
                                     <option value="<?= $cl['CliID']?>"><?= $cl['CliNome']?></option>
-                                <?php } ?>
+                                <?php }} ?>
                                 
                             </select>
                         </div>

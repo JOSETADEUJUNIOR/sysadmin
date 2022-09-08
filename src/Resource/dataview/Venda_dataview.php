@@ -25,7 +25,6 @@ if (isset($_GET['VendaID'])) {
     $vo = new VendaVO;
     $vo->setID($_GET['VendaID']);
     $venda = $ctrl->RetornarVendaController($vo);
-Util::debug($venda);
     $ProdVenda = $ctrl->RetornaProdVendaController($vo);
 }
 if (isset($_POST['btn_cadastrar'])) {
@@ -80,7 +79,60 @@ if (isset($_POST['btn_cadastrar'])) {
     } else {
         $vendas = $ctrl->RetornarTodasVendaController();
     }
-} else if (isset($_POST['btn_consultar_item_venda']) && $_POST['btn_consultar_item_venda'] == 'ajx') {
+}else if (isset($_POST['btn_consultar_venda']) && $_POST['btn_consultar_venda'] == 'ajx') {
+
+    $vo = new VendaVO;
+    $vo->setID($_POST['VendaID']);
+    $vendas = $ctrl->RetornarTodasVendaController();?>
+
+<table class="table table-hover" id="tabela_result_venda">
+                                <thead>
+                                    <tr>
+                                        <th>Ação</th>
+                                        <th>Nome do cliente</th>
+                                        <th>Dt Venda</th>
+                                        <th>Valor</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php for ($i = 0; $i < count($vendas); $i++) { ?>
+                                        <tr>
+                                            <td>
+                                                <?php if ($vendas[$i]['VendaFaturado'] == 'N') { ?>
+                                                    <a href="venda.php?VendaID=<?= $vendas[$i]['VendaID'] ?>"><i class="fas fa-edit"></i></a>
+                                                    <?php foreach ($dadosVenda as $dv) {
+                                                        if ($dv['VendaID'] == $vendas[$i]['VendaID']) {
+                                                            $prodVenda = $dv['ItensVendaID'];
+                                                           
+                                                        }
+                                                    } ?>
+                                                    <?php if ($prodVenda == '') { ?>
+                                                        <a href="#" onclick="ExcluirModal('<?= $vendas[$i]['VendaID'] ?>','<?= $vendas[$i]['nomeCliente'] ?>')" data-toggle="modal" data-target="#modalExcluir"><i style="color:red" class="fas fa-trash-alt"></i></a>
+                                                    <?php } ?>
+                                                    <a href="itens_venda.php?VendaID=<?= $vendas[$i]['VendaID'] ?>"><i style="color:purple" title="Inserir os Itens da venda" class="fas fa-list"></i></a>
+                                                <?php } ?>
+                                                <a href="print_venda.php?VendaID=<?= $vendas[$i]['VendaID'] ?>"><i style="color:black" title="Imprimir venda" class="fas fa-print"></i></a>
+                                            </td>
+                                            <td><?= $vendas[$i]['CliNome'] ?></td>
+                                            <td><?= Util::ExibirDataBr($vendas[$i]['VendaDT']) ?></td>
+                                           
+                                            <td><?= Util::FormatarValor($vendas[$i]['VendaValorTotal']) ?></td>
+
+                                            <td><?=
+                                              ($vendas[$i]['VendaFaturado'] == "S" ? '<span class="btn btn-success btn-xs">Faturado</span>' : '<span onclick="faturarVenda(' . $vendas[$i]['VendaID'] . ',' . $vendas[$i]['VendaCliID'] . ',' . $vendas[$i]['VendaValorTotal'] . ')" class="btn btn-warning btn-xs">Faturar?</span>') ?>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+
+
+
+
+
+
+<?php }else if (isset($_POST['btn_consultar_item_venda']) && $_POST['btn_consultar_item_venda'] == 'ajx') {
 
     $vo = new VendaVO;
     $vo->setID($_POST['VendaID']);

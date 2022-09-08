@@ -1,5 +1,6 @@
 <?php require_once dirname(__DIR__, 2) . '/Resource/dataview/index_dataview.php';
 
+use Mpdf\Tag\Input;
 use Src\_public\Util; ?>
 
 <!DOCTYPE html>
@@ -91,7 +92,7 @@ use Src\_public\Util; ?>
                 if ($lancamentos[$i]['Tipo']==1) {
 
                   $receita = $receita + $lancamentos[$i]['LancValor'];
-                }else if ($lancamento[$i]['Tipo']==2) {
+                }else if ($lancamentos[$i]['Tipo']==2) {
                   $despesa = $despesa + $lancamentos[$i]['LancValor'];  
                 }
              }?>
@@ -315,35 +316,20 @@ use Src\_public\Util; ?>
 
 
 
+<input type="hidden" id="receita" name="receita" value="<?=$receita?>">
+<input type="hidden" id="despesa" name="despesa" value="<?=$despesa?>">
           <!--/.card -->
         </div>
 
     </div>
 
+    </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+    </div>
     <!-- /.content-wrapper -->
-    <form action="tipoequipamento.php" method="post">
-      <?php include_once 'modal/_alterar_tipo_equipamento.php' ?>
-      <?php include_once 'modal/_excluir.php' ?>
-
-
-    </form>
     <?php include_once PATH_URL . '/Template/_includes/_footer.php' ?>
     <!-- /.control-sidebar -->
-  </div>
   <!-- ./wrapper -->
 
   <!-- jQuery -->
@@ -353,14 +339,15 @@ use Src\_public\Util; ?>
 
   <script src="../../Template/plugins/chart.js/Chart.min.js"></script>
 
-
-
+  
   <script>
     $(function() {
 
       var areaChartCanvas = $('#barChart').get(0).getContext('2d')
 
       var areaChartData = {
+      
+        
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
         datasets: [{
             label: 'Digital Goods',
@@ -468,18 +455,17 @@ use Src\_public\Util; ?>
 
       // Get context with jQuery - using jQuery's .get() method.
       var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
+      var receita = $("#receita").val();
+      var despesa = $("#despesa").val();
       var donutData = {
         labels: [
-          'Chrome',
-          'IE',
-          'FireFox',
-          'Safari',
-          'Opera',
-          'Navigator',
+          'Credito',
+          'Debito',
+          
         ],
         datasets: [{
-          data: [700, 500, 400, 600, 300, 100],
-          backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+          data: [receita,despesa],
+          backgroundColor: ['#00a65a','#f56954'],
         }]
       }
       var donutOptions = {

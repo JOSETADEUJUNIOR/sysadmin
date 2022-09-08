@@ -21,9 +21,10 @@
                             <label>Cliente</label>
                             <select class="form-control obg" id="faturaCliente" name="faturaCliente">
                                 <option value="">Selecione</option>
-                                <?php foreach ($cliente as $cl) { ?>
-                                    <option value="<?= $cl['CliID'] ?>"><?= $cl['CliNome'] ?></option>
-                                <?php } ?>
+                                <?php foreach ($cliente as $cl) {
+                                    if ($cl['CliTipo'] == 'C') {?>
+                                    <option value="<?= $cl['CliID']?>"><?= $cl['CliNome']?></option>
+                                <?php }} ?>
 
                             </select>
                         </div>

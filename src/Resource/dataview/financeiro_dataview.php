@@ -44,6 +44,7 @@ else if (isset($_POST['btn_alterar'])) {
     $vo->setDescricao($_POST['descricao']);
     $vo->setClienteID($_POST['cliente']);
     $vo->setValor($_POST['valor']);
+    $vo->setDesconto($_POST['desconto']);
     $vo->setDtVencimento($_POST['dtVencimento']);
     $vo->setDtPagamento($_POST['dtPgto']);
     $vo->setFormPgto($_POST['formPgto']);
@@ -77,6 +78,7 @@ else if (isset($_POST['btnExcluir'])) {
         echo $ret;
     } else {
         $cliente = $ctrlCliente->RetornarClienteController();
+
     }
 }
 

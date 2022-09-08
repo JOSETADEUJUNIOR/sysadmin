@@ -45,3 +45,11 @@ if (isset($_POST['btn_login'])){
     
     
     }
+
+    if (isset($_POST['emailDigitado'])) {
+        $email = $_POST['email'];
+        $ret = $ctrl->ValidarEmail($email);
+    
+        echo $ret;
+    }
+    

@@ -8,13 +8,13 @@ class Cliente
 
     public static function InserirClienteSQL()
     {
-        $sql = 'INSERT into tb_cliente (CliNome, CliDtNasc, CliTelefone, CliEmail, CliCep, CliEndereco, CliNumero, CliBairro, CliCidade, CliEstado, CliDescricao, CliEmpID, CliStatus, CliUserID) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+        $sql = 'INSERT into tb_cliente (CliNome, CliDtNasc, CliTelefone, CliEmail, CliCep, CliEndereco, CliNumero, CliBairro, CliCidade, CliEstado, CliDescricao, CliEmpID, CliStatus, CliUserID, CliCpfCnpj, CliTipo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
         return $sql;
     }
 
     public static function FiltrarClienteSQL($nome_filtro)
     {
-        $sql = 'SELECT CliID, CliNome, CliDtNasc, CliTelefone, CliEmail, CliCep, CliEndereco, CliNumero, CliBairro, CliCidade, CliEstado, CliDescricao, CliEmpID, CliStatus FROM tb_cliente WHERE CliEmpID = ?';
+        $sql = 'SELECT CliID, CliNome, CliDtNasc, CliTelefone, CliEmail, CliCep, CliEndereco, CliNumero, CliBairro, CliCidade, CliEstado, CliDescricao, CliEmpID, CliStatus, CliCpfCnpj, CliTipo FROM tb_cliente WHERE CliEmpID = ?';
         if (!empty($nome_filtro)) {
             $sql = $sql . ' And CliNome LIKE ?';
         }
@@ -23,14 +23,14 @@ class Cliente
 
     public static function RetornarClienteSQL()
     {
-        $sql = 'SELECT CliID, CliNome, CliDtNasc, CliTelefone, CliEmail, CliCep, CliEndereco, CliNumero, CliBairro, CliCidade, CliEstado, CliDescricao, CliEmpID, CliStatus
+        $sql = 'SELECT CliID, CliNome, CliDtNasc, CliTelefone, CliEmail, CliCep, CliEndereco, CliNumero, CliBairro, CliCidade, CliEstado, CliDescricao, CliEmpID, CliStatus, CliCpfCnpj, CliTipo
                     FROM tb_cliente Where CliEmpID = ?';
         return $sql;
     }
 
     public static function AlterarClienteSQL()
     {
-        $sql = 'UPDATE tb_cliente set CliNome = ?, CliDtNasc = ?, CliTelefone = ?, CliEmail = ?, CliCep = ?, CliEndereco = ?, CliNumero = ?, CliBairro = ?, CliCidade = ?, CliEstado = ?, CliDescricao = ?, CliEmpID = ?, CliStatus = ?, CliUserID = ? where CliID = ?';
+        $sql = 'UPDATE tb_cliente set CliNome = ?, CliDtNasc = ?, CliTelefone = ?, CliEmail = ?, CliCep = ?, CliEndereco = ?, CliNumero = ?, CliBairro = ?, CliCidade = ?, CliEstado = ?, CliDescricao = ?, CliEmpID = ?, CliStatus = ?, CliUserID = ?, CliCpfCnpj = ?, CliTipo =? where CliID = ?';
         return $sql;
     }
 

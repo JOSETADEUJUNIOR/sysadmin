@@ -1,3 +1,16 @@
+function ConsultarVendas()
+{
+    $.ajax({
+        type: "POST",
+        url: BASE_URL_AJAX("Venda_dataview"),
+        data: {
+            btn_consultar_venda: 'ajx'
+        }, success: function (tabela_preenchida) {
+            $("#tabela_result_venda").html(tabela_preenchida);
+        }
+    })
+}
+
 function ConsultarItensVenda(VendaID) {
     let idProd = VendaID;
     $.ajax({
@@ -30,6 +43,8 @@ function CadastrarVenda(id_form) {
             RemoverLoad();
             if (ret == 1) {
                 MensagemSucesso();
+                $("#CadVenda").addClass('collapsed-card');
+                ConsultarVendas();       
             } else {
                 MensagemErro();
             }
@@ -112,7 +127,7 @@ function faturarVenda(id, clienteID, valor) {
         success: function (ret) {
             if (ret == 1) {
                 MensagemSucesso();
-                
+                window.location.href = "financeiro.php";  
 
             } else {
                 MensagemErro();

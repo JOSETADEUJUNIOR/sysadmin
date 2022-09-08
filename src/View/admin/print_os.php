@@ -251,12 +251,10 @@ use Src\_public\Util; ?>
                                 <div class="row">
                                     <!-- accepted payments column -->
                                     <div class="col-6">
-                                        <p class="lead">Payment Methods:</p>
+                                        <p class="lead">Formas de pagamento:</p>
                                         <img src="../../Template/dist/img/credit/visa.png" alt="Visa">
                                         <img src="../../Template/dist/img/credit/mastercard.png" alt="Mastercard">
-                                        <img src="../../Template/dist/img/credit/american-express.png" alt="American Express">
-                                        <img src="../../Template/dist/img/credit/paypal2.png" alt="Paypal">
-
+                                        
                                         <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
                                             <strong>Garantia: <?= ($ordemOS[0]['OsGarantia'] != '' ? $ordemOS[0]['OsGarantia'] : '') ?></strong>
                                         </p>
@@ -269,7 +267,7 @@ use Src\_public\Util; ?>
                                             <table class="table">
                                                 <tr>
                                                     <th style="width:50%">Subtotal:</th>
-                                                    <td><?= ($subTotal != '' ? $subTotal : '0,00') ?></td>
+                                                    <td><?= ($subTotal != '' ? Util::FormatarValor($subTotal) : '0,00') ?></td>
                                                 </tr>
                                                 <!--<tr>
                 <th>Shipping:</th>
@@ -277,7 +275,7 @@ use Src\_public\Util; ?>
               </tr-->
                                                 <tr>
                                                     <th>Total:</th>
-                                                    <td><?= ($ordemOS[0]['OsValorTotal'] != '' ? $ordemOS[0]['OsValorTotal'] : '') ?></td>
+                                                    <td><?= ($ordemOS[0]['OsValorTotal'] != '' ? Util::FormatarValor($ordemOS[0]['OsValorTotal']) : '') ?></td>
                                                 </tr>
                                             </table>
                                         </div>

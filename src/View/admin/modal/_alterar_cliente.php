@@ -8,11 +8,17 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-md-10">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label>Nome</label>
                             <input type="hidden" name="AlteraID" id="AlteraID">
                             <input class="form-control obg" id="Alteranome" name="Alteranome" placeholder="Digite o aqui....">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>CPF/CNPJ</label>
+                            <input class="form-control obg" id="AlteracpfCnpj" name="AlteracpfCnpj" placeholder="Digite o aqui....">
                         </div>
                     </div>
                     <div class="col-md-2">
@@ -25,6 +31,15 @@
                             </select>
                         </div>
                     </div>
+                    <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>Tipo</label>
+                                        <select class="form-control obg" id="Alteratipo" name="Alteratipo">
+                                            <option value="C">Cliente</option>
+                                            <option value="F">Fornecedor</option>
+                                        </select>
+                                    </div>
+                                </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Data nascimento</label>
@@ -34,7 +49,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Telefone</label>
-                            <input type="phone" class="form-control obg" id="Alteratelefone" name="Alteratelefone" placeholder="Digite o aqui...." data-inputmask='"mask": "(99) 9 9999-9999"' data-mask >
+                            <input type="phone" class="form-control obg" id="Alteratelefone" name="Alteratelefone" placeholder="Digite o aqui....">
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -46,7 +61,7 @@
                     <div class="col-md-2">
                         <div class="form-group">
                             <label>Cep</label>
-                            <input class="form-control obg" id="Alteracep" name="Alteracep" placeholder="Digite o aqui...." data-inputmask='"mask": "99.999-999"' data-mask >
+                            <input class="form-control obg" id="Alteracep" name="Alteracep" placeholder="Digite o aqui....">
                         </div>
                     </div>
                     <div class="col-md-6">

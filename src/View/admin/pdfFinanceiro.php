@@ -35,7 +35,7 @@ ob_start();
     </th>
   </tr>
   <tr>
-    <td align="center" colspan="8"><strong>Relação de Vendas</strong></td>
+    <td align="center" colspan="8"><strong>Relação de Lançamentos</strong></td>
   </tr>
   <tr>
     <td colspan="1"><strong>Cliente</strong></td>
@@ -45,22 +45,28 @@ ob_start();
     <td colspan="1"><strong>Valor</strong></td>
 
   </tr>
-  <?php $TotalLancamentosZ=0; $TotValor=0; for ($i = 0; $i < count($TotalLancamentos); $i++){ ?>
+  <?php $TotalLancamentosZ=0; $TotReceita=0;$TotDespesa=0; for ($i = 0; $i < count($TotalLancamentos); $i++){ ?>
     <?php
 
     $TotalLancamentosZ++;
-    $TotValor = $TotValor + $TotalLancamentos[$i]['LancValor']; ?>
+    if ($TotalLancamentos[$i]['Tipo']==1) {
+      $TotReceita = $TotReceita + $TotalLancamentos[$i]['LancValor']; 
+    }else if ($TotalLancamentos[$i]['Tipo']==2) {
+      $TotDespesa = $TotDespesa + $TotalLancamentos[$i]['LancValor']; 
+    }?>
     <tr>
       <td colspan="1" style="font-size: 12px;"><?= $TotalLancamentos[$i]['CliNome'] ?></td>
       <td colspan="4" style="font-size: 12px;"><?= $TotalLancamentos[$i]['LancDescricao'] ?></td>
       <td colspan="1" style="font-size: 12px;"><?= Util::ExibirDataBr($TotalLancamentos[$i]['LancDtVencimento']) ?></td>
-      <td colspan="1" style="font-size: 12px;"><?= ($TotalLancamentos[$i]['Tipo']==1?'Receita':'Despesa') ?></td>
+      <td colspan="1" style="font-size: 12px;"><?= ($TotalLancamentos[$i]['Tipo']==1?'Receita':'<span style="color:red">Despesa</span>') ?></td>
       <td colspan="1" style="font-size: 12px;"><?= Util::FormatarValor($TotalLancamentos[$i]['LancValor']) ?></td>
 
     </tr>
   <?php   } ?>
 </table>
-<p style="font-size:12px" align="right">Total Valor Lançamentos: <?= Util::FormatarValor($TotValor) ?></p>
+<p style="font-size:12px" align="right">Total Valor Receitas: <?= Util::FormatarValor($TotReceita) ?></p>
+<p style="font-size:12px;color:red;" align="right">Total Valor Despesas: <?= Util::FormatarValor($TotDespesa) ?></p>
+<p style="font-size:12px" align="right">Saldo: <?= Util::FormatarValor($TotReceita - $TotDespesa) ?></p>
 <p style="font-size:12px" align="right">Total de Registros: <?= $TotalLancamentosZ ?></p>
 
 </body>

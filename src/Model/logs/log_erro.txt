@@ -976,3 +976,9 @@ Hora:15:43:55
 Função:CadastrarOsController
 cod Logado:6
 Erro:SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_os`.`tb_Itens_venda`, CONSTRAINT `fk_tb_Itens_venda_1` FOREIGN KEY (`ItensVendaID`) REFERENCES `tb_vendas` (`VendaID`))
+--------------------------------------------------
+Data:07/09/2022
+Hora:17:28:59
+Função:AlterarClienteController
+cod Logado:6
+Erro:SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens

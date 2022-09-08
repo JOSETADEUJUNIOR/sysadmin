@@ -26,6 +26,8 @@ if (isset($_POST['btn_cadastrar'])) {
     $vo->setEstado($_POST['estado']);
     $vo->setDescricao($_POST['descricao']);
     $vo->setStatus($_POST['ativo']);
+    $vo->setCpfCnpj($_POST['cpfCnpj']);
+    $vo->setTipo($_POST['tipo']);
     $ret = $ctrlCliente->CadastrarClienteController($vo);
     if ($_POST['btn_cadastrar'] == 'ajx') {
         echo $ret;
@@ -45,8 +47,10 @@ if (isset($_POST['btn_cadastrar'])) {
     $vo->setEstado($_POST['estado']);
     $vo->setDescricao($_POST['descricao']);
     $vo->setStatus($_POST['ativo']);
+    $vo->setCpfCnpj($_POST['cpfCnpj']);
+    $vo->setTipo($_POST['tipo']);
     $ret = $ctrlCliente->AlterarClienteController($vo);
-
+    
     if ($_POST['btnAlterar'] == 'ajx') {
         echo $ret;
     } else {
@@ -81,7 +85,7 @@ if (isset($_POST['btn_cadastrar'])) {
                 <?php for ($i = 0; $i < count($cliente); $i++) { ?>
                     <tr>
                         <td>
-                            <a href="#" onclick="AlterarClienteModal('<?= $cliente[$i]['CliID'] ?>', '<?= $cliente[$i]['CliNome'] ?>','<?= $cliente[$i]['CliDtNasc'] ?>','<?= $cliente[$i]['CliTelefone'] ?>','<?= $cliente[$i]['CliEmail'] ?>','<?= $cliente[$i]['CliCep'] ?>','<?= $cliente[$i]['CliEndereco'] ?>','<?= $cliente[$i]['CliNumero'] ?>','<?= $cliente[$i]['CliBairro'] ?>','<?= $cliente[$i]['CliCidade'] ?>','<?= $cliente[$i]['CliEstado'] ?>','<?= $cliente[$i]['CliDescricao'] ?>','<?= $cliente[$i]['CliStatus'] ?>')" data-toggle="modal" data-target="#alterarCliente"><i class="fas fa-edit"></i></a>
+                        <a href="#" onclick="AlterarClienteModal('<?= $cliente[$i]['CliID'] ?>', '<?= $cliente[$i]['CliNome'] ?>','<?= $cliente[$i]['CliDtNasc'] ?>','<?= $cliente[$i]['CliTelefone'] ?>','<?= $cliente[$i]['CliEmail'] ?>','<?= $cliente[$i]['CliCep'] ?>','<?= $cliente[$i]['CliEndereco'] ?>','<?= $cliente[$i]['CliNumero'] ?>','<?= $cliente[$i]['CliBairro'] ?>','<?= $cliente[$i]['CliCidade'] ?>','<?= $cliente[$i]['CliEstado'] ?>','<?= $cliente[$i]['CliDescricao'] ?>','<?= $cliente[$i]['CliStatus'] ?>','<?= $cliente[$i]['CliCpfCnpj'] ?>','<?= $cliente[$i]['CliTipo'] ?>')" data-toggle="modal" data-target="#alterarCliente"><i class="fas fa-edit"></i></a>
                             <a href="#" onclick="ExcluirModal('<?= $cliente[$i]['CliID'] ?>', '<?= $cliente[$i]['CliNome'] ?>')" data-toggle="modal" data-target="#modalExcluir"><i style="color:red" class="fas fa-trash-alt"></i></a>
                         </td>
                         <td><?= $cliente[$i]['CliNome'] ?></td>
@@ -113,7 +117,7 @@ if (isset($_POST['btn_cadastrar'])) {
             <?php for ($i = 0; $i < count($cliente); $i++) { ?>
                 <tr>
                     <td>
-                        <a href="#" onclick="AlterarClienteModal('<?= $cliente[$i]['CliID'] ?>', '<?= $cliente[$i]['CliNome'] ?>','<?= $cliente[$i]['CliDtNasc'] ?>','<?= $cliente[$i]['CliTelefone'] ?>','<?= $cliente[$i]['CliEmail'] ?>','<?= $cliente[$i]['CliCep'] ?>','<?= $cliente[$i]['CliEndereco'] ?>','<?= $cliente[$i]['CliNumero'] ?>','<?= $cliente[$i]['CliBairro'] ?>','<?= $cliente[$i]['CliCidade'] ?>','<?= $cliente[$i]['CliEstado'] ?>','<?= $cliente[$i]['CliDescricao'] ?>','<?= $cliente[$i]['CliStatus'] ?>')" data-toggle="modal" data-target="#alterarCliente"><i class="fas fa-edit"></i></a>
+                    <a href="#" onclick="AlterarClienteModal('<?= $cliente[$i]['CliID'] ?>', '<?= $cliente[$i]['CliNome'] ?>','<?= $cliente[$i]['CliDtNasc'] ?>','<?= $cliente[$i]['CliTelefone'] ?>','<?= $cliente[$i]['CliEmail'] ?>','<?= $cliente[$i]['CliCep'] ?>','<?= $cliente[$i]['CliEndereco'] ?>','<?= $cliente[$i]['CliNumero'] ?>','<?= $cliente[$i]['CliBairro'] ?>','<?= $cliente[$i]['CliCidade'] ?>','<?= $cliente[$i]['CliEstado'] ?>','<?= $cliente[$i]['CliDescricao'] ?>','<?= $cliente[$i]['CliStatus'] ?>','<?= $cliente[$i]['CliCpfCnpj'] ?>','<?= $cliente[$i]['CliTipo'] ?>')" data-toggle="modal" data-target="#alterarCliente"><i class="fas fa-edit"></i></a>
                         <a href="#" onclick="ExcluirModal('<?= $cliente[$i]['CliID'] ?>', '<?= $cliente[$i]['CliNome'] ?>')" data-toggle="modal" data-target="#modalExcluir"><i style="color:red" class="fas fa-trash-alt"></i></a>
                     </td>
                     <td><?= $cliente[$i]['CliNome'] ?></td>
@@ -125,7 +129,4 @@ if (isset($_POST['btn_cadastrar'])) {
         </tbody>
     </table>
 
-<?php } else {
-
-    $cliente = $ctrlCliente->RetornarClienteController();
-} ?>
+<?php } else { $cliente = $ctrlCliente->RetornarClienteController();} ?>

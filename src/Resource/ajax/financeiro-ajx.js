@@ -148,6 +148,7 @@ function AlterarReceita(id_form) {
     let descricao = $("#AlteraDescricao").val();
     let cliente = $("#AlterafaturaCliente").val();
     let valor = $("#AlterafaturaValor").val();
+    let desconto = $("#AlteraDesconto").val();
     let dtVencimento = $("#AlterafaturaDtVenc").val();
     let dtPgto = $("#AlterafaturaDtPgto").val();
     let formPgto = $("#FaturaFormPgto").val();
@@ -160,6 +161,7 @@ function AlterarReceita(id_form) {
             descricao: descricao,
             cliente: cliente,
             valor: valor,
+            desconto: desconto,
             dtVencimento: dtVencimento,
             dtPgto: dtPgto,
             formPgto: formPgto,

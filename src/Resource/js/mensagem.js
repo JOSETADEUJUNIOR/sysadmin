@@ -4,6 +4,12 @@ function RetornarMsg(n) {
     var msg = "";
 
     switch (n) {
+        case -6:
+            msg = "E-mail digitado já existe!";
+            break;
+        case -5:
+            msg = "Senhas não conferem!";
+            break;
         case -4:
             msg = "Login ou senha inválidos!";
             break;
@@ -41,3 +47,11 @@ function MensagemExcluirErro(){
 function MensagemLogin(){
     toastr.warning(RetornarMsg(-4));
 }
+function MensagemSenhaDiferente(){
+    toastr.warning(RetornarMsg(-5));
+}
+function MensagemEmailExiste(){
+    toastr.warning(RetornarMsg(-6));
+}
+
+

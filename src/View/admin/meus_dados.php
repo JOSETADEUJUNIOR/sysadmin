@@ -156,12 +156,25 @@ require_once dirname(__DIR__, 2) . '/Resource/dataview/meusdados_dataview.php'; 
     <?php include_once PATH_URL . '/Template/_includes/_msg.php' ?>
     <script src="../../Resource/ajax/empresa-ajx.js"></script>
     <script src="../../Resource/ajax/usuario-ajx.js"></script>
-  
-    <script>
-         $(function () {
-         $('[data-mask]').inputmask()
-         })
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+    <script type="text/javascript">
+ 
+var options = {
+    onKeyPress: function (cpf, ev, el, op) {
+        var masks = ['000.000.000-000', '00.000.000/0000-00'];
+        $('#cnpj').mask((cpf.length > 14) ? masks[1] : masks[0], op);
+    }
+}
+
+$('#cnpj').length > 11 ? $('$cnpj').mask('00.000.000/0000-00', options) : $('#cnpj').mask('000.000.000-00#', options);
+
+$(document).ready(function() {
+            $("#telefone").mask('(00) 0 0000-0000');
+            $("#cep").mask('00.000-000');
+            
+        });
+</script>
+
 </body>
 
 </html>

@@ -17,18 +17,18 @@ class UsuarioDAO extends Conexao{
 
     }
 
-    public function ValidarEmailDAO(UsuarioVO $vo):bool
+    public function ValidarEmailDAO($email)
     {
         $sql = $this->conexao->prepare(Usuario::ValidarEmail());
-        $sql->bindValue(1, $vo->getLogin());
+        $sql->bindValue(1, $email);
         $sql->execute();
 
         $login_user = $sql->fetchAll(\PDO::FETCH_ASSOC);
 
         if (count($login_user) > 0) {
-            return true;
+            return 1;
         }else{
-           return false;
+           return -1;
         }
         
     }

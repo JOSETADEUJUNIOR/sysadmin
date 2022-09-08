@@ -8,6 +8,8 @@ class CLienteVO extends LogErro{
 
 private $CliID;
 private $CliNome;
+private $CliCpfCnpj;
+private $CliTipo;
 private $CliDtNasc;
 private $CliTelefone;
 private $CliEmail;
@@ -39,6 +41,22 @@ public function setNome($nome){
 
 public function getNome(){
     return $this->CliNome;
+}
+public function setCpfCnpj($nome){
+
+    $this->CliCpfCnpj = Util::TratarDados($nome);
+}
+
+public function getCpfCnpj(){
+    return $this->CliCpfCnpj;
+}
+public function setTipo($nome){
+
+    $this->CliTipo = Util::TratarDados($nome);
+}
+
+public function getTipo(){
+    return $this->CliTipo;
 }
 public function setDtNasc($dtnasc){
 

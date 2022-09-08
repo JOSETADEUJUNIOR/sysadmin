@@ -26,17 +26,19 @@ ob_start();
 <table style="width:100%">
   <tr>
     <th><img src="../../Resource/dataview/<?= $dadosEmp[0]['EmpLogoPath'] ?>" height="100px" width="150px" alt="Photo 2" class="img-fluid"></th>
-    <th colspan="3">
+    <th colspan="4">
       <p><?= $dadosEmp[0]['EmpNome'] ?></p>
       <p><?= $dadosEmp[0]['EmpCNPJ'] ?></p>
       <p><?= $dadosEmp[0]['EmpEnd'] ?></p>
     </th>
   </tr>
   <tr>
-    <td align="center" colspan="4"><strong>Relação de Ordens de Serviços</strong></td>
+    <td align="center" colspan="5"><strong>Relação de Ordens de Serviços</strong></td>
   </tr>
   <tr>
+
     <td><strong>Cliente</strong></td>
+    <td><strong>Numero OS</strong></td>
     <td><strong>Data Entrada</strong></td>
     <td><strong>Data Finalizada</strong></td>
     <td><strong>Valor</strong></td>
@@ -47,6 +49,7 @@ ob_start();
     $osZ++; $TotValor = $TotValor + $os[$i]['OsValorTotal'];?>
     <tr>
       <td style="font-size: 12px;"><?= $os[$i]['nomeCliente'] ?></td>
+      <td style="font-size: 12px;"><?= '00'.$os[$i]['OsID'] ?></td>
       <td style="font-size: 12px;"><?= Util::ExibirDataBr($os[$i]['OsDtInicial']) ?></td>
       <td style="font-size: 12px;"><?= Util::ExibirDataBr($os[$i]['OsDtFinal']) ?></td>
       <td style="font-size: 12px;"><?= Util::FormatarValor($os[$i]['OsValorTotal']) ?></td>

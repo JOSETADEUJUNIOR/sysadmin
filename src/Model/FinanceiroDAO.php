@@ -26,7 +26,14 @@ class FinanceiroDAO extends Conexao
 
         $sql = $this->conexao->prepare(Financeiro::AlterarReceitaLancamentoSQL());
         $sql->bindValue(1, $vo->getDescricao());
-        $sql->bindValue(2, $vo->getValor());
+        if ($vo->getDesconto()!='') {
+        $valorDesconto = $vo->getValor() - $vo->getDesconto(); 
+           $sql->bindValue(2, $valorDesconto);
+           
+        }else {
+            
+            $sql->bindValue(2, $vo->getValor());
+        }
         $sql->bindValue(3, $vo->getDtVencimento());
         $sql->bindValue(4, $vo->getDtPagamento());
         $sql->bindValue(5, $vo->getFormPgto());
@@ -35,9 +42,21 @@ class FinanceiroDAO extends Conexao
         $sql->bindValue(8, Util::CodigoEmpresa());
         $sql->bindValue(9, Util::CodigoLogado());
         $sql->bindValue(10, $vo->getID());
-
-
+        $sql->execute();
+        
+        $sql = $this->conexao->prepare(Financeiro::ConsultarVendaOS());
+        $sql->bindValue(1, $vo->getID());
+        $sql->execute();
+        $ret = $sql->fetchAll(\PDO::FETCH_ASSOC);
         try {
+            if ($ret[0]['VendaLancamentoID'] > 0) {
+                $idVenda = $ret[0]['VendaID'];
+               
+            $sql = $this->conexao->prepare(Financeiro::AtualizaValorVendaSQL());
+                $sql->bindValue(1, $vo->getDesconto());
+                $sql->bindValue(2, $idVenda);
+                $sql->bindValue(3, Util::CodigoEmpresa());
+            }
             $sql->execute();
             return 1;
         } catch (\Exception $ex) {

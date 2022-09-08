@@ -110,8 +110,9 @@ if (isset($_POST['btn_alterar'])) {
                 <?php for ($i = 0; $i < count($produto); $i++) { ?>
                     <tr>
                         <td>
-                            <a href="#" onclick="AlterarProdutoModal('<?= $produto[$i]['ProdID'] ?>', '<?= $produto[$i]['ProdDescricao'] ?>','<?= $produto[$i]['ProdDtCriacao'] ?>','<?= $produto[$i]['ProdCodBarra'] ?>','<?= $produto[$i]['ProdValorCompra'] ?>','<?= $produto[$i]['ProdValorVenda'] ?>','<?= $produto[$i]['ProdEstoqueMin'] ?>','<?= $produto[$i]['ProdEstoque'] ?>','<?= $produto[$i]['ProdImagem'] ?>','<?= $produto[$i]['ProdImagemPath'] ?>')" data-toggle="modal" data-target="#alterarProduto" class="btn btn-warning btn-xs">Alterar</a>
-                            <a href="#" onclick="ExcluirModal('<?= $produto[$i]['ProdID'] ?>', '<?= $produto[$i]['ProdDescricao'] ?>')" data-toggle="modal" data-target="#modalExcluir" class="btn btn-danger btn-xs">Excluir</a>
+                            <a href="#" onclick="AlterarProdutoModal('<?= $produto[$i]['ProdID'] ?>', '<?= $produto[$i]['ProdDescricao'] ?>','<?= $produto[$i]['ProdDtCriacao'] ?>','<?= $produto[$i]['ProdCodBarra'] ?>','<?= $produto[$i]['ProdValorCompra'] ?>','<?= $produto[$i]['ProdValorVenda'] ?>','<?= $produto[$i]['ProdEstoqueMin'] ?>','<?= $produto[$i]['ProdEstoque'] ?>','<?= $produto[$i]['ProdImagem'] ?>')" data-toggle="modal" data-target="#alterarProduto"><i class="fas fa-edit"></i></a>
+                            <a href="#" onclick="ExcluirModal('<?= $produto[$i]['ProdID'] ?>', '<?= $produto[$i]['ProdDescricao'] ?>')" data-toggle="modal" data-target="#modalExcluir"><i style="color:red" class="fas fa-trash-alt"></i></a>
+                            <a href="relProdutoBarras.php?codbarras=<?= $produto[$i]['ProdCodBarra'] . '&nomeProduto=' . $produto[$i]['ProdDescricao'] ?>" target="_blank"><i title="Emitir Codigo de Barras" style=" color:red; font-size:14px; margin-left:1px" class="fa fa-barcode"></i></a>
                         </td>
                         <td><?= $produto[$i]['ProdCodBarra'] ?></td>
                         <td><?= $produto[$i]['ProdDescricao'] ?></td>
@@ -119,6 +120,9 @@ if (isset($_POST['btn_alterar'])) {
                         <td><?= $produto[$i]['ProdValorVenda'] ?></td>
                         <td><?= $produto[$i]['ProdEstoqueMin'] ?></td>
                         <td><?= $produto[$i]['ProdEstoque'] ?></td>
+                        <td><a href="../../Resource/dataview/<?= $produto[$i]['ProdImagemPath'] ?>" target="_blank" rel="noopener noreferrer"><img src="../../Resource/dataview/<?= $produto[$i]['ProdImagemPath'] ?>" alt="<?= $produto[$i]['ProdImagemPath'] ?>" class="brand-image img-circle elevation-3" width="50px" height="50px"></a></td>
+
+
                     </tr>
                 <?php } ?>
             </tbody>
@@ -148,8 +152,9 @@ if (isset($_POST['btn_alterar'])) {
             <?php for ($i = 0; $i < count($produto); $i++) { ?>
                 <tr>
                     <td>
-                        <a href="#" onclick="AlterarProdutoModal('<?= $produto[$i]['ProdID'] ?>', '<?= $produto[$i]['ProdDescricao'] ?>','<?= $produto[$i]['ProdDtCriacao'] ?>','<?= $produto[$i]['ProdCodBarra'] ?>','<?= $produto[$i]['ProdValorCompra'] ?>','<?= $produto[$i]['ProdValorVenda'] ?>','<?= $produto[$i]['ProdEstoqueMin'] ?>','<?= $produto[$i]['ProdEstoque'] ?>','<?= $produto[$i]['ProdImagem'] ?>','<?= $produto[$i]['ProdImagemPath'] ?>')" data-toggle="modal" data-target="#alterarProduto" class="btn btn-warning btn-xs">Alterar</a>
-                        <a href="#" onclick="ExcluirModal('<?= $produto[$i]['ProdID'] ?>', '<?= $produto[$i]['ProdDescricao'] ?>')" data-toggle="modal" data-target="#modalExcluir" class="btn btn-danger btn-xs">Excluir</a>
+                        <a href="#" onclick="AlterarProdutoModal('<?= $produto[$i]['ProdID'] ?>', '<?= $produto[$i]['ProdDescricao'] ?>','<?= $produto[$i]['ProdDtCriacao'] ?>','<?= $produto[$i]['ProdCodBarra'] ?>','<?= $produto[$i]['ProdValorCompra'] ?>','<?= $produto[$i]['ProdValorVenda'] ?>','<?= $produto[$i]['ProdEstoqueMin'] ?>','<?= $produto[$i]['ProdEstoque'] ?>','<?= $produto[$i]['ProdImagem'] ?>')" data-toggle="modal" data-target="#alterarProduto"><i class="fas fa-edit"></i></a>
+                        <a href="#" onclick="ExcluirModal('<?= $produto[$i]['ProdID'] ?>', '<?= $produto[$i]['ProdDescricao'] ?>')" data-toggle="modal" data-target="#modalExcluir"><i style="color:red" class="fas fa-trash-alt"></i></a>
+                        <a href="relProdutoBarras.php?codbarras=<?= $produto[$i]['ProdCodBarra'] . '&nomeProduto=' . $produto[$i]['ProdDescricao'] ?>" target="_blank"><i title="Emitir Codigo de Barras" style=" color:red; font-size:14px; margin-left:1px" class="fa fa-barcode"></i></a>
                     </td>
                     <td><?= $produto[$i]['ProdCodBarra'] ?></td>
                     <td><?= $produto[$i]['ProdDescricao'] ?></td>
@@ -157,7 +162,8 @@ if (isset($_POST['btn_alterar'])) {
                     <td><?= $produto[$i]['ProdValorVenda'] ?></td>
                     <td><?= $produto[$i]['ProdEstoqueMin'] ?></td>
                     <td><?= $produto[$i]['ProdEstoque'] ?></td>
-                    <td><img src="../../Resource/dataview/<?= $produto[$i]['ProdImagemPath'] ?>" alt="<?= $produto[$i]['ProdImagemPath'] ?>" class="brand-image img-circle elevation-3" width="50px" height="50px"></td>
+                    <td><a href="../../Resource/dataview/<?= $produto[$i]['ProdImagemPath'] ?>" target="_blank" rel="noopener noreferrer"><img src="../../Resource/dataview/<?= $produto[$i]['ProdImagemPath'] ?>" alt="<?= $produto[$i]['ProdImagemPath'] ?>" class="brand-image img-circle elevation-3" width="50px" height="50px"></a></td>
+
 
                 </tr>
             <?php } ?>

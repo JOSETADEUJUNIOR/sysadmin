@@ -20,13 +20,13 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>CNPJ</label>
-                            <input type="text" name="cnpj" id="cnpj" class="form-control obg" placeholder="CNPJ" data-inputmask='"mask": "99.999.999/9999-99"' data-mask>
+                            <input type="text" name="cnpj" id="cnpj" class="form-control obg" placeholder="CNPJ">
                         </div>
                     </div>
                     <div class="col-sm-2">
                         <div class="form-group">
                             <label>Cep</label>
-                            <input type="text" name="cep" id="cep" class="form-control obg" placeholder="cep" data-inputmask='"mask": "99.999-999"' data-mask>
+                            <input type="text" name="cep" id="cep" class="form-control obg" placeholder="cep">
                         </div>
                     </div>
                     <div class="col-sm-6">

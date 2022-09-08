@@ -48,12 +48,12 @@ use Src\_public\Util; ?>
             <section class="content">
 
                 <!-- Default box -->
-                <div id="CadOs" class="card card-secondary <?= ($venda[0]['VendaID'] != '' ? '' : 'collapsed-card') ?>">
+                <div id="CadVenda" class="card card-secondary <?= ($venda[0]['VendaID'] != '' ? '' : 'collapsed-card') ?>">
                     <div class="card-header">
                         <h3 class="card-title">Campos para venda</h3>
 
                         <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <button type="button" class="btn btn-outline-info" style="color:white" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                                 <?= ($venda[0]['VendaID'] != '' ? 'Editar ' : 'Add ') ?>Venda</button>
 
                         </div>
@@ -137,7 +137,7 @@ use Src\_public\Util; ?>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0">
-                            <table class="table table-hover" id="tabela_result_os">
+                            <table class="table table-hover" id="tabela_result_venda">
                                 <thead>
                                     <tr>
                                         <th>Ação</th>

@@ -87,7 +87,7 @@ function AlterarEmpresaModal(id, nome, cnpj, endereco, cep, numero, cidade, EmpL
 
 }
 
-function AlterarClienteModal(id, nome, dtnascimento, telefone, email, cep, endereco, numero, bairro, cidade, estado, descricao, status) {
+function AlterarClienteModal(id, nome, dtnascimento, telefone, email, cep, endereco, numero, bairro, cidade, estado, descricao, status, cpfCnpj, tipo) {
     $("#AlteraID").val(id);
     $("#Alteranome").val(nome);
     $("#Alteradtnascimento").val(dtnascimento);
@@ -101,6 +101,8 @@ function AlterarClienteModal(id, nome, dtnascimento, telefone, email, cep, ender
     $("#Alteraestado").val(estado);
     $("#Alteradescricao").val(descricao);
     $("#Alteraativo").val(status);
+    $("#AlteracpfCnpj").val(cpfCnpj);
+    $("#Alteratipo").val(tipo);
 
 }
 function AlterarOsModal(id, dtInicial, dtFinal, garantia, descriProd, defeito, obs, clienteID, tecnicoID, Status, Laudo, clienteNome) {
@@ -143,6 +145,53 @@ function AlterarProdutoModal(id, descricao, dtcriacao, codBarra, ValorCompra, Va
 
 }
 
+function LiberaTroco()
+{
+    let valor = $("#AlterarFaturaFormPgto").val(); 
+    if (valor=='D') {
+        $("#troco").show();
+        $("#trocoCliente").show();
+       
+    }else{
+        $("#troco").hide();
+
+    }
+    
+}
+
+function Desconto()
+{
+    let Valor = $("#AlterafaturaValor").val();
+    let desconto = $("#AlteraDesconto").val();
+    let soma = Valor - desconto;
+    valorDesconto = soma.toLocaleString("en-US", {
+        style: "currency",
+        currency: "BRL"
+    });
+    
+    $("#ValorDesconto").val(valorDesconto);
+}
+function ValorTroco()
+{
+    let valorRecebido =  $("#AlteraValorRecebido").val();
+    let valorFaturar = $("#ValorDesconto").val();
+    let valorFatura = valorFaturar.split('$');
+    let valornovo = valorFatura[1];
+
+    
+    let soma = valorRecebido - valornovo; 
+    valorTroco = soma.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+    });
+    
+    
+    $("#TrocoCliente").val(valorTroco);
+    
+
+}
+
+
 function NotificarCampos(form_id) {
 
     var ret = true;
@@ -177,4 +226,5 @@ function LimparCampos(form_id) {
 function BASE_URL_AJAX(dataview) {
     return "../../Resource/dataview/" + dataview + ".php";
 }
+
 

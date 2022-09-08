@@ -74,5 +74,14 @@ class UsuarioController{
 
         return $this->dao->ValidarLoginDAO($vo);
     }
+
+    public function ValidarEmail($email)
+    {
+        if (empty(trim($email))) {
+            return 0 ;
+        }
+
+        return $this->dao->ValidarEmailDAO($email);
+    }
     
 }

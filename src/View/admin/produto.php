@@ -180,8 +180,9 @@
                                     <?php for ($i = 0; $i < count($produto); $i++) { ?>
                                         <tr>
                                             <td>
-                                                <a href="#" onclick="AlterarProdutoModal('<?= $produto[$i]['ProdID'] ?>', '<?= $produto[$i]['ProdDescricao'] ?>','<?= $produto[$i]['ProdDtCriacao'] ?>','<?= $produto[$i]['ProdCodBarra'] ?>','<?= $produto[$i]['ProdValorCompra'] ?>','<?= $produto[$i]['ProdValorVenda'] ?>','<?= $produto[$i]['ProdEstoqueMin'] ?>','<?= $produto[$i]['ProdEstoque'] ?>','<?= $produto[$i]['ProdImagem'] ?>')" data-toggle="modal" data-target="#alterarProduto" class="btn btn-warning btn-xs">Alterar</a>
-                                                <a href="#" onclick="ExcluirModal('<?= $produto[$i]['ProdID'] ?>', '<?= $produto[$i]['ProdDescricao'] ?>')" data-toggle="modal" data-target="#modalExcluir" class="btn btn-danger btn-xs">Excluir</a>
+                                                <a href="#" onclick="AlterarProdutoModal('<?= $produto[$i]['ProdID'] ?>', '<?= $produto[$i]['ProdDescricao'] ?>','<?= $produto[$i]['ProdDtCriacao'] ?>','<?= $produto[$i]['ProdCodBarra'] ?>','<?= $produto[$i]['ProdValorCompra'] ?>','<?= $produto[$i]['ProdValorVenda'] ?>','<?= $produto[$i]['ProdEstoqueMin'] ?>','<?= $produto[$i]['ProdEstoque'] ?>','<?= $produto[$i]['ProdImagem'] ?>')" data-toggle="modal" data-target="#alterarProduto"><i class="fas fa-edit"></i></a>
+                                                <a href="#" onclick="ExcluirModal('<?= $produto[$i]['ProdID'] ?>', '<?= $produto[$i]['ProdDescricao'] ?>')" data-toggle="modal" data-target="#modalExcluir" ><i style="color:red" class="fas fa-trash-alt"></i></a>
+                                                <a href="relProdutoBarras.php?codbarras=<?= $produto[$i]['ProdCodBarra'].'&nomeProduto='.$produto[$i]['ProdDescricao']?>"target="_blank"><i title="Emitir Codigo de Barras" style=" color:red; font-size:14px; margin-left:1px" class="fa fa-barcode"></i></a>
                                             </td>
                                             <td><?= $produto[$i]['ProdCodBarra'] ?></td>
                                             <td><?= $produto[$i]['ProdDescricao'] ?></td>

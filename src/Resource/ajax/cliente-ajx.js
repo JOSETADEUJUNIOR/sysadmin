@@ -35,6 +35,8 @@ function Excluir() {
 function AlterarCliente() {
     let CliID = $("#AlteraID").val();
     let nomeCliente = $("#Alteranome").val();
+    let cpfCnpj = $("#AlteracpfCnpj").val();
+    let tipo = $("#Alteratipo").val();
     let dtnascimento = $("#Alteradtnascimento").val();
     let telefone = $("#Alteratelefone").val();
     let email = $("#Alteraemail").val();
@@ -53,6 +55,8 @@ function AlterarCliente() {
             btnAlterar: 'ajx',
             AlteraID: CliID,
             nomeCliente: nomeCliente,
+            cpfCnpj: cpfCnpj,
+            tipo: tipo,
             dtnascimento: dtnascimento,
             telefone: telefone,
             email: email,
@@ -85,6 +89,8 @@ function CadastrarCliente(id_form) {
     if (NotificarCampos(id_form)) {
 
         let nomeCliente = $("#nomeCliente").val();
+        let cpfCnpj = $("#cpfCnpj").val();
+        let tipo = $("#tipo").val();
         let dtnascimento = $("#dtnascimento").val();
         let telefone = $("#telefone").val();
         let email = $("#email").val();
@@ -102,6 +108,8 @@ function CadastrarCliente(id_form) {
             data: {
                 btn_cadastrar: 'ajx',
                 nomeCliente: nomeCliente,
+                cpfCnpj: cpfCnpj,
+                tipo: tipo,
                 dtnascimento: dtnascimento,
                 telefone: telefone,
                 email: email,

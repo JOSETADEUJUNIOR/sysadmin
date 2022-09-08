@@ -291,8 +291,8 @@ if (isset($_POST['btn_cadastrar'])) {
         <tbody>
             <tr style="background-color: #dfdfdf;">
                 <td colspan="4"><span><strong>Total de valores da OS: </strong></span></td>
-                <td colspan="1"><strong><?= 'R$: ' . $subTotal ?></strong></td>
-                <td colspan="2"><strong><?= 'R$: ' . $ordemOS[0]['OsValorTotal'] ?></strong></td>
+                <td colspan="1" ><strong><?= 'R$: '. Util::FormatarValor($subTotal) ?></strong></td>
+                <td colspan="2" ><strong><?= 'R$: '. Util::FormatarValor($ordemOS[0]['OsValorTotal']) ?></strong></td>
             </tr>
         </tbody>
     </table>

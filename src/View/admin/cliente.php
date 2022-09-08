@@ -55,10 +55,16 @@
                     <form action="cliente.php" method="post" id="form_cliente">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-10">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Nome</label>
                                         <input class="form-control obg" id="nomeCliente" name="nomeCliente" placeholder="Digite o aqui....">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>CPF/CNPJ</label>
+                                        <input class="form-control obg" id="cpfCnpj" name="cpfCnpj" placeholder="Digite o aqui....">
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -67,6 +73,15 @@
                                         <select class="form-control obg" id="ativo" name="ativo">
                                             <option selected value="A">Sim</option>
                                             <option value="I">Não</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>Tipo</label>
+                                        <select class="form-control obg" id="tipo" name="tipo">
+                                            <option selected value="F">Fornecedor</option>
+                                            <option value="C">Cliente</option>
                                         </select>
                                     </div>
                                 </div>
@@ -79,7 +94,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Telefone</label>
-                                        <input type="phone" class="form-control obg" id="telefone" name="telefone" placeholder="Digite o aqui...." data-inputmask='"mask": "(99) 9 9999-9999"' data-mask>
+                                        <input type="phone" class="form-control obg" id="telefone" name="telefone" placeholder="Digite o aqui....">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -91,7 +106,7 @@
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label>Cep</label>
-                                        <input class="form-control obg" id="cep" name="cep" placeholder="Digite o aqui...." data-inputmask='"mask": "99.999-999"' data-mask>
+                                        <input class="form-control obg" id="cep" name="cep" placeholder="Digite o aqui....">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -190,7 +205,7 @@
                                     <?php for ($i = 0; $i < count($cliente); $i++) { ?>
                                         <tr>
                                             <td>
-                                                <a href="#" onclick="AlterarClienteModal('<?= $cliente[$i]['CliID'] ?>', '<?= $cliente[$i]['CliNome'] ?>','<?= $cliente[$i]['CliDtNasc'] ?>','<?= $cliente[$i]['CliTelefone'] ?>','<?= $cliente[$i]['CliEmail'] ?>','<?= $cliente[$i]['CliCep'] ?>','<?= $cliente[$i]['CliEndereco'] ?>','<?= $cliente[$i]['CliNumero'] ?>','<?= $cliente[$i]['CliBairro'] ?>','<?= $cliente[$i]['CliCidade'] ?>','<?= $cliente[$i]['CliEstado'] ?>','<?= $cliente[$i]['CliDescricao'] ?>','<?= $cliente[$i]['CliStatus'] ?>')" data-toggle="modal" data-target="#alterarCliente"><i class="fas fa-edit"></i></a>
+                                            <a href="#" onclick="AlterarClienteModal('<?= $cliente[$i]['CliID'] ?>', '<?= $cliente[$i]['CliNome'] ?>','<?= $cliente[$i]['CliDtNasc'] ?>','<?= $cliente[$i]['CliTelefone'] ?>','<?= $cliente[$i]['CliEmail'] ?>','<?= $cliente[$i]['CliCep'] ?>','<?= $cliente[$i]['CliEndereco'] ?>','<?= $cliente[$i]['CliNumero'] ?>','<?= $cliente[$i]['CliBairro'] ?>','<?= $cliente[$i]['CliCidade'] ?>','<?= $cliente[$i]['CliEstado'] ?>','<?= $cliente[$i]['CliDescricao'] ?>','<?= $cliente[$i]['CliStatus'] ?>','<?= $cliente[$i]['CliCpfCnpj'] ?>','<?= $cliente[$i]['CliTipo'] ?>')" data-toggle="modal" data-target="#alterarCliente"><i class="fas fa-edit"></i></a>
                                                 <a href="#" onclick="ExcluirModal('<?= $cliente[$i]['CliID'] ?>', '<?= $cliente[$i]['CliNome'] ?>')" data-toggle="modal" data-target="#modalExcluir"><i style="color:red" class="fas fa-trash-alt"></i></a>
                                             </td>
                                             <td><?= $cliente[$i]['CliNome'] ?></td>
@@ -234,6 +249,34 @@
             $('[data-mask]').inputmask()
         })
     </script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+    <script type="text/javascript">
+ 
+var options = {
+    onKeyPress: function (cpf, ev, el, op) {
+        var masks = ['000.000.000-000', '00.000.000/0000-00'];
+        $('#cpfCnpj').mask((cpf.length > 14) ? masks[1] : masks[0], op);
+    }
+}
+
+$('#cpfCnpj').length > 11 ? $('$cpfCnpj').mask('00.000.000/0000-00', options) : $('#cpfCnpj').mask('000.000.000-00#', options);
+var options = {
+    onKeyPress: function (cpf, ev, el, op) {
+        var masks = ['000.000.000-000', '00.000.000/0000-00'];
+        $('#AlteracpfCnpj').mask((cpf.length > 14) ? masks[1] : masks[0], op);
+    }
+}
+
+$('#AlteracpfCnpj').length > 11 ? $('$AlteracpfCnpj').mask('00.000.000/0000-00', options) : $('#AlteracpfCnpj').mask('000.000.000-00#', options);
+
+$(document).ready(function() {
+            $("#telefone").mask('(00) 0 0000-0000')
+            $("#Alteratelefone").mask('(00) 0 0000-0000')
+            $("#AlteraCep").mask('00.000-000')
+            $("#cep").mask('00.000-000')
+            
+        });
+</script>
 </body>
 
 </html>

@@ -17,6 +17,21 @@ class Financeiro
         $sql = 'UPDATE tb_lancamentos set LancDescricao =?, LancValor =?, LancDtVencimento =?, LancDtPagamento =?,  LancFormPgto =?, Tipo =?, LancClienteID =?, LancEmpID =?, LancUserID =? WHERE LancID = ?';
         return $sql;
     }
+    public static function ConsultarVendaOS()
+    {
+        $sql = 'SELECT LancID, VendaLancamentoID, VendaID, OsLancamentoID
+		FROM db_os.tb_lancamentos
+			left join tb_vendas on tb_lancamentos.LancID = tb_vendas.VendaLancamentoID
+            left Join tb_os on tb_lancamentos.LancID = tb_os.OsLancamentoID
+				Where LancID = ?';
+        return $sql;
+    }
+
+    public static function AtualizaValorVendaSQL()
+    {
+        $sql = 'UPDATE tb_vendas set VendaDesconto = VendaDesconto + ? WHERE VendaID = ? and VendaEmpID = ?';
+        return $sql;
+    }
 
     public static function ExcluirLancamentoSQL()
     {

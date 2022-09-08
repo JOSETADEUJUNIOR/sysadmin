@@ -13,7 +13,6 @@ use Src\Controller\FinanceiroController;
 
 $ctrllanc = new FinanceiroController();
 $lancamentos = $ctrllanc->RetornaTodosLancamentoController();
-Util::debug($lancamentos);
 $ctrlProd = new ProdutoController();
 $produto = $ctrlProd->RetornarProdutoController();
 $ctrlVenda = new VendaController();

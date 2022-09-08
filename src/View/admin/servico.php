@@ -141,8 +141,8 @@
                                     <?php for ($i = 0; $i < count($servico); $i++) { ?>
                                         <tr>
                                             <td>
-                                                <a href="#" onclick="AlterarServicoModal('<?= $servico[$i]['ServID'] ?>', '<?= $servico[$i]['ServNome'] ?>','<?= $servico[$i]['ServValor'] ?>','<?= $servico[$i]['ServDescricao'] ?>')" data-toggle="modal" data-target="#alterarServico" class="btn btn-warning btn-xs">Alterar</a>
-                                                <a href="#" onclick="ExcluirModal('<?= $servico[$i]['ServID'] ?>', '<?= $servico[$i]['ServNome'] ?>')" data-toggle="modal" data-target="#modalExcluir" class="btn btn-danger btn-xs">Excluir</a>
+                                                <a href="#" onclick="AlterarServicoModal('<?= $servico[$i]['ServID'] ?>', '<?= $servico[$i]['ServNome'] ?>','<?= $servico[$i]['ServValor'] ?>','<?= $servico[$i]['ServDescricao'] ?>')" data-toggle="modal" data-target="#alterarServico"><i class="fas fa-edit"></i></a>
+                                                <a href="#" onclick="ExcluirModal('<?= $servico[$i]['ServID'] ?>', '<?= $servico[$i]['ServNome'] ?>')" data-toggle="modal" data-target="#modalExcluir"><i style="color:red" class="fas fa-trash-alt"></i></a>
                                             </td>
                                             <td><?= $servico[$i]['ServNome'] ?></td>
                                             <td><?= $servico[$i]['ServValor'] ?></td>
@@ -183,7 +183,7 @@
             $("#valorServico").mask('000000.00', {
                 reverse: true
             });
-            $("#valorServico").mask('000000.00', {
+            $("#AlteraValor").mask('000000.00', {
                 reverse: true
             });
         });

@@ -32,7 +32,7 @@ use Src\_public\Util; ?>
                         <div class="col-sm-6">
                             <h1>Financeiro</h1>
                             <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#faturar">Nova Receita</button>
-                            <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#FaturaDespesa">Nova Receita</button>
+                            <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#FaturaDespesa">Nova Despesa</button>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -205,6 +205,15 @@ use Src\_public\Util; ?>
                     reverse: true
                 });
                 $("#DespValor").mask('000000.00', {
+                    reverse: true
+                });
+                $("#AlteraValorRecebido").mask('000000.00', {
+                    reverse: true
+                });
+                $("#AlteraDesconto").mask('000000.00', {
+                    reverse: true
+                });
+                $("#ValorDesconto").mask('000000.00', {
                     reverse: true
                 });
             });

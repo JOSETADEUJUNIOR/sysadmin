@@ -10,6 +10,8 @@ require_once dirname(__DIR__, 2) . '/Resource/dataview/usuario_dataview.php';?>
 </head>
 
 <body class="hold-transition login-page">
+<body style="background-image: url(../../Template/dist/img/imagemPrincipal1.jpg); background-repeat: no-repeat; background-position: 100% 60%; background-attachment: fixed;">  
+
 <div class="login-box">
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">

@@ -26,13 +26,13 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label>Senha</label>
-                            <input type="text" name="senha" id="senha" class="form-control obg" placeholder="senha">
+                            <input type="password" name="senha" id="senha" class="form-control obg" placeholder="senha">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label>Telefone</label>
-                            <input type="text" name="telefone" id="telefone" class="form-control obg" placeholder="telefone" data-inputmask='"mask": "(99) 9 9999-9999"' data-mask>
+                            <input type="text" name="telefone" id="telefone" class="form-control obg" placeholder="telefone">
                         </div>
                     </div>
                     <div class="col-sm-4">

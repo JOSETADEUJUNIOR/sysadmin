@@ -9,7 +9,7 @@
               </button>
             </div>
             <div class="modal-body">
-            <input type="text" id="ExcluirID" name="ExcluirID">
+            <input type="hidden" id="ExcluirID" name="ExcluirID">
               <p>Deseja realmente excluir o registro: <span id="ExcluirNome"></span>?</p>
           </div>
             <div class="modal-footer justify-content-between">
