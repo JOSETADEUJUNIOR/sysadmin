@@ -38,7 +38,7 @@ if (isset($_POST['btn_login'])){
              $empID = $ret[0]['UserEmpID'];
      
              Util::CriarSessao($nome, $id, $empID);
-             header('location: index.php');
+             header('location: meus_dados.php');
              exit;
      
          }

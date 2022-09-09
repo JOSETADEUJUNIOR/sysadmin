@@ -55,7 +55,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Dt Pagamento</label>
+                            <label>Dt Recebimento</label>
                             <input type="date" class="form-control obg" id="AlterafaturaDtPgto" name="AlterafaturaDtPgto" placeholder="Digite o aqui....">
                         </div>
                     </div>

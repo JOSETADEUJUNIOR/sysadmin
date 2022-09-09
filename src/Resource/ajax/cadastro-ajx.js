@@ -26,6 +26,7 @@ function CadastrarUsuario(id_form) {
                RemoverLoad();
                 if(ret == '1') {
                 MensagemSucesso();
+                window.location.replace("login.php");
                 LimparCampos(id_form);
                 }else{
                     MensagemErro();
@@ -56,7 +57,6 @@ function ValidarLogin(id_form){
                     MensagemSucesso();
 
                 }else if(ret == '-5'){
-                    alert('caiu aqui');
                     MensagemErro();
                 }
             }
@@ -74,7 +74,6 @@ function ValidarEmailCadastrado(email_digitado){
                 emailDigitado: 'ajx',
                 email: email_digitado
             }, success: function(ret){
-                alert(ret);
                 if (ret == '1') {
                     MensagemEmailExiste();
                     $("#login").val('');

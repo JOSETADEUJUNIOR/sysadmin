@@ -12,15 +12,28 @@ $empresa = $ctrlEmpresa->RetornarDadosCadastraisController();
 
 $ctrl = new ProdutoController();
 
-if (isset($_POST['btn_cadastrar'])) {
+
+if (isset($_GET['EstoqMin'])) {
+    $prods = $ctrl->RetornarProdutoController();
+    foreach ($prods as $prod) {
+
+        if ($prod['ProdEstoque'] == 0 || $prod['ProdEstoque'] <= $prod['ProdEstoqueMin']) {
+
+            $produtos[] = $prod;
+        }
+    }
+    $produto = $produtos;
+}
+
+else if (isset($_POST['btn_cadastrar'])) {
     $vo = new ProdutoVO;
     $vo->setDescricao($_POST['ProdDescricao']);
     $vo->setDtCriacao($_POST['ProdDtCad']);
     $vo->setCodBarra($_POST['ProdCodBarra']);
     $vo->setValorCompra($_POST['ProdValorCompra']);
     $vo->setValorVenda($_POST['ProdValorVenda']);
-    $vo->setEstoqueMin($_POST['ProdEstoque']);
-    $vo->setEstoque($_POST['ProdEstoqueMin']);
+    $vo->setEstoqueMin($_POST['ProdEstoqueMin']);
+    $vo->setEstoque($_POST['ProdEstoque']);
     $arquivos = $_FILES['arquivos'];
 
     if ($arquivos['size'] > 2097152)
@@ -44,7 +57,7 @@ if (isset($_POST['btn_cadastrar'])) {
         echo $ret;
     }
 }
-if (isset($_POST['btn_alterar'])) {
+else if (isset($_POST['btn_alterar'])) {
     $vo = new ProdutoVO;
     $vo->setID($_POST['AlteraID']);
     $vo->setDescricao($_POST['AlteraProdDescricao']);
@@ -52,8 +65,8 @@ if (isset($_POST['btn_alterar'])) {
     $vo->setCodBarra($_POST['AlteraProdCodBarra']);
     $vo->setValorCompra($_POST['AlteraProdValorCompra']);
     $vo->setValorVenda($_POST['AlteraProdValorVenda']);
-    $vo->setEstoqueMin($_POST['AlteraProdEstoque']);
-    $vo->setEstoque($_POST['AlteraProdEstoqueMin']);
+    $vo->setEstoqueMin($_POST['AlteraProdEstoqueMin']);
+    $vo->setEstoque($_POST['AlteraProdEstoque']);
     $arquivos = $_FILES['Alteraarquivos'];
 
     if ($arquivos['size'] > 2097152)

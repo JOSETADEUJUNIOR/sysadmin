@@ -182,4 +182,18 @@ class FinanceiroDAO extends Conexao
         $sql->execute();
         return $sql->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+    public function RetornaLancamentoVencimentoDAO(): array
+    {
+
+        $sql = $this->conexao->prepare(Financeiro::RetornaVencimentoLancamentoSQL());
+        $sql->bindValue(1, date('Y-m-d'));
+        $sql->bindValue(2, Util::CodigoEmpresa());
+        $sql->execute();
+        return $sql->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+
+
+
 }

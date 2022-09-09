@@ -26,19 +26,20 @@ ob_start();
 <table style="width:100%">
   <tr>
     <th><img src="../../Resource/dataview/<?= $empresa[0]['EmpLogoPath'] ?>" height="100px" width="150px" alt="Photo 2" class="img-fluid"></th>
-    <th colspan="3">
+    <th colspan="4">
       <p><?= $empresa[0]['EmpNome'] ?></p>
       <p><?= $empresa[0]['EmpCNPJ'] ?></p>
       <p><?= $empresa[0]['EmpEnd'] ?></p>
     </th>
   </tr>
   <tr>
-    <td align="center" colspan="4"><strong>Relação de Produtos</strong></td>
+    <td align="center" colspan="5"><strong>Relação de Produtos</strong></td>
   </tr>
   <tr>
     <td><strong>Descricao</strong></td>
     <td><strong>Valor Compra</strong></td>
     <td><strong>Valor Venda</strong></td>
+    <td><strong>Estoque Min</strong></td>
     <td><strong>Estoque</strong></td>
   </tr>
   <?php for ($i = 0; $i < count($produto); $i++) { ?>
@@ -49,6 +50,7 @@ ob_start();
       <td style="font-size: 12px;"><?= $produto[$i]['ProdDescricao'] ?></td>
       <td style="font-size: 12px;"><?= Util::FormatarValor($produto[$i]['ProdValorCompra']) ?></td>
       <td style="font-size: 12px;"><?= Util::FormatarValor($produto[$i]['ProdValorVenda']) ?></td>
+      <td style="font-size: 12px;"><?= $produto[$i]['ProdEstoqueMin'] ?></td>
       <td style="font-size: 12px;"><?= $produto[$i]['ProdEstoque'] ?></td>
     </tr>
   <?php   } ?>

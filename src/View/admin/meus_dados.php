@@ -43,7 +43,7 @@ require_once dirname(__DIR__, 2) . '/Resource/dataview/meusdados_dataview.php'; 
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-6">
 
                             <!-- Profile Image -->
                             <div class="card card-primary card-outline" id="table_result_Usuario">
@@ -82,7 +82,7 @@ require_once dirname(__DIR__, 2) . '/Resource/dataview/meusdados_dataview.php'; 
                         </div>
                         <!-- /.col -->
 
-                        <div class="col-md-9" >
+                        <div class="col-md-6" >
                             <div class="card card-primary" id="table_result_Empresa" >
                                 <div class="card-header">
                                     <h3 class="card-title">Informações da Empresa</h3>

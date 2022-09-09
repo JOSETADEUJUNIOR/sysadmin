@@ -137,7 +137,7 @@ $dados = $empresa->RetornarDadosCadastraisController();
               </a>
             </li>
             <li class="nav-item">
-              <a href="pdfProduto.php" target="_blank" class="nav-link">
+              <a href="printProduto.php" target="_blank" class="nav-link">
                 <i class="fa fa-barcode nav-icon"></i>
                 <p>Produto</p>
               </a>

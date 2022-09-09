@@ -91,6 +91,15 @@ class Financeiro
 
         return $sql;
     }
+    public static function RetornaVencimentoLancamentoSQL()
+    {
+        $sql = 'SELECT LancID
+                    FROM tb_lancamentos
+                           WHERE LancDtVencimento = ? AND LancEmpID = ?';
+
+        return $sql;
+    }
+
     public static function ConsultarEquipamentoBuscaSQL($BuscarTipo, $filtro_palavra)
     {
         $sql = 'SELECT  equip.id as idEquip,

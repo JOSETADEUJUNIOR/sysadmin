@@ -48,7 +48,7 @@
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-outline-info" style="color:white" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                                <i class="fa">Novo Cliente</i></button>
+                                <i class="fa fa-plus-circle"> Add Cliente</i></button>
                         </div>
                     </div>
                     <form action="cliente.php" method="post" id="form_cliente">
@@ -79,15 +79,15 @@
                                     <div class="form-group">
                                         <label>Tipo</label>
                                         <select class="form-control obg" id="tipo" name="tipo">
-                                            <option selected value="F">Fornecedor</option>
-                                            <option value="C">Cliente</option>
+                                            <option selected value="C">Cliente</option>
+                                            <option value="F">Fornecedor</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Data nascimento</label>
-                                        <input type="date" class="form-control obg" id="dtnascimento" name="dtnascimento" placeholder="Digite o aqui....">
+                                        <input type="date" class="form-control" id="dtnascimento" name="dtnascimento" placeholder="Digite o aqui....">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -99,43 +99,43 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>E-mail</label>
-                                        <input type="e-mail" class="form-control obg" id="email" name="email" placeholder="Digite o aqui....">
+                                        <input type="e-mail" class="form-control" id="email" name="email" placeholder="Digite o aqui....">
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label>Cep</label>
-                                        <input class="form-control obg" id="cep" name="cep" placeholder="Digite o aqui....">
+                                        <input class="form-control" id="cep" name="cep" placeholder="Digite o aqui....">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Endereço</label>
-                                        <input class="form-control obg" id="endereco" name="endereco" placeholder="Digite o aqui....">
+                                        <input class="form-control" id="endereco" name="endereco" placeholder="Digite o aqui....">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Numero</label>
-                                        <input class="form-control obg" id="numero" name="numero" placeholder="Digite o aqui....">
+                                        <input class="form-control" id="numero" name="numero" placeholder="Digite o aqui....">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Bairro</label>
-                                        <input class="form-control obg" id="bairro" name="bairro" placeholder="Digite o aqui....">
+                                        <input class="form-control" id="bairro" name="bairro" placeholder="Digite o aqui....">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Cidade</label>
-                                        <input class="form-control obg" id="cidade" name="cidade" placeholder="Digite o aqui....">
+                                        <input class="form-control" id="cidade" name="cidade" placeholder="Digite o aqui....">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Estado</label>
-                                        <input class="form-control obg" id="estado" name="estado" placeholder="Digite o aqui....">
+                                        <input class="form-control" id="estado" name="estado" placeholder="Digite o aqui....">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -270,8 +270,8 @@
         $('#AlteracpfCnpj').length > 11 ? $('$AlteracpfCnpj').mask('00.000.000/0000-00', options) : $('#AlteracpfCnpj').mask('000.000.000-00#', options);
 
         $(document).ready(function() {
-            $("#telefone").mask('(00) 0 0000-0000')
-            $("#Alteratelefone").mask('(00) 0 0000-0000')
+            $("#telefone").mask('(00)00000-0000')
+            $("#Alteratelefone").mask('(00)00000-0000')
             $("#AlteraCep").mask('00.000-000')
             $("#cep").mask('00.000-000')
 

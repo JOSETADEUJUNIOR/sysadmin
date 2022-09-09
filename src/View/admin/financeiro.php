@@ -109,7 +109,7 @@ use Src\_public\Util; ?>
                                                 <th>Cliente</th>
                                                 <th>Descrição</th>
                                                 <th>Data Vencimento</th>
-                                                <th>Data Pagamento</th>
+                                                <th>Data Pagamento/Recebimento</th>
                                                 <th>Tipo</th>
                                                 <th>Valor</th>
                                                 <th>Ação</th>

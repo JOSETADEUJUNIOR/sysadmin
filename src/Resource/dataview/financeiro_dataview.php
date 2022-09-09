@@ -111,7 +111,7 @@ else if (isset($_POST['btn_consultar']) && $_POST['btn_consultar'] == 'ajx') {
                 <th>Cliente</th>
                 <th>Descrição</th>
                 <th>Data Vencimento</th>
-                <th>Data Pagamento</th>
+                <th>Data Pagamento/Recebimento</th>
                 <th>Tipo</th>
                 <th>Valor</th>
                 <th>Ação</th>
