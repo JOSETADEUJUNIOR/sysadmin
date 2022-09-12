@@ -48,7 +48,6 @@ function Excluir() {
             btnExcluir: 'ajx',
             ExcluirID: id
         }, success: function (ret) {
-            alert(ret);
             $("#modalExcluir").modal("hide");
             if (ret == 1) {
                 MensagemSucesso();

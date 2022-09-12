@@ -26,9 +26,8 @@ $clientes = $cliCtrl->RetornarClienteController();
 $ctrl = new OsController();
 $dadosOS = $ctrl->RetornarDadosOsController();
 if (isset($_GET['OsMes'])) {
-    $os = $ctrl->RetornarOsMesController();}
-
-else if (isset($_GET['OsID']) &&  is_numeric($_GET['OsID'])) {
+    $os = $ctrl->RetornarOsMesController();
+} else if (isset($_GET['OsID']) &&  is_numeric($_GET['OsID'])) {
     $OsID = $_GET['OsID'];
     $vo = new OsVO;
     $vo->setID($_GET['OsID']);
@@ -36,7 +35,12 @@ else if (isset($_GET['OsID']) &&  is_numeric($_GET['OsID'])) {
     $ProdOrdem = $ctrl->RetornaProdOrdem($vo);
     $ProdServOrdem = $ctrl->RetornaServOrdem($vo);
     $AnxOs = $ctrl->RetornaAnxOS($vo);
-}else if (isset($_POST['btn_cadastrar'])) {
+} else if (isset($_GET['Oscliente']) &&  is_numeric($_GET['Oscliente'])) {
+    $CliID = $_GET['Oscliente'];
+    $tipo = $_GET['tipo'];
+   
+    $os = $ctrl->RetornarOsClienteController($CliID, $tipo);
+} else if (isset($_POST['btn_cadastrar'])) {
     $vo = new OsVO;
     $vo->setDtInicial($_POST['dtInicial']);
     $vo->setOsDtFinal($_POST['dtFinal']);
@@ -191,68 +195,69 @@ else if (isset($_GET['OsID']) &&  is_numeric($_GET['OsID'])) {
             </tr>
         </thead>
         <tbody>
-                                    <?php for ($i = 0; $i < count($os); $i++) { ?>
-                                        <tr>
-                                            <td>
-                                                <?php if ($os[$i]['OsFaturado'] == 'N') { ?>
-                                                    <a href="ordem_servico.php?OsID=<?= $os[$i]['OsID'] ?>"><i class="fas fa-edit"></i></a>
-                                                    <?php foreach ($dadosOS as $do) {
-                                                        if ($do['OsID'] == $os[$i]['OsID']) {
-                                                            $prodOS = $do['ProdOs_osID'];
-                                                            $servOS = $do['ServOs_osID'];
-                                                            $anxOS = $do['AnxOsID'];
-                                                        }
-                                                    } ?>
-                                                    <?php if ($prodOS == '' && $servOS == '' && $anxOS == '') { ?>
-                                                        <a href="#" onclick="ExcluirModal('<?= $os[$i]['OsID'] ?>','<?= $os[$i]['nomeCliente'] ?>')" data-toggle="modal" data-target="#modalExcluir"><i style="color:red" class="fas fa-trash-alt"></i></a>
-                                                    <?php } ?>
-                                                    <a href="itens_os.php?OsID=<?= $os[$i]['OsID'] ?>"><i style="color:purple" title="Inserir os Itens na OS" class="fas fa-list"></i></a>
-                                                    <a href="anexo_os.php?OsID=<?= $os[$i]['OsID'] ?>"><i style="color:black" title="Inserir os anexos na OS" class="fas fa-file-archive"></i></a>
-                                                <?php } ?>
-                                                <a href="print_os.php?OsID=<?= $os[$i]['OsID'] ?>"><i style="color:black" title="Imprimir OS" class="fas fa-print"></i></a>
-                                            </td>
-                                            <td><?= $os[$i]['nomeCliente'] ?></td>
-                                            <td><?= Util::ExibirDataBr($os[$i]['OsDtInicial']) ?></td>
-                                            <td><?= Util::ExibirDataBr($os[$i]['OsDtFinal']) ?></td>
-                                            <td><?= $os[$i]['OsTecID'] ?></td>
-                                            <?$soma = 0; $soma = ($os[$i]['OsValorTotal'] - $os[$i]['OsDesconto'])?>
-                                            <td><?=Util::FormatarValor($soma)?></td>
+            <?php for ($i = 0; $i < count($os); $i++) { ?>
+                <tr>
+                    <td>
+                        <?php if ($os[$i]['OsFaturado'] == 'N') { ?>
+                            <a href="ordem_servico.php?OsID=<?= $os[$i]['OsID'] ?>"><i class="fas fa-edit"></i></a>
+                            <?php foreach ($dadosOS as $do) {
+                                if ($do['OsID'] == $os[$i]['OsID']) {
+                                    $prodOS = $do['ProdOs_osID'];
+                                    $servOS = $do['ServOs_osID'];
+                                    $anxOS = $do['AnxOsID'];
+                                }
+                            } ?>
+                            <?php if ($prodOS == '' && $servOS == '' && $anxOS == '') { ?>
+                                <a href="#" onclick="ExcluirModal('<?= $os[$i]['OsID'] ?>','<?= $os[$i]['nomeCliente'] ?>')" data-toggle="modal" data-target="#modalExcluir"><i style="color:red" class="fas fa-trash-alt"></i></a>
+                            <?php } ?>
+                            <a href="itens_os.php?OsID=<?= $os[$i]['OsID'] ?>"><i style="color:purple" title="Inserir os Itens na OS" class="fas fa-list"></i></a>
+                            <a href="anexo_os.php?OsID=<?= $os[$i]['OsID'] ?>"><i style="color:black" title="Inserir os anexos na OS" class="fas fa-file-archive"></i></a>
+                        <?php } ?>
+                        <a href="print_os.php?OsID=<?= $os[$i]['OsID'] ?>"><i style="color:black" title="Imprimir OS" class="fas fa-print"></i></a>
+                    </td>
+                    <td><?= $os[$i]['nomeCliente'] ?></td>
+                    <td><?= Util::ExibirDataBr($os[$i]['OsDtInicial']) ?></td>
+                    <td><?= Util::ExibirDataBr($os[$i]['OsDtFinal']) ?></td>
+                    <td><?= $os[$i]['OsTecID'] ?></td>
+                    <? $soma = 0;
+                    $soma = ($os[$i]['OsValorTotal'] - $os[$i]['OsDesconto']) ?>
+                    <td><?= Util::FormatarValor($soma) ?></td>
 
-                                            <td><?php
-                                                $status = '';
-                                                if ($os[$i]['OsStatus'] == "O") {
-                                                    $status = "<button class=\"btn btn-secondary btn-xs\">Orçamento</button>";
-                                                } else if ($os[$i]['OsStatus'] == "A") {
-                                                    $status = "<button class=\"btn btn-info btn-xs\">Aberto</button>";
-                                                } else if ($os[$i]['OsStatus'] == "EA") {
-                                                    $status = "<button class=\"btn btn-warning btn-xs\">Em aberto</button>";
-                                                } else if ($os[$i]['OsStatus'] == "F") {
-                                                    $status = "<button class=\"btn btn-success btn-xs\">Finalizada</button>";
-                                                } else if ($os[$i]['OsStatus'] == "C") {
-                                                    $status = "<button class=\"btn btn-danger btn-xs\">Cancelado</button>";
-                                                } ?>
-                                                <?= $status ?>
-                                                <?php $texto = "$os[$i]['OsDefeito']"; ?>
-                                                <?= ($os[$i]['OsStatus'] != "F" ? '' : ($os[$i]['OsFaturado'] == "S" ? '<span class="btn btn-success btn-xs">Faturado</span>' : '<span onclick="faturarOs(' . $os[$i]['OsID'] . ',' . $os[$i]['OsCliID'] . ',' . $os[$i]['OsValorTotal'] . ')" class="btn btn-warning btn-xs">Faturar?</span>')) ?>
+                    <td><?php
+                        $status = '';
+                        if ($os[$i]['OsStatus'] == "O") {
+                            $status = "<button class=\"btn btn-secondary btn-xs\">Orçamento</button>";
+                        } else if ($os[$i]['OsStatus'] == "A") {
+                            $status = "<button class=\"btn btn-info btn-xs\">Aberto</button>";
+                        } else if ($os[$i]['OsStatus'] == "EA") {
+                            $status = "<button class=\"btn btn-warning btn-xs\">Em aberto</button>";
+                        } else if ($os[$i]['OsStatus'] == "F") {
+                            $status = "<button class=\"btn btn-success btn-xs\">Finalizada</button>";
+                        } else if ($os[$i]['OsStatus'] == "C") {
+                            $status = "<button class=\"btn btn-danger btn-xs\">Cancelado</button>";
+                        } ?>
+                        <?= $status ?>
+                        <?php $texto = "$os[$i]['OsDefeito']"; ?>
+                        <?= ($os[$i]['OsStatus'] != "F" ? '' : ($os[$i]['OsFaturado'] == "S" ? '<span class="btn btn-success btn-xs">Faturado</span>' : '<span onclick="faturarOs(' . $os[$i]['OsID'] . ',' . $os[$i]['OsCliID'] . ',' . $os[$i]['OsValorTotal'] . ')" class="btn btn-warning btn-xs">Faturar?</span>')) ?>
 
-                                                <?php 
-                                                $os[$i]['CliNome'] = str_replace(' ', '%20', $os[$i]['nomeCliente']);
-                                                $telefone = Util::remove_especial_char(trim($os[$i]['CliTelefone']));
-                                                $inicio_texto = "Olá, tudo bem?<br /><br /> Somo da *{$dadosEmp[0]['EmpNome']}<br /><br />*Segue o orçamento:*{$os[$i]['OsID']}*<br /><br />Nome do cliente: *{$os[$i]['nomeCliente']}*<br /><br />Defeito:";
-                                                $enviarDadosAparelho = str_replace('<br /', '%0A', $os[$i]['OsDescProdServ']);
-                                                $enviarOrcamento = str_replace('<br /', '%0A', $os[$i]['OsDefeito']);
-                                                $valorOS = str_replace('<br /', '%0A', $os[$i]['OsValorTotal']);
-                                                $linkTratado = "{$inicio_texto}";
-                                                $linkTratado = str_replace('<br />', '%0A', $linkTratado);
-                                                $linkTratado = str_replace(' ', '%20', $linkTratado);
+                        <?php
+                        $os[$i]['CliNome'] = str_replace(' ', '%20', $os[$i]['nomeCliente']);
+                        $telefone = Util::remove_especial_char(trim($os[$i]['CliTelefone']));
+                        $inicio_texto = "Olá, tudo bem?<br /><br /> Somo da *{$dadosEmp[0]['EmpNome']}<br /><br />*Segue o orçamento:*{$os[$i]['OsID']}*<br /><br />Nome do cliente: *{$os[$i]['nomeCliente']}*<br /><br />Defeito:";
+                        $enviarDadosAparelho = str_replace('<br /', '%0A', $os[$i]['OsDescProdServ']);
+                        $enviarOrcamento = str_replace('<br /', '%0A', $os[$i]['OsDefeito']);
+                        $valorOS = str_replace('<br /', '%0A', $os[$i]['OsValorTotal']);
+                        $linkTratado = "{$inicio_texto}";
+                        $linkTratado = str_replace('<br />', '%0A', $linkTratado);
+                        $linkTratado = str_replace(' ', '%20', $linkTratado);
 
-                                                $link = "https://api.whatsapp.com/send?phone=55{$telefone}&text=🔔%20{$linkTratado}%0A{$enviarOrcamento}%0ADados do aparelho:%0A{$enviarDadosAparelho}%0AValor do Serviço: R$:{$valorOS}";
-                                                ?>
-                                                <a class="btn btn-primary btn-xs " aria-label="WhatsApp" href="<?=$link?>" target="_blank">Enviar orçamento</a>
-                                            </td>
-                                        </tr>
-                                    <?php } ?>
-                                </tbody>
+                        $link = "https://api.whatsapp.com/send?phone=55{$telefone}&text=🔔%20{$linkTratado}%0A{$enviarOrcamento}%0ADados do aparelho:%0A{$enviarDadosAparelho}%0AValor do Serviço: R$:{$valorOS}";
+                        ?>
+                        <a class="btn btn-primary btn-xs " aria-label="WhatsApp" href="<?= $link ?>" target="_blank">Enviar orçamento</a>
+                    </td>
+                </tr>
+            <?php } ?>
+        </tbody>
     </table>
 
 <?php } else if (isset($_POST['btn_consultar_item']) && $_POST['btn_consultar_item'] == 'ajx') {

@@ -57,6 +57,12 @@ const FILTRO_MODELO = 2;
 const FILTRO_IDENTIFICACAO = 3;
 const FILTRO_DESCRICAO = 4;
 
+const FILTRO_ORCAMENTO = "O";
+const FILTRO_ABERTA = "A";
+const FILTRO_ANDAMENTO = "EA";
+const FILTRO_FINALIZADA = "F";
+const FILTRO_CANCELADA = "C";
+
 # Tipo de lançamento
 const LANCAMENTO_RECEITA = 1;
 const LANCAMENTO_DESPESA = 2;

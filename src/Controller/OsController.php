@@ -155,6 +155,10 @@ class OsController
     {
         return $this->dao->RetornarOsMesDAO();
     }
+    public function RetornarOsClienteController($CliID, $tipo): array
+    {
+        return $this->dao->RetornarOsClienteDAO($CliID, $tipo);
+    }
     public function RetornarOsServController(): array
     {
         return $this->dao->RetornarOsDAO();

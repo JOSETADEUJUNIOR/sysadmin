@@ -125,7 +125,7 @@ $dados = $empresa->RetornarDadosCadastraisController();
               </a>
             </li>
             <li class="nav-item">
-              <a href="printOS.php" target="_blank" class="nav-link">
+              <a href="printOs.php" target="_blank" class="nav-link">
                 <i class="fa fa-tags nav-icon"></i>
                 <p>Ordens de Serviços</p>
               </a>

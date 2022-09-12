@@ -78,8 +78,8 @@ class OsDAO extends Conexao
     public function FaturarOsDAO(OsVO $vo): int
     {
 
-        $sql= $this->conexao->prepare(Financeiro::InserirLancamentoSQL());
-        $sql->bindValue(1, 'Receita da OS:'.$vo->getID().'');
+        $sql = $this->conexao->prepare(Financeiro::InserirLancamentoSQL());
+        $sql->bindValue(1, 'Receita da OS:' . $vo->getID() . '');
         $sql->bindValue(2, $vo->getOsValorTotal());
         $sql->bindValue(3, date('Y-m-d'));
         $sql->bindValue(4, date('Y-m-d'));
@@ -92,7 +92,7 @@ class OsDAO extends Conexao
         $sql->execute();
 
         $UltimoLancID = $this->conexao->lastInsertId();
-       
+
         $sql = $this->conexao->prepare(Os::RetornarOrdemFaturadoSQL());
         $sql->bindValue(1, Util::CodigoEmpresa());
         $sql->bindValue(2, $vo->getID());
@@ -342,7 +342,6 @@ class OsDAO extends Conexao
         $sql->bindValue(1, Util::CodigoEmpresa());
         $sql->execute();
         return $sql->fetchAll(\PDO::FETCH_ASSOC);
-
     }
 
     public function ExcluirAnxOSDAO(AnxOSVO $vo)
@@ -414,6 +413,13 @@ class OsDAO extends Conexao
         $sql->bindValue(1, Util::CodigoEmpresa());
         $sql->bindValue(2, date('Y-m-01'));
         $sql->bindValue(3, date('Y-m-t'));
+        $sql->execute();
+        return $sql->fetchAll(\PDO::FETCH_ASSOC);
+    }
+    public function RetornarOsClienteDAO($CliID, $tipo)
+    {
+        $sql = $this->conexao->prepare(Os::RetornarOsClienteSQL($CliID, $tipo));
+        $sql->bindValue(1, Util::CodigoEmpresa());
         $sql->execute();
         return $sql->fetchAll(\PDO::FETCH_ASSOC);
     }

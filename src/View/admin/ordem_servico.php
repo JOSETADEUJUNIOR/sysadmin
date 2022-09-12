@@ -216,7 +216,7 @@ use Src\_public\Util; ?>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php for ($i = 0; $i < count($os); $i++) { ?>
+                                    <?php $soma = 0; for ($i = 0; $i < count($os); $i++) { ?>
                                         <tr>
                                             <td>
                                                 <?php if ($os[$i]['OsFaturado'] == 'N') { ?>
@@ -240,8 +240,7 @@ use Src\_public\Util; ?>
                                             <td><?= Util::ExibirDataBr($os[$i]['OsDtInicial']) ?></td>
                                             <td><?= Util::ExibirDataBr($os[$i]['OsDtFinal']) ?></td>
                                             <td><?= $os[$i]['OsTecID'] ?></td>
-                                            <?$soma = 0; $soma = ($os[$i]['OsValorTotal'] - $os[$i]['OsDesconto'])?>
-                                            <td><?=Util::FormatarValor($soma)?></td>
+                                            <td><?=Util::FormatarValor($soma = $os[$i]['OsValorTotal'] - $os[$i]['OsDesconto'])?></td>
 
                                             <td><?php
                                                 $status = '';
