@@ -237,20 +237,21 @@ use Src\_public\Util; ?>
           <p class="lead">Valor a ser pago em: <?= date('d/m/Y') ?></p>
 
           <div class="table-responsive">
-            <table class="table">
-              <tr>
-                <th style="width:50%">Subtotal:</th>
-                <td><?= ($subTotal != '' ? Util::FormatarValor($subTotal) : '0,00') ?></td>
-              </tr>
-              <!--<tr>
-                <th>Shipping:</th>
-                <td>$5.80</td>
-              </tr-->
-              <tr>
-                <th>Total:</th>
-                <td><?= ($ordemOS[0]['OsValorTotal'] != '' ? Util::FormatarValor($ordemOS[0]['OsValorTotal']) : '') ?></td>
-              </tr>
-            </table>
+              <table class="table">
+                  <tr>
+                      <th style="width:50%">Subtotal:</th>
+                      <td><?= ($subTotal != '' ? Util::FormatarValor($subTotal) : '0,00') ?></td>
+                  </tr>
+                  <tr>
+                      <th>Desconto:</th>
+                      <td><?= ($ordemOS[0]['OsDesconto'] != '' ? Util::FormatarValor($ordemOS[0]['OsDesconto']) : '') ?></td>
+                  </tr>
+                  
+                  <tr>
+                      <th>Total:</th>
+                      <td><?= ($ordemOS[0]['OsValorTotal'] != '' ? Util::FormatarValor($ordemOS[0]['OsValorTotal'] - $ordemOS[0]['OsDesconto']) : '') ?></td>
+                  </tr>
+              </table>
           </div>
         </div>
         <!-- /.col -->

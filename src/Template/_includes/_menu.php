@@ -74,30 +74,6 @@ $dados = $empresa->RetornarDadosCadastraisController();
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="setor.php" class="nav-link">
-                <i class="fa fa-users nav-icon"></i>
-                <p>Setor</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="consulta_equipamento.php" class="nav-link">
-                <i class="fa fa-barcode nav-icon"></i>
-                <p>Equipamento</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="modelo.php" class="nav-link">
-                <i class="fa fa-wrench nav-icon"></i>
-                <p>Modelo</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="tipoequipamento.php" class="nav-link">
-                <i class="fa fa-tags nav-icon"></i>
-                <p>Tipo Equipamento</p>
-              </a>
-            </li>
-            <li class="nav-item">
               <a href="ordem_servico.php" class="nav-link">
                 <i class="fa fa-book nav-icon"></i>
                 <p>O.S</p>
@@ -149,7 +125,7 @@ $dados = $empresa->RetornarDadosCadastraisController();
               </a>
             </li>
             <li class="nav-item">
-              <a href="pdfOS.php" target="_blank" class="nav-link">
+              <a href="printOS.php" target="_blank" class="nav-link">
                 <i class="fa fa-tags nav-icon"></i>
                 <p>Ordens de Serviços</p>
               </a>

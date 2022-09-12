@@ -20,7 +20,7 @@ class Financeiro
     public static function ConsultarVendaOS()
     {
         $sql = 'SELECT LancID, VendaLancamentoID, VendaID, OsLancamentoID, OsID
-		FROM db_os.tb_lancamentos
+		FROM tb_lancamentos
 			left join tb_vendas on tb_lancamentos.LancID = tb_vendas.VendaLancamentoID
             left Join tb_os on tb_lancamentos.LancID = tb_os.OsLancamentoID
 				Where LancID = ?';

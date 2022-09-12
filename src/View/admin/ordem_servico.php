@@ -211,6 +211,7 @@ use Src\_public\Util; ?>
                                         <th>Dt Inicio</th>
                                         <th>Dt Entrega</th>
                                         <th>Tecnico</th>
+                                        <th>Valor</th>
                                         <th>Status</th>
                                     </tr>
                                 </thead>
@@ -239,6 +240,8 @@ use Src\_public\Util; ?>
                                             <td><?= Util::ExibirDataBr($os[$i]['OsDtInicial']) ?></td>
                                             <td><?= Util::ExibirDataBr($os[$i]['OsDtFinal']) ?></td>
                                             <td><?= $os[$i]['OsTecID'] ?></td>
+                                            <?$soma = 0; $soma = ($os[$i]['OsValorTotal'] - $os[$i]['OsDesconto'])?>
+                                            <td><?=Util::FormatarValor($soma)?></td>
 
                                             <td><?php
                                                 $status = '';
@@ -259,7 +262,7 @@ use Src\_public\Util; ?>
 
                                                 <?php 
                                                 $os[$i]['CliNome'] = str_replace(' ', '%20', $os[$i]['nomeCliente']);
-
+                                                $telefone = Util::remove_especial_char(trim($os[$i]['CliTelefone']));
                                                 $inicio_texto = "Olá, tudo bem?<br /><br /> Somo da *{$dadosEmp[0]['EmpNome']}<br /><br />*Segue o orçamento:*{$os[$i]['OsID']}*<br /><br />Nome do cliente: *{$os[$i]['nomeCliente']}*<br /><br />Defeito:";
                                                 $enviarDadosAparelho = str_replace('<br /', '%0A', $os[$i]['OsDescProdServ']);
                                                 $enviarOrcamento = str_replace('<br /', '%0A', $os[$i]['OsDefeito']);
@@ -268,7 +271,7 @@ use Src\_public\Util; ?>
                                                 $linkTratado = str_replace('<br />', '%0A', $linkTratado);
                                                 $linkTratado = str_replace(' ', '%20', $linkTratado);
 
-                                                $link = "https://api.whatsapp.com/send?phone=55{$os[$i]['CliTelefone']}&text=🔔%20{$linkTratado}%0A{$enviarOrcamento}%0ADados do aparelho:%0A{$enviarDadosAparelho}%0AValor do Serviço: R$:{$valorOS}";
+                                                $link = "https://api.whatsapp.com/send?phone=55{$telefone}&text=🔔%20{$linkTratado}%0A{$enviarOrcamento}%0ADados do aparelho:%0A{$enviarDadosAparelho}%0AValor do Serviço: R$:{$valorOS}";
                                                 ?>
                                                 <a class="btn btn-primary btn-xs " aria-label="WhatsApp" href="<?=$link?>" target="_blank">Enviar orçamento</a>
                                             </td>

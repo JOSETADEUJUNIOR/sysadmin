@@ -408,4 +408,13 @@ class OsDAO extends Conexao
         $sql->execute();
         return $sql->fetchAll(\PDO::FETCH_ASSOC);
     }
+    public function RetornarOsMesDAO()
+    {
+        $sql = $this->conexao->prepare(Os::RetornarOsMesSQL());
+        $sql->bindValue(1, Util::CodigoEmpresa());
+        $sql->bindValue(2, date('Y-m-01'));
+        $sql->bindValue(3, date('Y-m-t'));
+        $sql->execute();
+        return $sql->fetchAll(\PDO::FETCH_ASSOC);
+    }
 }

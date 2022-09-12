@@ -68,7 +68,7 @@ public function getDtNasc(){
 }
 public function setTelefone($tel){
 
-    $this->CliTelefone = Util::remove_especial_char($tel);
+    $this->CliTelefone = Util::TratarDados($tel);
 }
 
 public function getTelefone(){

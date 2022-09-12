@@ -77,7 +77,7 @@ else if (isset($_POST['btnExcluir'])) {
     if ($_POST['btnExcluir'] == 'ajx') {
         echo $ret;
     } else {
-        $cliente = $ctrlCliente->RetornarClienteController();
+        $TotalLancamentos = $ctrl->RetornaTodosLancamentoController();
 
     }
 }

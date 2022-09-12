@@ -269,13 +269,14 @@ use Src\_public\Util; ?>
                                                     <th style="width:50%">Subtotal:</th>
                                                     <td><?= ($subTotal != '' ? Util::FormatarValor($subTotal) : '0,00') ?></td>
                                                 </tr>
-                                                <!--<tr>
-                <th>Shipping:</th>
-                <td>$5.80</td>
-              </tr-->
+                                                <tr>
+                                                    <th>Desconto:</th>
+                                                    <td><?= ($ordemOS[0]['OsDesconto'] != '' ? Util::FormatarValor($ordemOS[0]['OsDesconto']) : '') ?></td>
+                                                </tr>
+                                                
                                                 <tr>
                                                     <th>Total:</th>
-                                                    <td><?= ($ordemOS[0]['OsValorTotal'] != '' ? Util::FormatarValor($ordemOS[0]['OsValorTotal']) : '') ?></td>
+                                                    <td><?= ($ordemOS[0]['OsValorTotal'] != '' ? Util::FormatarValor($ordemOS[0]['OsValorTotal'] - $ordemOS[0]['OsDesconto']) : '') ?></td>
                                                 </tr>
                                             </table>
                                         </div>
