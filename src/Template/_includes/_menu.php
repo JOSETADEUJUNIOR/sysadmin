@@ -17,7 +17,7 @@ $dados = $empresa->RetornarDadosCadastraisController();
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
   <a href="index.php" class="brand-link">
-    <img src="../../Resource/dataview/<?= $dados[0]['EmpLogoPath'] ?>" alt="<?= $dados[0]['EmpNome'] ?>" class="brand-image img-circle elevation-3">
+    <img src="../../Resource/dataview/<?= $dados[0]['EmpLogoPath'] ?>" alt="<?= $dados[0]['EmpNome'] ?>" style="width:50px; height:50px;" class="brand-image img-circle elevation-3">
     <span class="brand-text font-weight-light">Sysvenda - <?= date("Y") ?></span>
 
   </a>

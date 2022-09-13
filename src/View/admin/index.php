@@ -42,11 +42,12 @@ use Src\_public\Util; ?>
 
       <!-- Main content -->
       <section class="content">
-        <?php $totalOS=0; $ValorTotal=0; for ($i = 0; $i < count($os); $i++) {
-          if ($os[$i]['OsFaturado']=='S') {
-          $totalOS = $totalOS + count($os[$i]['OsID']);
-          $ValorTotal = $ValorTotal + $os[$i]['OsValorTotal'];
-            
+        <?php $totalOS = 0;
+        $ValorTotal = 0;
+        for ($i = 0; $i < count($os); $i++) {
+          if ($os[$i]['OsFaturado'] == 'S') {
+            $totalOS = $totalOS + count($os[$i]['OsID']);
+            $ValorTotal = $ValorTotal + $os[$i]['OsValorTotal'] - $os[$i]['OsDesconto'];
           }
         } ?>
         <section class="content">
@@ -54,7 +55,7 @@ use Src\_public\Util; ?>
             <div class="row">
               <div class="col-lg-3 col-6">
                 <!-- small box -->
-                <input type="hidden" name="ordem_sevico" id="ordem_servico" value="<?=$ValorTotal?>">
+                <input type="hidden" name="ordem_sevico" id="ordem_servico" value="<?= $ValorTotal ?>">
                 <div class="small-box bg-info">
                   <div class="inner">
                     <h3><span><?= 'R$: ' . Util::FormatarValor($ValorTotal) ?></span></h3>
@@ -72,13 +73,14 @@ use Src\_public\Util; ?>
               <?php for ($i = 0; $i < count($vendas); $i++) {
                 if ($vendas[$i]['VendaDT'] == date('Y-m-d')) {
                   $valorVenda = $valorVenda + $vendas[$i]['VendaValorTotal'];
-                }else if ($vendas[$i]['VendaFaturado'] == 'S') {
+                } 
+                if ($vendas[$i]['VendaFaturado'] == 'S') {
                   $ValorVendaFaturado = $ValorVendaFaturado + $vendas[$i]['VendaValorTotal'];
                 }
               } ?>
               <div class="col-lg-3 col-6">
                 <!-- small box -->
-                <input type="hidden" name="venda" id="venda" value="<?=$ValorVendaFaturado?>">
+                <input type="hidden" name="venda" id="venda" value="<?= $ValorVendaFaturado ?>">
                 <div class="small-box bg-success">
                   <div class="inner">
                     <h3>R$: <?= Util::FormatarValor($valorVenda) ?> <sup style="font-size: 20px"></sup></h3>
@@ -92,15 +94,17 @@ use Src\_public\Util; ?>
                 </div>
               </div>
               <!-- ./col -->
-             <?php $receita=0; $despesa=0; for ($i=0; $i < count($lancamentos) ; $i++) { 
-                if ($lancamentos[$i]['Tipo']==1) {
+              <?php $receita = 0;
+              $despesa = 0;
+              for ($i = 0; $i < count($lancamentos); $i++) {
+                if ($lancamentos[$i]['Tipo'] == 1) {
 
                   $receita = $receita + $lancamentos[$i]['LancValor'];
-                }else if ($lancamentos[$i]['Tipo']==2) {
-                  $despesa = $despesa + $lancamentos[$i]['LancValor'];  
+                } else if ($lancamentos[$i]['Tipo'] == 2) {
+                  $despesa = $despesa + $lancamentos[$i]['LancValor'];
                 }
-             }?>
-              
+              } ?>
+
               <div class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-warning">
@@ -131,6 +135,7 @@ use Src\_public\Util; ?>
               <!-- ./col -->
             </div>
             <div id="divload"></div>
+          </div>
         </section>
         <!-- /.content -->
 
@@ -140,15 +145,15 @@ use Src\_public\Util; ?>
           <div class="container-fluid">
             <div class="row">
 
-            <div class="col-md-6">
+              <div class="col-md-6">
                 <!-- AREA CHART -->
 
                 <!-- /.card -->
 
                 <!-- DONUT CHART -->
-                <div class="card card-success">
+                <div class="card card-info">
                   <div class="card-header">
-                    <h3 class="card-title">Despesas x Receitas</h3>
+                    <h3 class="card-title">Ordem realizadas  x Vendas realizadas</h3>
 
                     <div class="card-tools">
                       <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -176,7 +181,7 @@ use Src\_public\Util; ?>
 
 
               </div>
-              
+
 
               <div class="col-md-6">
                 <!-- AREA CHART -->
@@ -304,31 +309,26 @@ use Src\_public\Util; ?>
                     </div>
                   </li>
                 </ul>
+                </div>
               <?php } ?>
-              </div>
+              <input type="hidden" id="receita" name="receita" value="<?= $receita ?>">
+              <input type="hidden" id="despesa" name="despesa" value="<?= $despesa ?>">
+             
+             
               <!-- /.card-body -->
               <div class="card-footer text-center">
                 <a href="produto.php" class="uppercase">Ver todos os produtos</a>
               </div>
               <!-- /.card-footer -->
+         
           </div>
+     </div>       
+     </div>       
 
-
-
-<input type="hidden" id="receita" name="receita" value="<?=$receita?>">
-<input type="hidden" id="despesa" name="despesa" value="<?=$despesa?>">
           <!--/.card -->
-        </div>
-
-    </div>
-
-    </div>
-
-
-    </div>
-    <!-- /.content-wrapper -->
-    <?php include_once PATH_URL . '/Template/_includes/_footer.php' ?>
-    <!-- /.control-sidebar -->
+     
+  <?php include_once PATH_URL . '/Template/_includes/_footer.php' ?>
+  <!-- /.control-sidebar -->
   <!-- ./wrapper -->
 
   <!-- jQuery -->
@@ -338,7 +338,7 @@ use Src\_public\Util; ?>
 
   <script src="../../Template/plugins/chart.js/Chart.min.js"></script>
 
-  
+
   <script>
     $(function() {
       /* ChartJS
@@ -358,11 +358,11 @@ use Src\_public\Util; ?>
         labels: [
           'Credito',
           'Debito',
-          
+
         ],
         datasets: [{
-          data: [receita,despesa],
-          backgroundColor: ['#00a65a','#f56954'],
+          data: [receita, despesa],
+          backgroundColor: ['#00a65a', '#f56954'],
         }]
       }
       var donutOptions = {
@@ -417,11 +417,11 @@ use Src\_public\Util; ?>
         labels: [
           'Venda',
           'Ordem_Servico',
-          
+
         ],
         datasets: [{
-          data: [venda,ordem_servico],
-          backgroundColor: ['#00a65a','#17a2b8'],
+          data: [venda, ordem_servico],
+          backgroundColor: ['#00a65a', '#17a2b8'],
         }]
       }
       var donutOptions = {

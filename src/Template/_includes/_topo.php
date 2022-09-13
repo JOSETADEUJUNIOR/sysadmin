@@ -1,4 +1,5 @@
 <?php require_once dirname(__DIR__, 3) . '/vendor/autoload.php';
+
 use Src\_public\Util;
 use Src\Controller\UsuarioController;
 
@@ -10,29 +11,34 @@ if (isset($_GET['close']) && $_GET['close'] == 1) {
 ?>
 
 <nav class="main-header navbar navbar-expand navbar-dark navbar-light">
-      <!-- Left navbar links -->
-      <ul class="navbar-nav ml-auto">
-      <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-user"><?= ' Olá, '.$_SESSION['nome']?></i>
-           </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-item dropdown-header">Meus Dados</span>
-            <div class="dropdown-divider"></div>
-            <a href="meus_dados.php" class="dropdown-item">
-              <i class="fas fa-user mr-2"></i> Perfil
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="../../Template/_includes/_topo.php?close=1" class="dropdown-item">
-              <i class="fa fa-exit mr-2"></i> Sair
-            </a>
-         </div>
-        </li>
-      </ul>
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+    </li>
+  </ul>
+  <!-- Left navbar links -->
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item dropdown">
+      <a class="nav-link" data-toggle="dropdown" href="#">
+        <i class="far fa-user"><?= ' Olá, ' . $_SESSION['nome'] ?></i>
+      </a>
+      <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+        <span class="dropdown-item dropdown-header">Meus Dados</span>
+        <div class="dropdown-divider"></div>
+        <a href="meus_dados.php" class="dropdown-item">
+          <i class="fas fa-user mr-2"></i> Perfil
+        </a>
+        <div class="dropdown-divider"></div>
+        <a href="../../Template/_includes/_topo.php?close=1" class="dropdown-item">
+          <i class="fa fa-exit mr-2"></i> Sair
+        </a>
+      </div>
+    </li>
+  </ul>
 
-     
-       <!-- Right navbar links -->
-      <!--<ul class="navbar-nav ml-auto">
+
+  <!-- Right navbar links -->
+  <!--<ul class="navbar-nav ml-auto">
          Messages Dropdown Menu 
         <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
@@ -86,12 +92,12 @@ if (isset($_GET['close']) && $_GET['close'] == 1) {
             <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
           </div>
         </li-->
-        <!--
+  <!--
         <li class="nav-item">
           <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
             <i class="fas fa-th-large"></i>
           </a>
         </li>
       </ul>-->
-    </nav>
-    <!-- /.navbar -->
+</nav>
+<!-- /.navbar -->
