@@ -101,7 +101,7 @@ use Src\_public\Util;
                 
             </form>
         </div>
-        <a href="venda.php" class=" form-control btn btn-outline-warning col-md-12 ">Voltar para OS</a>
+        <a href="venda.php" class=" form-control btn btn-outline-warning col-md-12 ">Voltar para venda</a>
 
 
     </div>

@@ -4,6 +4,9 @@ function RetornarMsg(n) {
     var msg = "";
 
     switch (n) {
+        case -7:
+            msg = "Os sem *valor, não será possível faturar!";
+            break;
         case -6:
             msg = "E-mail digitado já existe!";
             break;
@@ -52,6 +55,9 @@ function MensagemSenhaDiferente(){
 }
 function MensagemEmailExiste(){
     toastr.warning(RetornarMsg(-6));
+}
+function MensagemFaturarSemValor(){
+    toastr.warning(RetornarMsg(-7));
 }
 
 

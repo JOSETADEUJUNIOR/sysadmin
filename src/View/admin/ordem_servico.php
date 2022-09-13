@@ -207,7 +207,7 @@ use Src\_public\Util; ?>
                                 <thead>
                                     <tr>
                                         <th>Ação</th>
-                                        <th>Nome do cliente</th>
+                                        <th>[NºOS] - Nome do cliente</th>
                                         <th>Dt Inicio</th>
                                         <th>Dt Entrega</th>
                                         <th>Tecnico</th>
@@ -236,7 +236,7 @@ use Src\_public\Util; ?>
                                                 <?php } ?>
                                                 <a href="print_os.php?OsID=<?= $os[$i]['OsID'] ?>"><i style="color:black" title="Imprimir OS" class="fas fa-print"></i></a>
                                             </td>
-                                            <td><?= $os[$i]['nomeCliente'] ?></td>
+                                            <td><?= '['.$os[$i]['OsID'].']'.' - '.$os[$i]['nomeCliente'] ?></td>
                                             <td><?= Util::ExibirDataBr($os[$i]['OsDtInicial']) ?></td>
                                             <td><?= Util::ExibirDataBr($os[$i]['OsDtFinal']) ?></td>
                                             <td><?= $os[$i]['OsTecID'] ?></td>

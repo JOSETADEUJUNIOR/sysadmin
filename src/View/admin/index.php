@@ -54,6 +54,7 @@ use Src\_public\Util; ?>
             <div class="row">
               <div class="col-lg-3 col-6">
                 <!-- small box -->
+                <input type="hidden" name="ordem_sevico" id="ordem_servico" value="<?=$ValorTotal?>">
                 <div class="small-box bg-info">
                   <div class="inner">
                     <h3><span><?= 'R$: ' . Util::FormatarValor($ValorTotal) ?></span></h3>
@@ -71,10 +72,13 @@ use Src\_public\Util; ?>
               <?php for ($i = 0; $i < count($vendas); $i++) {
                 if ($vendas[$i]['VendaDT'] == date('Y-m-d')) {
                   $valorVenda = $valorVenda + $vendas[$i]['VendaValorTotal'];
+                }else if ($vendas[$i]['VendaFaturado'] == 'S') {
+                  $ValorVendaFaturado = $ValorVendaFaturado + $vendas[$i]['VendaValorTotal'];
                 }
               } ?>
               <div class="col-lg-3 col-6">
                 <!-- small box -->
+                <input type="hidden" name="venda" id="venda" value="<?=$ValorVendaFaturado?>">
                 <div class="small-box bg-success">
                   <div class="inner">
                     <h3>R$: <?= Util::FormatarValor($valorVenda) ?> <sup style="font-size: 20px"></sup></h3>
@@ -136,16 +140,15 @@ use Src\_public\Util; ?>
           <div class="container-fluid">
             <div class="row">
 
-
-              <div class="col-md-6">
-                <!-- LINE CHART -->
+            <div class="col-md-6">
+                <!-- AREA CHART -->
 
                 <!-- /.card -->
 
-                <!-- BAR CHART -->
+                <!-- DONUT CHART -->
                 <div class="card card-success">
                   <div class="card-header">
-                    <h3 class="card-title">Vendas por Mês</h3>
+                    <h3 class="card-title">Despesas x Receitas</h3>
 
                     <div class="card-tools">
                       <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -157,27 +160,23 @@ use Src\_public\Util; ?>
                     </div>
                   </div>
                   <div class="card-body">
-                    <div class="chart">
-                      <div class="chartjs-size-monitor">
-                        <div class="chartjs-size-monitor-expand">
-                          <div class=""></div>
-                        </div>
-                        <div class="chartjs-size-monitor-shrink">
-                          <div class=""></div>
-                        </div>
+                    <div class="chartjs-size-monitor">
+                      <div class="chartjs-size-monitor-expand">
+                        <div class=""></div>
                       </div>
-                      <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 658px;" width="658" height="250" class="chartjs-render-monitor"></canvas>
+                      <div class="chartjs-size-monitor-shrink">
+                        <div class=""></div>
+                      </div>
                     </div>
+                    <canvas id="donutChart1" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 658px;" width="658" height="250" class="chartjs-render-monitor"></canvas>
                   </div>
                   <!-- /.card-body -->
                 </div>
                 <!-- /.card -->
 
-                <!-- STACKED BAR CHART -->
-
-                <!-- /.card -->
 
               </div>
+              
 
               <div class="col-md-6">
                 <!-- AREA CHART -->
@@ -187,7 +186,7 @@ use Src\_public\Util; ?>
                 <!-- DONUT CHART -->
                 <div class="card card-danger">
                   <div class="card-header">
-                    <h3 class="card-title">Despesas</h3>
+                    <h3 class="card-title">Despesas x Receitas</h3>
 
                     <div class="card-tools">
                       <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -342,108 +341,6 @@ use Src\_public\Util; ?>
   
   <script>
     $(function() {
-
-      var areaChartCanvas = $('#barChart').get(0).getContext('2d')
-
-      var areaChartData = {
-      
-        
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [{
-            label: 'Digital Goods',
-            backgroundColor: 'rgba(60,141,188,0.9)',
-            borderColor: 'rgba(60,141,188,0.8)',
-            pointRadius: false,
-            pointColor: '#3b8bba',
-            pointStrokeColor: 'rgba(60,141,188,1)',
-            pointHighlightFill: '#fff',
-            pointHighlightStroke: 'rgba(60,141,188,1)',
-            data: [28, 48, 40, 19, 86, 27, 90]
-          },
-          {
-            label: 'Electronics',
-            backgroundColor: 'rgba(210, 214, 222, 1)',
-            borderColor: 'rgba(210, 214, 222, 1)',
-            pointRadius: false,
-            pointColor: 'rgba(210, 214, 222, 1)',
-            pointStrokeColor: '#c1c7d1',
-            pointHighlightFill: '#fff',
-            pointHighlightStroke: 'rgba(220,220,220,1)',
-            data: [65, 59, 80, 81, 56, 55, 40]
-          },
-        ]
-      }
-
-      var areaChartOptions = {
-        maintainAspectRatio: false,
-        responsive: true,
-        legend: {
-          display: false
-        },
-        scales: {
-          xAxes: [{
-            gridLines: {
-              display: false,
-            }
-          }],
-          yAxes: [{
-            gridLines: {
-              display: false,
-            }
-          }]
-        }
-      }
-
-      // This will get the first returned node in the jQuery collection.
-
-
-
-
-
-
-
-
-      var barChartCanvas = $('#barChart').get(0).getContext('2d')
-      var barChartData = $.extend(true, {}, areaChartData)
-      var temp0 = areaChartData.datasets[0]
-      var temp1 = areaChartData.datasets[1]
-      barChartData.datasets[0] = temp1
-      barChartData.datasets[1] = temp0
-
-      var barChartOptions = {
-        responsive: true,
-        maintainAspectRatio: false,
-        datasetFill: false
-      }
-
-      new Chart(barChartCanvas, {
-        type: 'bar',
-        data: barChartData,
-        options: barChartOptions
-      })
-
-      //---------------------
-      //- STACKED BAR CHART -
-      //---------------------
-
-
-      //-------------
-      //- DONUT CHART -
-      //-------------
-      // Get context with jQuery - using jQuery's .get() method.
-
-      //-------------
-
-
-      //---------------------
-      //- STACKED BAR CHART -
-      //---------------------
-
-    })
-  </script>
-
-  <script>
-    $(function() {
       /* ChartJS
        * -------
        * Here we will create a few charts using ChartJS
@@ -466,6 +363,65 @@ use Src\_public\Util; ?>
         datasets: [{
           data: [receita,despesa],
           backgroundColor: ['#00a65a','#f56954'],
+        }]
+      }
+      var donutOptions = {
+        maintainAspectRatio: false,
+        responsive: true,
+      }
+      //Create pie or douhnut chart
+      // You can switch between pie and douhnut using the method below.
+      new Chart(donutChartCanvas, {
+        type: 'doughnut',
+        data: donutData,
+        options: donutOptions
+      })
+
+      //-------------
+      //- PIE CHART -
+      //-------------
+      // Get context with jQuery - using jQuery's .get() method.
+      var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+      var pieData = donutData;
+      var pieOptions = {
+        maintainAspectRatio: false,
+        responsive: true,
+      }
+      //Create pie or douhnut chart
+      // You can switch between pie and douhnut using the method below.
+      new Chart(pieChartCanvas, {
+        type: 'pie',
+        data: pieData,
+        options: pieOptions
+      })
+
+
+    })
+  </script>
+  <script>
+    $(function() {
+      /* ChartJS
+       * -------
+       * Here we will create a few charts using ChartJS
+       */
+
+      //--------------
+      //- AREA CHART -
+      //--------------
+
+      // Get context with jQuery - using jQuery's .get() method.
+      var donutChartCanvas = $('#donutChart1').get(0).getContext('2d')
+      var venda = $("#venda").val();
+      var ordem_servico = $("#ordem_servico").val();
+      var donutData = {
+        labels: [
+          'Venda',
+          'Ordem_Servico',
+          
+        ],
+        datasets: [{
+          data: [venda,ordem_servico],
+          backgroundColor: ['#00a65a','#17a2b8'],
         }]
       }
       var donutOptions = {

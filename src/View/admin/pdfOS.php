@@ -46,13 +46,13 @@ ob_start();
   <?php for ($i = 0; $i < count($os); $i++) { ?>
     <?php
 
-    $osZ++; $TotValor = $TotValor + $os[$i]['OsValorTotal'];?>
+    $osZ++; $TotValor = $TotValor + $os[$i]['OsValorTotal'] - $os[$i]['OsDesconto'];?>
     <tr>
       <td style="font-size: 12px;"><?= $os[$i]['nomeCliente'] ?></td>
       <td style="font-size: 12px;"><?= '00'.$os[$i]['OsID'] ?></td>
       <td style="font-size: 12px;"><?= Util::ExibirDataBr($os[$i]['OsDtInicial']) ?></td>
       <td style="font-size: 12px;"><?= Util::ExibirDataBr($os[$i]['OsDtFinal']) ?></td>
-      <td style="font-size: 12px;"><?= Util::FormatarValor($os[$i]['OsValorTotal']) ?></td>
+      <td style="font-size: 12px;"><?= Util::FormatarValor($os[$i]['OsValorTotal'] - $os[$i]['OsDesconto']) ?></td>
       
     </tr>
   <?php   } ?>

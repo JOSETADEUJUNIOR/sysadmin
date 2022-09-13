@@ -153,6 +153,11 @@ function ExcluirServ() {
 }
 
 function faturarOs(id, clienteID, valor) {
+   if (valor <= 0) {
+    MensagemFaturarSemValor();
+    return false;
+   }
+   
     let OsID = id;
     let CliID = clienteID;
     let OsValor = valor;

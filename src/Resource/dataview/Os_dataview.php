@@ -38,7 +38,7 @@ if (isset($_GET['OsMes'])) {
 } else if (isset($_GET['Oscliente']) &&  is_numeric($_GET['Oscliente'])) {
     $CliID = $_GET['Oscliente'];
     $tipo = $_GET['tipo'];
-   
+
     $os = $ctrl->RetornarOsClienteController($CliID, $tipo);
 } else if (isset($_POST['btn_cadastrar'])) {
     $vo = new OsVO;
@@ -187,7 +187,7 @@ if (isset($_GET['OsMes'])) {
         <thead>
             <tr>
                 <th>Ação</th>
-                <th>Nome do cliente</th>
+                <th>[Nº OS] - Nome do cliente</th>
                 <th>Dt Inicio</th>
                 <th>Dt Entrega</th>
                 <th>Tecnico</th>
@@ -195,7 +195,8 @@ if (isset($_GET['OsMes'])) {
             </tr>
         </thead>
         <tbody>
-            <?php for ($i = 0; $i < count($os); $i++) { ?>
+            <?php $soma = 0;
+            for ($i = 0; $i < count($os); $i++) { ?>
                 <tr>
                     <td>
                         <?php if ($os[$i]['OsFaturado'] == 'N') { ?>
@@ -215,13 +216,11 @@ if (isset($_GET['OsMes'])) {
                         <?php } ?>
                         <a href="print_os.php?OsID=<?= $os[$i]['OsID'] ?>"><i style="color:black" title="Imprimir OS" class="fas fa-print"></i></a>
                     </td>
-                    <td><?= $os[$i]['nomeCliente'] ?></td>
+                    <td><?= '[' . $os[$i]['OsID'] . ']' . ' - ' . $os[$i]['nomeCliente'] ?></td>
                     <td><?= Util::ExibirDataBr($os[$i]['OsDtInicial']) ?></td>
                     <td><?= Util::ExibirDataBr($os[$i]['OsDtFinal']) ?></td>
                     <td><?= $os[$i]['OsTecID'] ?></td>
-                    <? $soma = 0;
-                    $soma = ($os[$i]['OsValorTotal'] - $os[$i]['OsDesconto']) ?>
-                    <td><?= Util::FormatarValor($soma) ?></td>
+                    <td><?= Util::FormatarValor($soma = $os[$i]['OsValorTotal'] - $os[$i]['OsDesconto']) ?></td>
 
                     <td><?php
                         $status = '';
