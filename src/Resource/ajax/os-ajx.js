@@ -153,11 +153,11 @@ function ExcluirServ() {
 }
 
 function faturarOs(id, clienteID, valor) {
-   if (valor <= 0) {
-    MensagemFaturarSemValor();
-    return false;
-   }
-   
+    if (valor <= 0) {
+        MensagemFaturarSemValor();
+        return false;
+    }
+
     let OsID = id;
     let CliID = clienteID;
     let OsValor = valor;
@@ -189,6 +189,53 @@ function CadastrarOs(id_form) {
         let OsID = $("#OsID").val();
         let Oscliente = $("#Oscliente").val();
         let tecnico = $("#tecnico").val();
+        let status = $("#status").val();
+        let dtInicial = $("#dtInicial").val();
+        let dtFinal = $("#dtFinal").val();
+        let garantia = $("#garantia").val();
+        let descProd = $("#descProd").val();
+        let defeito = $("#defeito").val();
+        let obs = $("#obs").val();
+        let laudo = $("#laudo").val();
+        $.ajax({
+            type: "POST",
+            url: BASE_URL_AJAX("Os_dataview"),
+            data: {
+                btn_cadastrar: 'ajx',
+                Oscliente: Oscliente,
+                tecnico: tecnico,
+                status: status,
+                dtInicial: dtInicial,
+                dtFinal: dtFinal,
+                garantia: garantia,
+                descProd: descProd,
+                defeito: defeito,
+                obs: obs,
+                laudo: laudo,
+                OsID: OsID
+            },
+            success: function (ret) {
+                RemoverLoad();
+                if (ret == 1) {
+                    MensagemSucesso();
+                    LimparCampos(id_form);
+                    ConsultarOs();
+                    $("#CadOs").addClass('collapsed-card');
+                    window.location.replace("ordem_servico.php")
+                } else {
+                    MensagemErro();
+                }
+            }
+        })
+    }
+    return false;
+}
+function CadastrarGarantia(id_form) {
+
+    if (NotificarCampos(id_form)) {
+        let OsID = $("#OsID").val();
+        let GrtNome = $("#nome").val();
+        let text = $("#editor").val();
         let status = $("#status").val();
         let dtInicial = $("#dtInicial").val();
         let dtFinal = $("#dtFinal").val();

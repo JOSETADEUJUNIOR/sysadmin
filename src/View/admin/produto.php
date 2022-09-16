@@ -110,7 +110,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
 
-                                    <button class=" form-control btn btn-success col-md-12" onclick="return CadastrarProduto('form_produto')" name="btn_cadastrar">Salvar</button>
+                                    <button class=" form-control btn btn-success col-md-12" onclick="return CadastrarProduto('formCadProd')" name="btn_cadastrar">Salvar</button>
                                 </div>
                             </div>
                             <div class="col-sm-6">

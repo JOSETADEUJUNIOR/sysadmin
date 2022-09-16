@@ -97,7 +97,7 @@ function CadastrarProduto(id_form) {
                 RemoverLoad();
                 if (ret == 1) {
                     MensagemSucesso();
-                    LimparCampos();
+                    LimparCampos(id_form);
                     ConsultarProduto();
                     $("#CadProduto").addClass('collapsed-card');
                     $("#CadProdutoBody").hide();
