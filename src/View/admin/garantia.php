@@ -1,4 +1,4 @@
-<?php require_once dirname(__DIR__, 2) . '/Resource/dataview/Os_dataview.php';
+<?php require_once dirname(__DIR__, 2) . '/Resource/dataview/Garantia_dataview.php';
 
 use Src\_public\Util; ?>
 <!DOCTYPE html>
@@ -67,8 +67,13 @@ use Src\_public\Util; ?>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body pad">
+                                    <div class="form-group">
+                                        <input type="hidden" name="grtID" value="<?= $garantia[0]['grtID']?>">
+                                        <label>Nome do documento</label>
+                                        <input class="form-control obg" id="nome" name="nome" value="<?= $garantia[0]['grtNome']?>" placeholder="Digite o nome....">
+                                    </div>
                                     <div class="mb-3">
-                                        <textarea id="editor" name="editor"></textarea>
+                                        <textarea id="editor" name="editor"><?= $garantia[0]['grtText']?></textarea>
                                     </div>
                                 </div>
 
@@ -76,7 +81,7 @@ use Src\_public\Util; ?>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <button class="btn btn-success col-md-12" onclick="return CadastrarGarantia('form_garantia')" name="btn_cadastrar">Cadastrar</button>
+                                    <button class="btn btn-success col-md-12" name="btn_cadastrar">Cadastrar</button>
 
                                 </div>
                             </div>

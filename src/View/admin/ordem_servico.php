@@ -203,7 +203,7 @@ use Src\_public\Util; ?>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0">
-                            <table class="table table-hover" id="tabela_result_os">
+                            <table class="table table-hover tabela" id="tabela_result_os">
                                 <thead>
                                     <tr>
                                         <th>Ação</th>

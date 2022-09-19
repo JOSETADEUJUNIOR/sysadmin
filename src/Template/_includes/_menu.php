@@ -145,21 +145,12 @@ $dados = $empresa->RetornarDadosCadastraisController();
           </ul>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="garantia.php" class="nav-link">
             <i class="nav-icon fas fa-cogs"></i>
             <p>
               Configurações
-              <i class="right fas fa-angle-left"></i>
             </p>
           </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="usuarios.php" class="nav-link">
-                <i class="fa fa-users nav-icon"></i>
-                <p>Usuarios</p>
-              </a>
-            </li>
-          </ul>
         </li>
       </ul>
     </nav>

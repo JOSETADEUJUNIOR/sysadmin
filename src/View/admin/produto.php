@@ -106,21 +106,21 @@
                                         </div>
                                     </div>
                                 </div>
-                            
-                            <div class="col-sm-6">
-                                <div class="form-group">
 
-                                    <button class=" form-control btn btn-success col-md-12" onclick="return CadastrarProduto('formCadProd')" name="btn_cadastrar">Salvar</button>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+
+                                        <button class=" form-control btn btn-success col-md-12" onclick="return CadastrarProduto('formCadProd')" name="btn_cadastrar">Salvar</button>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <a href="produto.php" class="btn btn-warning col-md-12">Voltar</a>
+
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <a href="produto.php" class="btn btn-warning col-md-12">Voltar</a>
-
-                                </div>
-                            </div>
-                            </div>
-                        </form>
+                    </form>
 
                 </div>
                 <div id="CadProdutoBody" class="card-body">
@@ -162,7 +162,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0">
-                            <table class="table table-hover" id="tabela_result_produto">
+                            <table class="table table-hover tabela" id="tabela_result_produto">
                                 <thead>
                                     <tr>
                                         <th>Ação</th>
@@ -181,8 +181,8 @@
                                         <tr>
                                             <td>
                                                 <a href="#" onclick="AlterarProdutoModal('<?= $produto[$i]['ProdID'] ?>', '<?= $produto[$i]['ProdDescricao'] ?>','<?= $produto[$i]['ProdDtCriacao'] ?>','<?= $produto[$i]['ProdCodBarra'] ?>','<?= $produto[$i]['ProdValorCompra'] ?>','<?= $produto[$i]['ProdValorVenda'] ?>','<?= $produto[$i]['ProdEstoqueMin'] ?>','<?= $produto[$i]['ProdEstoque'] ?>','<?= $produto[$i]['ProdImagem'] ?>')" data-toggle="modal" data-target="#alterarProduto"><i class="fas fa-edit"></i></a>
-                                                <a href="#" onclick="ExcluirModal('<?= $produto[$i]['ProdID'] ?>', '<?= $produto[$i]['ProdDescricao'] ?>')" data-toggle="modal" data-target="#modalExcluir" ><i style="color:red" class="fas fa-trash-alt"></i></a>
-                                                <a href="relProdutoBarras.php?codbarras=<?= $produto[$i]['ProdCodBarra'].'&nomeProduto='.$produto[$i]['ProdDescricao']?>"target="_blank"><i title="Emitir Codigo de Barras" style=" color:red; font-size:14px; margin-left:1px" class="fa fa-barcode"></i></a>
+                                                <a href="#" onclick="ExcluirModal('<?= $produto[$i]['ProdID'] ?>', '<?= $produto[$i]['ProdDescricao'] ?>')" data-toggle="modal" data-target="#modalExcluir"><i style="color:red" class="fas fa-trash-alt"></i></a>
+                                                <a href="relProdutoBarras.php?codbarras=<?= $produto[$i]['ProdCodBarra'] . '&nomeProduto=' . $produto[$i]['ProdDescricao'] ?>" target="_blank"><i title="Emitir Codigo de Barras" style=" color:red; font-size:14px; margin-left:1px" class="fa fa-barcode"></i></a>
                                             </td>
                                             <td><?= $produto[$i]['ProdCodBarra'] ?></td>
                                             <td><?= $produto[$i]['ProdDescricao'] ?></td>
@@ -236,6 +236,7 @@
             });
         });
     </script>
+    
 </body>
 
 </html>

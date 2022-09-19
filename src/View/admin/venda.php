@@ -137,7 +137,7 @@ use Src\_public\Util; ?>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0">
-                            <table class="table table-hover" id="tabela_result_venda">
+                            <table class="table table-hover tabela" id="tabela_result_venda">
                                 <thead>
                                     <tr>
                                         <th>Ação</th>
@@ -169,7 +169,7 @@ use Src\_public\Util; ?>
                                             <td><?= $vendas[$i]['CliNome'] ?></td>
                                             <td><?= Util::ExibirDataBr($vendas[$i]['VendaDT']) ?></td>
                                            
-                                            <td><?= Util::FormatarValor($vendas[$i]['VendaValorTotal']) ?></td>
+                                            <td><?= Util::FormatarValor($vendas[$i]['VendaValorTotal'] - $vendas[$i]['VendaDesconto'] ) ?></td>
 
                                             <td><?=
                                               $vendas[$i]['VendaValorTotal']== 0?'<span class="btn btn-info btn-xs">Em andamento</span>':($vendas[$i]['VendaFaturado'] == "S" ? '<span class="btn btn-success btn-xs">Faturado</span>' : '<span onclick="faturarVenda(' . $vendas[$i]['VendaID'] . ',' . $vendas[$i]['VendaCliID'] . ',' . $vendas[$i]['VendaValorTotal'] . ')" class="btn btn-warning btn-xs">Faturar?</span>') ?>

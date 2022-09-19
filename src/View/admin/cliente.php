@@ -192,7 +192,7 @@
                         <!--<div class="card-body ">-->
                         <!--<table class="table table-bordered table-hover" id="tabela_result_cliente">-->
                         <div class="card-body table-responsive p-0">
-                            <table class="table table-hover" id="tabela_result_cliente">
+                            <table class="table table-hover tabela" id="tabela_result_cliente">
                                 <thead>
                                     <tr>
                                         <th>Ação</th>

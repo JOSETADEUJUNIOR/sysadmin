@@ -103,7 +103,7 @@ use Src\_public\Util; ?>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body table-responsive p-0">
-                                    <table class="table table-hover">
+                                    <table class="table table-hover ">
                                         <thead>
                                             <tr>
                                                 <th>Cliente</th>

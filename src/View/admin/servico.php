@@ -128,7 +128,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0">
-                            <table class="table table-hover" id="tabela_result_servico">
+                            <table class="table table-hover tabela" id="tabela_result_servico">
                                 <thead>
                                     <tr>
                                         <th>Ação</th>
