@@ -60,6 +60,7 @@ use Src\_public\Util; ?>
                     </div>
                     <form id="form_os" action="ordem_servico.php" method="post">
                         <input type="hidden" name="OsID" id="OsID" value="<?= $OsID != '' ? $ordemOS[0]['OsID'] : '' ?>">
+                        <input type="hidden" name="ValorOS" id="ValorOS" value="<?= $ordemOS[0]['OsValorTotal'] ?>">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
@@ -94,7 +95,7 @@ use Src\_public\Util; ?>
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label>Status</label>
-                                        <select class="form-control obg" id="status" name="status">
+                                        <select class="form-control obg" id="status" name="status" onchange="return StatusOS()">
                                             <option value="<?= $OsID != '' ? $ordemOS[0]['OsStatus'] : 'O' ?>"><?= ($status != '' ? $status : 'Orçamento') ?></option>
                                             <option value="A">Aberto</option>
                                             <option value="EA">Em andamento</option>
@@ -216,7 +217,8 @@ use Src\_public\Util; ?>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $soma = 0; for ($i = 0; $i < count($os); $i++) { ?>
+                                    <?php $soma = 0;
+                                    for ($i = 0; $i < count($os); $i++) { ?>
                                         <tr>
                                             <td>
                                                 <?php if ($os[$i]['OsFaturado'] == 'N') { ?>
@@ -236,11 +238,11 @@ use Src\_public\Util; ?>
                                                 <?php } ?>
                                                 <a href="print_os.php?OsID=<?= $os[$i]['OsID'] ?>"><i style="color:black" title="Imprimir OS" class="fas fa-print"></i></a>
                                             </td>
-                                            <td><?= '['.$os[$i]['OsID'].']'.' - '.$os[$i]['nomeCliente'] ?></td>
+                                            <td><?= '[' . $os[$i]['OsID'] . ']' . ' - ' . $os[$i]['nomeCliente'] ?></td>
                                             <td><?= Util::ExibirDataBr($os[$i]['OsDtInicial']) ?></td>
                                             <td><?= Util::ExibirDataBr($os[$i]['OsDtFinal']) ?></td>
                                             <td><?= $os[$i]['OsTecID'] ?></td>
-                                            <td><?=Util::FormatarValor($soma = $os[$i]['OsValorTotal'] - $os[$i]['OsDesconto'])?></td>
+                                            <td><?= Util::FormatarValor($soma = $os[$i]['OsValorTotal'] - $os[$i]['OsDesconto']) ?></td>
 
                                             <td><?php
                                                 $status = '';
@@ -259,7 +261,7 @@ use Src\_public\Util; ?>
                                                 <?php $texto = "$os[$i]['OsDefeito']"; ?>
                                                 <?= ($os[$i]['OsStatus'] != "F" ? '' : ($os[$i]['OsFaturado'] == "S" ? '<span class="btn btn-success btn-xs">Faturado</span>' : '<span onclick="faturarOs(' . $os[$i]['OsID'] . ',' . $os[$i]['OsCliID'] . ',' . $os[$i]['OsValorTotal'] . ')" class="btn btn-warning btn-xs">Faturar?</span>')) ?>
 
-                                                <?php 
+                                                <?php
                                                 $os[$i]['CliNome'] = str_replace(' ', '%20', $os[$i]['nomeCliente']);
                                                 $telefone = Util::remove_especial_char(trim($os[$i]['CliTelefone']));
                                                 $inicio_texto = "Olá, tudo bem?<br /><br /> Somo da *{$dadosEmp[0]['EmpNome']}<br /><br />*Segue o orçamento:*{$os[$i]['OsID']}*<br /><br />Nome do cliente: *{$os[$i]['nomeCliente']}*<br /><br />Defeito:";
@@ -272,7 +274,7 @@ use Src\_public\Util; ?>
 
                                                 $link = "https://api.whatsapp.com/send?phone=55{$telefone}&text=🔔%20{$linkTratado}%0A{$enviarOrcamento}%0ADados do aparelho:%0A{$enviarDadosAparelho}%0AValor do Serviço: R$:{$valorOS}";
                                                 ?>
-                                                <a class="btn btn-primary btn-xs " aria-label="WhatsApp" href="<?=$link?>" target="_blank">Enviar orçamento</a>
+                                                <a class="btn btn-primary btn-xs " aria-label="WhatsApp" href="<?= $link ?>" target="_blank">Enviar orçamento</a>
                                             </td>
                                         </tr>
                                     <?php } ?>

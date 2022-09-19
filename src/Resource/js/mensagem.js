@@ -4,6 +4,9 @@ function RetornarMsg(n) {
     var msg = "";
 
     switch (n) {
+        case -8:
+            msg = "Para cancelar, precisa excluir produtos e serviços da OS!";
+            break;
         case -7:
             msg = "Os sem *valor, não será possível faturar!";
             break;
@@ -16,10 +19,10 @@ function RetornarMsg(n) {
         case -4:
             msg = "Login ou senha inválidos!";
             break;
-            case -2:
-                msg = "Erro ao tentar excluir, itens em uso";
-                break;
-            case -1:
+        case -2:
+            msg = "Erro ao tentar excluir, itens em uso";
+            break;
+        case -1:
             msg = "ocorreu um erro na operação, tente mais tarde";
             break;
         case 0:
@@ -35,29 +38,33 @@ function RetornarMsg(n) {
     return msg;
 }
 
-function MensagemCamposObrigatorios(){
+function MensagemCamposObrigatorios() {
     toastr.warning(RetornarMsg(0));
 }
-function MensagemSucesso(){
+function MensagemSucesso() {
     toastr.success(RetornarMsg(1));
 }
-function MensagemErro(){
+function MensagemErro() {
     toastr.error(RetornarMsg(-1));
 }
-function MensagemExcluirErro(){
+function MensagemExcluirErro() {
     toastr.error(RetornarMsg(-2));
 }
-function MensagemLogin(){
+function MensagemLogin() {
     toastr.warning(RetornarMsg(-4));
 }
-function MensagemSenhaDiferente(){
+function MensagemSenhaDiferente() {
     toastr.warning(RetornarMsg(-5));
 }
-function MensagemEmailExiste(){
+function MensagemEmailExiste() {
     toastr.warning(RetornarMsg(-6));
 }
-function MensagemFaturarSemValor(){
+function MensagemFaturarSemValor() {
     toastr.warning(RetornarMsg(-7));
 }
+function MensagemLimparOs() {
+    toastr.warning(RetornarMsg(-8));
+}
+
 
 

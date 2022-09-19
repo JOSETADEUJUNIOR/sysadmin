@@ -388,3 +388,19 @@ function FiltrarServico(nome_filtro) {
         }
     })
 }
+
+function StatusOS() {
+
+    if ($("#status").val() == "C") {
+
+        let valorOS = $("#ValorOS").val();
+        if (valorOS > 0) {
+           MensagemLimparOs();
+            $("#status").val('A');
+            return false;
+        } else {
+            return true;
+        }
+
+    }
+}
