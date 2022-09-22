@@ -19,6 +19,17 @@ class Os
              WHERE OsEmpID = ? ';
         return $sql;
     }
+    public static function FiltrarOsSQL($nome_filtro)
+    {
+        $sql = 'SELECT OsID, OsDtInicial, OsDtFinal, OsGarantia, OsDescProdServ, OsDefeito, OsObs, OsCliID,tb_cliente.CliNome as nomeCliente, tb_cliente.CliTelefone as CliTelefone, OsTecID, OsStatus, OsLaudoTec, OsValorTotal, OsDesconto, OsFaturado FROM tb_os
+                Inner Join tb_cliente on tb_cliente.CliID = tb_os.OsCliID
+
+             WHERE OsEmpID = ? ';
+        if (!empty($nome_filtro)) {
+            $sql = $sql . ' And tb_cliente.CliNome LIKE ?';
+        }
+        return $sql;
+    }
     public static function RetornarOsMesSQL()
     {
         $sql = 'SELECT OsID, OsDtInicial, OsDtFinal, OsGarantia, OsDescProdServ, OsDefeito, OsObs, OsCliID,tb_cliente.CliNome as nomeCliente, tb_cliente.CliTelefone as CliTelefone, OsTecID, OsStatus, OsLaudoTec, OsValorTotal, OsDesconto, OsFaturado FROM tb_os
@@ -35,10 +46,10 @@ class Os
         if (!empty($CliID)) {
             $sql .= " AND OsCliID = $CliID";
         }
-        if ($tipo !="" ) {
+        if ($tipo != "") {
             $sql .= " AND OsStatus IN($tipo)";
         }
-        
+
         return $sql;
     }
     public static function RetornarOrdemSQL()

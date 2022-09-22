@@ -395,7 +395,7 @@ function StatusOS() {
 
         let valorOS = $("#ValorOS").val();
         if (valorOS > 0) {
-           MensagemLimparOs();
+            MensagemLimparOs();
             $("#status").val('A');
             return false;
         } else {
@@ -403,4 +403,17 @@ function StatusOS() {
         }
 
     }
+}
+
+function FiltrarOrdem(nome_filtro) {
+    $.ajax({
+        type: "POST",
+        url: BASE_URL_AJAX("Os_dataview"),
+        data: {
+            btnFiltrar: 'ajx',
+            FiltrarNome: nome_filtro
+        }, success: function (dados) {
+            $("#tabela_result_os").html(dados);
+        }
+    })
 }
