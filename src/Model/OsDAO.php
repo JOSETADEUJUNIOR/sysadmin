@@ -408,6 +408,17 @@ class OsDAO extends Conexao
         $sql->execute();
         return $sql->fetchAll(\PDO::FETCH_ASSOC);
     }
+    public function FiltrarStatusDAO($status_filtro, $filtroDe, $filtroAte)
+    {
+        $sql = $this->conexao->prepare(Os::FiltrarStatusSQL($status_filtro, $filtroDe, $filtroAte));
+        $sql->bindValue(1, Util::CodigoEmpresa());
+        if (!empty($filtroDe)&& !empty($filtroAte)) {
+            $sql->bindValue(2, $filtroDe);
+            $sql->bindValue(3, $filtroAte);
+        }
+        $sql->execute();
+        return $sql->fetchAll(\PDO::FETCH_ASSOC);
+    }
 
     public function RetornarOsDAO()
     {

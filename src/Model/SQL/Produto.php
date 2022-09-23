@@ -27,6 +27,14 @@ class Produto
                     FROM tb_produto Where ProdEmpID = ?';
         return $sql;
     }
+    
+    public static function RetornarCodProdutoSQL()
+    {
+        $sql = 'SELECT ProdCodBarra
+                    FROM tb_produto WHERE ProdEmpID = ? AND ProdCodBarra = ?';
+        return $sql;
+    }
+    
 
     public static function AlterarProdutoSISQL()
     {

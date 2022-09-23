@@ -25,6 +25,22 @@ class ProdutoDAO extends Conexao
         $sql->execute();
         return $sql->fetchAll(\PDO::FETCH_ASSOC);
     }
+    public function RetornaCodProdutoDAO($cod)
+    {
+        $sql = $this->conexao->prepare(Produto::RetornarCodProdutoSQL());
+        $sql->bindValue(1, Util::CodigoEmpresa());
+        $sql->bindValue(2, $cod);
+        $sql->execute();
+        
+        return $sql->fetchAll(\PDO::FETCH_ASSOC);
+        
+    }
+   
+    
+    
+    
+    
+    
     public function AlterarProdutoDAO(ProdutoVO $vo): int
     {
         if ($vo->getImagem() == '') {

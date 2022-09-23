@@ -1,4 +1,4 @@
-<?php require_once dirname(__DIR__, 2) . '/Resource/dataview/Os_dataview.php'; use Src\_public\Util;
+ <?php require_once dirname(__DIR__, 2) . '/Resource/dataview/Os_dataview.php'; use Src\_public\Util;
 
 
 ob_start();

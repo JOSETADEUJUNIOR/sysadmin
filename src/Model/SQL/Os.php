@@ -30,6 +30,20 @@ class Os
         }
         return $sql;
     }
+    public static function FiltrarStatusSQL($status_filtro, $filtroDe, $filtroAte)
+    {
+        $sql = "SELECT OsID, OsDtInicial, OsDtFinal, OsGarantia, OsDescProdServ, OsDefeito, OsObs, OsCliID,tb_cliente.CliNome as nomeCliente, tb_cliente.CliTelefone as CliTelefone, OsTecID, OsStatus, OsLaudoTec, OsValorTotal, OsDesconto, OsFaturado FROM tb_os
+                Inner Join tb_cliente on tb_cliente.CliID = tb_os.OsCliID
+
+             WHERE OsEmpID = ? ";
+        if (!empty($status_filtro)) {
+            $sql = $sql .= " And OsStatus IN($status_filtro)";
+        }
+        if (!empty($filtroDe) && !empty($filtroAte)) {
+            $sql = $sql .= " And OsDtInicial Between ? and ?";
+        }
+        return $sql;
+    }
     public static function RetornarOsMesSQL()
     {
         $sql = 'SELECT OsID, OsDtInicial, OsDtFinal, OsGarantia, OsDescProdServ, OsDefeito, OsObs, OsCliID,tb_cliente.CliNome as nomeCliente, tb_cliente.CliTelefone as CliTelefone, OsTecID, OsStatus, OsLaudoTec, OsValorTotal, OsDesconto, OsFaturado FROM tb_os

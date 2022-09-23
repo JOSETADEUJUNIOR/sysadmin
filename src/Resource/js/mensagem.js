@@ -4,6 +4,9 @@ function RetornarMsg(n) {
     var msg = "";
 
     switch (n) {
+        case -9:
+            msg = "Codigo de barras já existe!";
+            break;
         case -8:
             msg = "Para cancelar, precisa excluir produtos e serviços da OS!";
             break;
@@ -64,6 +67,9 @@ function MensagemFaturarSemValor() {
 }
 function MensagemLimparOs() {
     toastr.warning(RetornarMsg(-8));
+}
+function MessagemCod() {
+    toastr.warning(RetornarMsg(-9));
 }
 
 

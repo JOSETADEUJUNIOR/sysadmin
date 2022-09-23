@@ -388,6 +388,24 @@ function FiltrarServico(nome_filtro) {
         }
     })
 }
+function FiltrarStatus() {
+    let status = $("#filtrarstatus").val();
+    let filtrarde = $("#filtrarde").val();
+    let filtrarate = $("#filtrarate").val();
+    $.ajax({
+        type: "POST",
+        url: BASE_URL_AJAX("Os_dataview"),
+        data: {
+            btnFiltrarStatus: 'ajx',
+            filtroDe: filtrarde,
+            filtroAte: filtrarate,
+            FiltrarStatus: status
+        }, success: function (dados) {
+            $("#tabela_result_os").html(dados);
+        }
+    })
+    
+}
 
 function StatusOS() {
 

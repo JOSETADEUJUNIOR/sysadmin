@@ -186,46 +186,46 @@ use Src\_public\Util; ?>
         </section>
         <section class="content">
             <div class="container-fluid">
-                <h2 class="text-center display-4">Enhanced Search</h2>
+                <h2 class="text-center display-10">Filtrar OS</h2>
                 <form action="enhanced-results.html">
                     <div class="row">
-                        <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="form-group">
-                                        <label>Result Type:</label>
-                                        <select class="select2" multiple="multiple" data-placeholder="Any" style="width: 100%;">
-                                            <option>Text only</option>
-                                            <option>Images</option>
-                                            <option>Video</option>
+                                    <select class="form-control obg" id="filtrarstatus" name="filtrarstatus">
+                                            <option value="'O','A','EA','F','C'">Todas</option>
+                                            <option value="'O'">Orçamento</option>
+                                            <option value="'A'">Aberto</option>
+                                            <option value="'EA'">Em andamento</option>
+                                            <option value="'F'">Finalizado</option>
+                                            <option value="'C'">Cancelado</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-3">
+                                <div class="col-md-3">
                                     <div class="form-group">
-                                        <label>Sort Order:</label>
-                                        <select class="select2" style="width: 100%;">
-                                            <option selected>ASC</option>
-                                            <option>DESC</option>
-                                        </select>
+                                   <input class="form-control" type="date" name="filtrarde" id="filtrarde" value="<?= date('Y-m-01') ?>">
                                     </div>
                                 </div>
-                                <div class="col-3">
+                                <div class="col-md-3">
                                     <div class="form-group">
-                                        <label>Order By:</label>
-                                        <select class="select2" style="width: 100%;">
-                                            <option selected>Title</option>
-                                            <option>Date</option>
-                                        </select>
+                                    <input class="form-control" type="date" name="filtrarate" id="filtrarate" value="<?= date('Y-m-t') ?>">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                    <button type="button" name="btn_consultar" id="btn_consultar" class="btn btn-success col-md-12" onclick=" return FiltrarStatus()">Pesquisar</button>
+                                    </div>
+                                </div>
+                            
+                            <div class="form-group col-md-12">
                                 <div class="input-group input-group-lg">
                                      <input type="text" name="table_search" class="form-control form-control-lg" onkeyup="FiltrarOrdem(this.value)" placeholder="buscar por cliente">
 
                                      
                                 </div>
+                            </div>
                             </div>
                         </div>
                     </div>

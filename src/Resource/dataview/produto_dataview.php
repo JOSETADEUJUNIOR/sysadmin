@@ -23,6 +23,15 @@ if (isset($_GET['EstoqMin'])) {
         }
     }
     $produto = $produtos;
+}else if(isset($_POST['btn_codBarra'])){
+    $cod = $_POST['codigo'];
+    $ret = $ctrl->BuscaCodController($cod);
+   if ($ret[0]['ProdCodBarra']==$cod) {
+    echo 1;
+   } else {
+    echo 2;
+   }
+    
 }
 
 else if (isset($_POST['btn_cadastrar'])) {

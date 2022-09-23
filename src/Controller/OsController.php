@@ -155,6 +155,10 @@ class OsController
     {
         return $this->dao->FiltrarOsDAO($nome_filtro);
     }
+    public function FiltrarStatusController($status_filtro, $filtroDe, $filtroAte)
+    {
+        return $this->dao->FiltrarStatusDAO($status_filtro, $filtroDe, $filtroAte);
+    }
     public function RetornarOsMesController(): array
     {
         return $this->dao->RetornarOsMesDAO();

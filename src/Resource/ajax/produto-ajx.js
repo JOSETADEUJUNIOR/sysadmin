@@ -8,7 +8,27 @@ function ConsultarProduto() {
         }, success: function (tabela_preenchida) {
             $("#tabela_result_produto").html(tabela_preenchida);
         }
-    })
+    });
+}
+
+function buscaCodBarra(valor){
+    let val = valor;
+$.ajax({
+        type: "POST",
+        url: BASE_URL_AJAX("produto_dataview"),
+        data: {
+            codigo: val,
+            btn_codBarra: 'ajx'
+        }, success: function (dados) {
+            if(dados == 1){
+                MessagemCod();
+                $("#codBarra").val('');
+                $("#codBarra").focus();
+
+            }
+        }
+    });
+    return false;
 }
 
 function Excluir() {

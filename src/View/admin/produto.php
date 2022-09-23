@@ -58,7 +58,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Codigo de Barras</label>
-                                        <input class="form-control obg" id="codBarra" name="codBarra" placeholder="Digite o aqui....">
+                                        <input class="form-control obg" id="codBarra" name="codBarra" onfocusout="buscaCodBarra(this.value)" placeholder="Digite o aqui....">
                                     </div>
                                 </div>
                                 <div class="col-md-8">
