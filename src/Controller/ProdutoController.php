@@ -43,11 +43,15 @@ class ProdutoController
     {
         return $this->dao->RetornaProdutoDAO();
     }
+    public function RetornarProdutoIndexController(): array
+    {
+        return $this->dao->RetornaProdutoIndexDAO();
+    }
     public function BuscaCodController($cod)
     {
         return $this->dao->RetornaCodProdutoDAO($cod);
     }
-    
+
     public function FiltrarProdutoController($nome_filtro)
     {
         return $this->dao->FiltrarProdutoDAO($nome_filtro);

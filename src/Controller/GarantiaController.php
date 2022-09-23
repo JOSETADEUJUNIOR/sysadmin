@@ -22,7 +22,7 @@ class GarantiaController{
         if (empty($vo->getNome()))
             return 0;
         
-            $vo->setfuncao(CADASTRO_SETOR);
+            $vo->setfuncao(CADASTRO_GARANTIA);
             $vo->setIdLogado(Util::CodigoLogado());
 
         return $this->dao->CadastrarGarantiaDAO($vo);

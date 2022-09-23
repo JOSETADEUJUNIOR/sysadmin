@@ -53,7 +53,7 @@ use Src\_public\Util; ?>
         <section class="content">
           <div class="container-fluid">
             <div class="row">
-              <div class="col-lg-3 col-6">
+              <div class="col-lg-3 col-md-6">
                 <!-- small box -->
                 <input type="hidden" name="ordem_sevico" id="ordem_servico" value="<?= $ValorTotal ?>">
                 <div class="small-box bg-info">
@@ -73,12 +73,12 @@ use Src\_public\Util; ?>
               <?php for ($i = 0; $i < count($vendas); $i++) {
                 if ($vendas[$i]['VendaDT'] == date('Y-m-d')) {
                   $valorVenda = $valorVenda + $vendas[$i]['VendaValorTotal'];
-                } 
+                }
                 if ($vendas[$i]['VendaFaturado'] == 'S') {
                   $ValorVendaFaturado = $ValorVendaFaturado + $vendas[$i]['VendaValorTotal'];
                 }
               } ?>
-              <div class="col-lg-3 col-6">
+              <div class="col-lg-3 col-md-6">
                 <!-- small box -->
                 <input type="hidden" name="venda" id="venda" value="<?= $ValorVendaFaturado ?>">
                 <div class="small-box bg-success">
@@ -105,7 +105,7 @@ use Src\_public\Util; ?>
                 }
               } ?>
 
-              <div class="col-lg-3 col-6">
+              <div class="col-lg-3 col-md-6">
                 <!-- small box -->
                 <div class="small-box bg-warning">
                   <div class="inner">
@@ -119,7 +119,7 @@ use Src\_public\Util; ?>
                 </div>
               </div>
               <!-- ./col -->
-              <div class="col-lg-3 col-6">
+              <div class="col-lg-3 col-md-6">
                 <!-- small box -->
                 <div class="small-box bg-danger">
                   <div class="inner">
@@ -153,7 +153,7 @@ use Src\_public\Util; ?>
                 <!-- DONUT CHART -->
                 <div class="card card-info">
                   <div class="card-header">
-                    <h3 class="card-title">Ordem realizadas  x Vendas realizadas</h3>
+                    <h3 class="card-title">Ordem realizadas x Vendas realizadas</h3>
 
                     <div class="card-tools">
                       <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -293,170 +293,170 @@ use Src\_public\Util; ?>
               </div>
             </div>
             <!-- /.card-header -->
-            <?php for ($i = 0; $i < count($produto); $i++) { ?>
-              <div class="card-body p-0">
-                <ul class="products-list product-list-in-card pl-2 pr-2">
-                  <li class="item">
-                    <div class="product-img">
-                      <td><a href="../../Resource/dataview/<?= $produto[$i]['ProdImagemPath'] ?>" target="_blank" rel="noopener noreferrer"><img src="../../Resource/dataview/<?= $produto[$i]['ProdImagemPath'] ?>" alt="<?= $produto[$i]['ProdImagemPath'] ?>" class="brand-image img-circle elevation-3" width="50px" height="50px"></a></td>
-                    </div>
-                    <div class="product-info">
-                      <a href="javascript:void(0)" class="product-title"><?= $produto[$i]['ProdNome'] ?>
-                        <span class="badge badge-warning float-right"><?= Util::FormatarValor($produto[$i]['ProdValorVenda']) ?></span></a>
-                      <span class="product-description">
-                        <?= $produto[$i]['ProdDescricao'] ?>
-                      </span>
-                    </div>
-                  </li>
-                </ul>
+            <?php for ($i = 0; $i < count($produtoIndex); $i++) { ?>
+                <div class="card-body p-0">
+                  <ul class="products-list product-list-in-card pl-2 pr-2">
+                    <li class="item">
+                      <div class="product-img">
+                        <td><a href="../../Resource/dataview/<?= $produtoIndex[$i]['ProdImagemPath'] ?>" target="_blank" rel="noopener noreferrer"><img src="../../Resource/dataview/<?= $produtoIndex[$i]['ProdImagemPath'] ?>" alt="<?= $produtoIndex[$i]['ProdImagemPath'] ?>" class="brand-image img-circle elevation-3" width="50px" height="50px"></a></td>
+                      </div>
+                      <div class="product-info">
+                        <a href="javascript:void(0)" class="product-title"><?= $produtoIndex[$i]['ProdNome'] ?>
+                          <span class="badge badge-warning float-right"><?= Util::FormatarValor($produtoIndex[$i]['ProdValorVenda']) ?></span></a>
+                        <span class="product-description">
+                          <?= $produtoIndex[$i]['ProdDescricao'] ?>
+                        </span>
+                      </div>
+                    </li>
+                  </ul>
                 </div>
-              <?php } ?>
-              <input type="hidden" id="receita" name="receita" value="<?= $receita ?>">
-              <input type="hidden" id="despesa" name="despesa" value="<?= $despesa ?>">
-             
-             
-              <!-- /.card-body -->
-              <div class="card-footer text-center">
-                <a href="produto.php" class="uppercase">Ver todos os produtos</a>
-              </div>
-              <!-- /.card-footer -->
-         
+            <?php } ?>
+            <input type="hidden" id="receita" name="receita" value="<?= $receita ?>">
+            <input type="hidden" id="despesa" name="despesa" value="<?= $despesa ?>">
+
+
+            <!-- /.card-body -->
+            <div class="card-footer text-center">
+              <a href="produto.php" class="uppercase">Ver todos os produtos</a>
+            </div>
+            <!-- /.card-footer -->
+
           </div>
-     </div>       
-     </div>       
+        </div>
+    </div>
 
-          <!--/.card -->
-     
-  <?php include_once PATH_URL . '/Template/_includes/_footer.php' ?>
-  <!-- /.control-sidebar -->
-  <!-- ./wrapper -->
+    <!--/.card -->
 
-  <!-- jQuery -->
-  <?php include_once PATH_URL . '/Template/_includes/_scripts.php' ?>
-  <?php include_once PATH_URL . '/Template/_includes/_msg.php' ?>
-  <script src="../../Resource/ajax/tipo-equipamento-ajx.js"></script>
+    <?php include_once PATH_URL . '/Template/_includes/_footer.php' ?>
+    <!-- /.control-sidebar -->
+    <!-- ./wrapper -->
 
-  <script src="../../Template/plugins/chart.js/Chart.min.js"></script>
+    <!-- jQuery -->
+    <?php include_once PATH_URL . '/Template/_includes/_scripts.php' ?>
+    <?php include_once PATH_URL . '/Template/_includes/_msg.php' ?>
+    <script src="../../Resource/ajax/tipo-equipamento-ajx.js"></script>
+
+    <script src="../../Template/plugins/chart.js/Chart.min.js"></script>
 
 
-  <script>
-    $(function() {
-      /* ChartJS
-       * -------
-       * Here we will create a few charts using ChartJS
-       */
+    <script>
+      $(function() {
+        /* ChartJS
+         * -------
+         * Here we will create a few charts using ChartJS
+         */
 
-      //--------------
-      //- AREA CHART -
-      //--------------
+        //--------------
+        //- AREA CHART -
+        //--------------
 
-      // Get context with jQuery - using jQuery's .get() method.
-      var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
-      var receita = $("#receita").val();
-      var despesa = $("#despesa").val();
-      var donutData = {
-        labels: [
-          'Credito',
-          'Debito',
+        // Get context with jQuery - using jQuery's .get() method.
+        var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
+        var receita = $("#receita").val();
+        var despesa = $("#despesa").val();
+        var donutData = {
+          labels: [
+            'Credito',
+            'Debito',
 
-        ],
-        datasets: [{
-          data: [receita, despesa],
-          backgroundColor: ['#00a65a', '#f56954'],
-        }]
-      }
-      var donutOptions = {
-        maintainAspectRatio: false,
-        responsive: true,
-      }
-      //Create pie or douhnut chart
-      // You can switch between pie and douhnut using the method below.
-      new Chart(donutChartCanvas, {
-        type: 'doughnut',
-        data: donutData,
-        options: donutOptions
+          ],
+          datasets: [{
+            data: [receita, despesa],
+            backgroundColor: ['#00a65a', '#f56954'],
+          }]
+        }
+        var donutOptions = {
+          maintainAspectRatio: false,
+          responsive: true,
+        }
+        //Create pie or douhnut chart
+        // You can switch between pie and douhnut using the method below.
+        new Chart(donutChartCanvas, {
+          type: 'doughnut',
+          data: donutData,
+          options: donutOptions
+        })
+
+        //-------------
+        //- PIE CHART -
+        //-------------
+        // Get context with jQuery - using jQuery's .get() method.
+        var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+        var pieData = donutData;
+        var pieOptions = {
+          maintainAspectRatio: false,
+          responsive: true,
+        }
+        //Create pie or douhnut chart
+        // You can switch between pie and douhnut using the method below.
+        new Chart(pieChartCanvas, {
+          type: 'pie',
+          data: pieData,
+          options: pieOptions
+        })
+
+
       })
+    </script>
+    <script>
+      $(function() {
+        /* ChartJS
+         * -------
+         * Here we will create a few charts using ChartJS
+         */
 
-      //-------------
-      //- PIE CHART -
-      //-------------
-      // Get context with jQuery - using jQuery's .get() method.
-      var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
-      var pieData = donutData;
-      var pieOptions = {
-        maintainAspectRatio: false,
-        responsive: true,
-      }
-      //Create pie or douhnut chart
-      // You can switch between pie and douhnut using the method below.
-      new Chart(pieChartCanvas, {
-        type: 'pie',
-        data: pieData,
-        options: pieOptions
+        //--------------
+        //- AREA CHART -
+        //--------------
+
+        // Get context with jQuery - using jQuery's .get() method.
+        var donutChartCanvas = $('#donutChart1').get(0).getContext('2d')
+        var venda = $("#venda").val();
+        var ordem_servico = $("#ordem_servico").val();
+        var donutData = {
+          labels: [
+            'Venda',
+            'Ordem_Servico',
+
+          ],
+          datasets: [{
+            data: [venda, ordem_servico],
+            backgroundColor: ['#00a65a', '#17a2b8'],
+          }]
+        }
+        var donutOptions = {
+          maintainAspectRatio: false,
+          responsive: true,
+        }
+        //Create pie or douhnut chart
+        // You can switch between pie and douhnut using the method below.
+        new Chart(donutChartCanvas, {
+          type: 'doughnut',
+          data: donutData,
+          options: donutOptions
+        })
+
+        //-------------
+        //- PIE CHART -
+        //-------------
+        // Get context with jQuery - using jQuery's .get() method.
+        var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+        var pieData = donutData;
+        var pieOptions = {
+          maintainAspectRatio: false,
+          responsive: true,
+        }
+        //Create pie or douhnut chart
+        // You can switch between pie and douhnut using the method below.
+        new Chart(pieChartCanvas, {
+          type: 'pie',
+          data: pieData,
+          options: pieOptions
+        })
+
+
       })
-
-
-    })
-  </script>
-  <script>
-    $(function() {
-      /* ChartJS
-       * -------
-       * Here we will create a few charts using ChartJS
-       */
-
-      //--------------
-      //- AREA CHART -
-      //--------------
-
-      // Get context with jQuery - using jQuery's .get() method.
-      var donutChartCanvas = $('#donutChart1').get(0).getContext('2d')
-      var venda = $("#venda").val();
-      var ordem_servico = $("#ordem_servico").val();
-      var donutData = {
-        labels: [
-          'Venda',
-          'Ordem_Servico',
-
-        ],
-        datasets: [{
-          data: [venda, ordem_servico],
-          backgroundColor: ['#00a65a', '#17a2b8'],
-        }]
-      }
-      var donutOptions = {
-        maintainAspectRatio: false,
-        responsive: true,
-      }
-      //Create pie or douhnut chart
-      // You can switch between pie and douhnut using the method below.
-      new Chart(donutChartCanvas, {
-        type: 'doughnut',
-        data: donutData,
-        options: donutOptions
-      })
-
-      //-------------
-      //- PIE CHART -
-      //-------------
-      // Get context with jQuery - using jQuery's .get() method.
-      var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
-      var pieData = donutData;
-      var pieOptions = {
-        maintainAspectRatio: false,
-        responsive: true,
-      }
-      //Create pie or douhnut chart
-      // You can switch between pie and douhnut using the method below.
-      new Chart(pieChartCanvas, {
-        type: 'pie',
-        data: pieData,
-        options: pieOptions
-      })
-
-
-    })
-  </script>
+    </script>
 </body>
 
 </html>

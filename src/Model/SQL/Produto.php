@@ -24,17 +24,23 @@ class Produto
     public static function RetornarProdutoSQL()
     {
         $sql = 'SELECT ProdID, ProdDescricao, ProdDtCriacao, ProdCodBarra, ProdValorCompra, ProdValorVenda, ProdEstoqueMin, ProdEstoque, ProdImagem, ProdImagemPath, ProdEmpID, ProdUserID
-                    FROM tb_produto Where ProdEmpID = ?';
+                    FROM tb_produto Where ProdEmpID = ? order by ProdID desc';
         return $sql;
     }
-    
+    public static function RetornarProdutoIndexSQL()
+    {
+        $sql = 'SELECT ProdID, ProdDescricao, ProdDtCriacao, ProdCodBarra, ProdValorCompra, ProdValorVenda, ProdEstoqueMin, ProdEstoque, ProdImagem, ProdImagemPath, ProdEmpID, ProdUserID
+                    FROM tb_produto Where ProdEmpID = ? order by ProdID desc limit 0, 5';
+        return $sql;
+    }
+
     public static function RetornarCodProdutoSQL()
     {
         $sql = 'SELECT ProdCodBarra
                     FROM tb_produto WHERE ProdEmpID = ? AND ProdCodBarra = ?';
         return $sql;
     }
-    
+
 
     public static function AlterarProdutoSISQL()
     {

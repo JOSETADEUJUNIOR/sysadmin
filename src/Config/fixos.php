@@ -73,6 +73,9 @@ const SITUACAO_REMOVIDO = 2;
 const SITUACAO_MANUTENCAO = 3;
 
 const CADASTRO_USUARIO = 'CadastrarUsuarioController';
+
+const CADASTRO_GARANTIA = 'CadastrarGarantiaController';
+
 const ALTERA_EMPRESA = 'AlterarEmpresaController';
 
 const ALTERA_USUARIO = 'AlterarUsuarioController';

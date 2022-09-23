@@ -1,5 +1,6 @@
 <?php
 include_once '_include_autoload.php';
+
 use Src\_public\Util;
 
 Util::VerLogado();
@@ -15,6 +16,7 @@ $ctrllanc = new FinanceiroController();
 $lancamentos = $ctrllanc->RetornaTodosLancamentoController();
 $ctrlProd = new ProdutoController();
 $produto = $ctrlProd->RetornarProdutoController();
+$produtoIndex = $ctrlProd->RetornarProdutoIndexController();
 $ctrlVenda = new VendaController();
 $vendas = $ctrlVenda->RetornarTodasVendaController();
 $ctrlOS = new OsController();
@@ -22,7 +24,7 @@ $os = $ctrlOS->RetornarOsController();
 
 $ctrl = new UsuarioController();
 
-if (isset($_POST['btnAlterarUser'])){
+if (isset($_POST['btnAlterarUser'])) {
     $vo = new UsuarioVO;
     $vo->setNome($_POST['nome']);
     $vo->setLogin($_POST['login']);
@@ -45,7 +47,7 @@ if (isset($_POST['btnAlterarUser'])){
     $deu_certo = move_uploaded_file($arquivos["tmp_name"], $path);
     $vo->setUserLogo($nomeDoArquivo);
     $vo->setLogoPath($path);
-    
+
     $ret = $ctrl->AlterarUsuarioController($vo);
 
     if ($_POST['btnAlterarUser'] == 'ajx') {
@@ -53,42 +55,39 @@ if (isset($_POST['btnAlterarUser'])){
     } else {
         $user = $ctrl->RetornarDadosUsuarioController();
     }
-
-
 } else if (isset($_POST['btnConsultarUsuario']) && $_POST['btnConsultarUsuario'] == 'ajx') {
 
     $user = $ctrl->RetornarDadosUsuarioController(); ?>
 
-<div class="card card-primary card-outline">
-    <div class="card-body box-profile">
-        <div class="text-center">
-            <img class="profile-user-img img-fluid img-circle" src="../../Resource/dataview/<?= $user[0]['UserLogoPath']?>" alt="User profile picture">
+    <div class="card card-primary card-outline">
+        <div class="card-body box-profile">
+            <div class="text-center">
+                <img class="profile-user-img img-fluid img-circle" src="../../Resource/dataview/<?= $user[0]['UserLogoPath'] ?>" alt="User profile picture">
+            </div>
+
+            <h3 class="profile-username text-center"><?= $user[0]['nome'] ?></h3>
+
+            <p class="text-muted text-center"><?= $user[0]['tipo'] ?></p>
+
+            <ul class="list-group list-group-unbordered mb-3">
+                <li class="list-group-item">
+                    <b>Telefone</b> <a class="float-right"><?= $user[0]['telefone'] ?></a>
+                </li>
+                <li class="list-group-item">
+                    <b>E-mail</b> <a class="float-right"><?= $user[0]['login'] ?></a>
+                </li>
+                <li class="list-group-item">
+                    <b>Status</b> <a class="float-right"><?= ($user[0]['status'] == 1 ? '<small class="btn btn-success btn-xs">Ativo</small>' : '<small class="btn btn-danger btn-xs">Inativo</small>') ?></a>
+                </li>
+            </ul>
+            <a href="#" onclick="AlterarUsuarioModal('<?= $user[0]['EmpID'] ?>', '<?= $user[0]['nome'] ?>','<?= $user[0]['login'] ?>','<?= $user[0]['senha'] ?>','<?= $user[0]['telefone'] ?>','<?= $user[0]['UserLogo'] ?>','<?= $user[0]['UserLogoPath'] ?>')" data-toggle="modal" data-target="#alterarUsuario" class="btn btn-primary btn-block">Alterar Dados Usuario</a>
         </div>
-
-        <h3 class="profile-username text-center"><?= $user[0]['nome'] ?></h3>
-
-        <p class="text-muted text-center"><?= $user[0]['tipo'] ?></p>
-
-        <ul class="list-group list-group-unbordered mb-3">
-            <li class="list-group-item">
-                <b>Telefone</b> <a class="float-right"><?= $user[0]['telefone'] ?></a>
-            </li>
-            <li class="list-group-item">
-                <b>E-mail</b> <a class="float-right"><?= $user[0]['login'] ?></a>
-            </li>
-            <li class="list-group-item">
-            <b>Status</b> <a class="float-right"><?= ($user[0]['status']==1?'<small class="btn btn-success btn-xs">Ativo</small>':'<small class="btn btn-danger btn-xs">Inativo</small>') ?></a>
-            </li>
-        </ul>
-        <a href="#" onclick="AlterarUsuarioModal('<?= $user[0]['EmpID'] ?>', '<?= $user[0]['nome'] ?>','<?= $user[0]['login'] ?>','<?= $user[0]['senha'] ?>','<?= $user[0]['telefone'] ?>','<?= $user[0]['UserLogo'] ?>','<?= $user[0]['UserLogoPath'] ?>')" data-toggle="modal" data-target="#alterarUsuario" class="btn btn-primary btn-block">Alterar Dados Usuario</a>
+        <!-- /.card-body -->
     </div>
-    <!-- /.card-body -->
-</div>
-    <?php } else {
+<?php } else {
     $dados = $ctrl->RetornarDadosCadastraisController();
     $user = $ctrl->RetornarDadosUsuarioController();
-    
-}  
+}
 
 if (isset($_POST['btnAlterar'])) {
     $vo = new UsuarioVO;
@@ -178,5 +177,4 @@ if (isset($_POST['btnAlterar'])) {
 <?php } else {
     $dados = $ctrl->RetornarDadosCadastraisController();
     $user = $ctrl->RetornarDadosUsuarioController();
-    
 } ?>
