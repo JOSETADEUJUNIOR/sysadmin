@@ -81,7 +81,7 @@ class Util
 
     private static function IrTelaLogar()
     {
-        header('location: ../../View/admin/login.php');
+        header('location: ../../view/admin/login.php');
         exit;
     }
 

@@ -28,7 +28,9 @@ class FinanceiroDAO extends Conexao
         $sql = $this->conexao->prepare(Financeiro::AlterarReceitaLancamentoSQL());
         $sql->bindValue(1, $vo->getDescricao());
         if ($vo->getDesconto() != '') {
-            $valorDesconto = $vo->getValor() - $vo->getDesconto();
+            $valorTotal = $vo->getValor();
+            $desconto = $vo->getDesconto();
+            $valorDesconto = $valorTotal - $desconto;
             $sql->bindValue(2, $valorDesconto);
         } else {
 
@@ -121,8 +123,8 @@ class FinanceiroDAO extends Conexao
             $sql->execute();
         } else if ($VendaID > 0) {
             $sql = $this->conexao->prepare(Venda::ExcluirFaturarVendaSQL());
-            $sql->bindValue(1, 'N');
-            $sql->bindValue(2, 0.00);
+            $sql->bindValue(1, 0.00);
+            $sql->bindValue(2, 'N');
             $sql->bindValue(3, 0);
             $sql->bindValue(4, Util::CodigoEmpresa());
             $sql->bindValue(5, $VendaID);
@@ -192,8 +194,4 @@ class FinanceiroDAO extends Conexao
         $sql->execute();
         return $sql->fetchAll(\PDO::FETCH_ASSOC);
     }
-
-
-
-
 }
