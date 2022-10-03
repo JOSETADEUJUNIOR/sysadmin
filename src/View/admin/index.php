@@ -36,6 +36,16 @@ use Src\_public\Util; ?>
               <ol class="breadcrumb float-sm-right">
               </ol>
             </div>
+            <?php for ($i = 0; $i < count($lancamentos); $i++) {
+              if ($lancamentos[$i]['LancDtVencimento'] == date('Y-m-d')) {
+                $q++;
+              }
+            } ?>
+            <div class="alert alert-warning alert-dismissible col-md-12">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+              <h6><i class="icon fas fa-exclamation-triangle"></i>Alerta, existem <?= $q ?> despesas com vencimento para hoje. <a style="color:blue" href="financeiro.php">Acessar financeiro</a></h6>
+            </div>
+
           </div>
         </div><!-- /.container-fluid -->
       </section>
@@ -294,22 +304,22 @@ use Src\_public\Util; ?>
             </div>
             <!-- /.card-header -->
             <?php for ($i = 0; $i < count($produtoIndex); $i++) { ?>
-                <div class="card-body p-0">
-                  <ul class="products-list product-list-in-card pl-2 pr-2">
-                    <li class="item">
-                      <div class="product-img">
-                        <td><a href="../../Resource/dataview/<?= $produtoIndex[$i]['ProdImagemPath'] ?>" target="_blank" rel="noopener noreferrer"><img src="../../Resource/dataview/<?= $produtoIndex[$i]['ProdImagemPath'] ?>" alt="<?= $produtoIndex[$i]['ProdImagemPath'] ?>" class="brand-image img-circle elevation-3" width="50px" height="50px"></a></td>
-                      </div>
-                      <div class="product-info">
-                        <a href="javascript:void(0)" class="product-title"><?= $produtoIndex[$i]['ProdNome'] ?>
-                          <span class="badge badge-warning float-right"><?= Util::FormatarValor($produtoIndex[$i]['ProdValorVenda']) ?></span></a>
-                        <span class="product-description">
-                          <?= $produtoIndex[$i]['ProdDescricao'] ?>
-                        </span>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
+              <div class="card-body p-0">
+                <ul class="products-list product-list-in-card pl-2 pr-2">
+                  <li class="item">
+                    <div class="product-img">
+                      <td><a href="../../Resource/dataview/<?= $produtoIndex[$i]['ProdImagemPath'] ?>" target="_blank" rel="noopener noreferrer"><img src="../../Resource/dataview/<?= $produtoIndex[$i]['ProdImagemPath'] ?>" alt="<?= $produtoIndex[$i]['ProdImagemPath'] ?>" class="brand-image img-circle elevation-3" width="50px" height="50px"></a></td>
+                    </div>
+                    <div class="product-info">
+                      <a href="javascript:void(0)" class="product-title"><?= $produtoIndex[$i]['ProdNome'] ?>
+                        <span class="badge badge-warning float-right"><?= Util::FormatarValor($produtoIndex[$i]['ProdValorVenda']) ?></span></a>
+                      <span class="product-description">
+                        <?= $produtoIndex[$i]['ProdDescricao'] ?>
+                      </span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
             <?php } ?>
             <input type="hidden" id="receita" name="receita" value="<?= $receita ?>">
             <input type="hidden" id="despesa" name="despesa" value="<?= $despesa ?>">
