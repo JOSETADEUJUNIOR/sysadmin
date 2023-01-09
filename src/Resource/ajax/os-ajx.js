@@ -404,7 +404,7 @@ function FiltrarStatus() {
             $("#tabela_result_os").html(dados);
         }
     })
-    
+
 }
 
 function StatusOS() {
@@ -431,6 +431,7 @@ function FiltrarOrdem(nome_filtro) {
             btnFiltrar: 'ajx',
             FiltrarNome: nome_filtro
         }, success: function (dados) {
+            console.log(dados);
             $("#tabela_result_os").html(dados);
         }
     })

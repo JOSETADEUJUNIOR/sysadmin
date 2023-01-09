@@ -7,7 +7,6 @@ use Src\VO\LogErro;
 
 class ProdutoVO extends LogErro
 {
-
     private $ProdID;
     private $ProdDescricao;
     private $ProdDtCriacao;

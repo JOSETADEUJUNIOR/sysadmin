@@ -193,7 +193,7 @@ use Src\_public\Util; ?>
                             <div class="row">
                                 <div class="col-4">
                                     <div class="form-group">
-                                    <select class="form-control obg" id="filtrarstatus" name="filtrarstatus">
+                                        <select class="form-control obg" id="filtrarstatus" name="filtrarstatus">
                                             <option value="'O','A','EA','F','C'">Todas</option>
                                             <option value="'O'">Orçamento</option>
                                             <option value="'A'">Aberto</option>
@@ -205,27 +205,27 @@ use Src\_public\Util; ?>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                   <input class="form-control" type="date" name="filtrarde" id="filtrarde" value="<?= date('Y-m-01') ?>">
+                                        <input class="form-control" type="date" name="filtrarde" id="filtrarde" value="<?= date('Y-m-01') ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                    <input class="form-control" type="date" name="filtrarate" id="filtrarate" value="<?= date('Y-m-t') ?>">
+                                        <input class="form-control" type="date" name="filtrarate" id="filtrarate" value="<?= date('Y-m-t') ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                    <button type="button" name="btn_consultar" id="btn_consultar" class="btn btn-success col-md-12" onclick=" return FiltrarStatus()">Pesquisar</button>
+                                        <button type="button" name="btn_consultar" id="btn_consultar" class="btn btn-success col-md-12" onclick=" return FiltrarStatus()">Pesquisar</button>
                                     </div>
                                 </div>
-                            
-                            <div class="form-group col-md-12">
-                                <div class="input-group input-group-lg">
-                                     <input type="text" name="table_search" class="form-control form-control-lg" onkeyup="FiltrarOrdem(this.value)" placeholder="buscar por cliente">
 
-                                     
+                                <div class="form-group col-md-12">
+                                    <div class="input-group input-group-lg">
+                                        <input type="text" name="table_search" class="form-control form-control-lg" onkeyup="FiltrarOrdem(this.value)" placeholder="buscar por cliente ou por os">
+
+
+                                    </div>
                                 </div>
-                            </div>
                             </div>
                         </div>
                     </div>
@@ -241,7 +241,7 @@ use Src\_public\Util; ?>
 
                             <div class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
-                                  
+
 
                                 </div>
                             </div>

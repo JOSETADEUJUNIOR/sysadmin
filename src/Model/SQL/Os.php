@@ -25,7 +25,11 @@ class Os
                 Inner Join tb_cliente on tb_cliente.CliID = tb_os.OsCliID
 
              WHERE OsEmpID = ? ';
-        if (!empty($nome_filtro)) {
+        if (!empty($nome_filtro) && is_numeric($nome_filtro)) {
+            //str_replace("'", "", $nome_filtro);
+            $sql = $sql . ' And OsID = ?';
+        }
+        if (!empty($nome_filtro) && !is_numeric($nome_filtro)) {
             $sql = $sql . ' And tb_cliente.CliNome LIKE ?';
         }
         return $sql;

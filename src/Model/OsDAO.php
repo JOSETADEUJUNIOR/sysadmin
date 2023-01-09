@@ -402,7 +402,10 @@ class OsDAO extends Conexao
     {
         $sql = $this->conexao->prepare(Os::FiltrarOsSQL($nome_filtro));
         $sql->bindValue(1, Util::CodigoEmpresa());
-        if (!empty($nome_filtro)) {
+        if (!empty($nome_filtro) && is_numeric($nome_filtro)) {
+            $sql->bindValue(2, $nome_filtro);
+        }
+        if (!empty($nome_filtro) && !is_numeric($nome_filtro)) {
             $sql->bindValue(2, "%" . $nome_filtro . "%");
         }
         $sql->execute();
@@ -412,7 +415,7 @@ class OsDAO extends Conexao
     {
         $sql = $this->conexao->prepare(Os::FiltrarStatusSQL($status_filtro, $filtroDe, $filtroAte));
         $sql->bindValue(1, Util::CodigoEmpresa());
-        if (!empty($filtroDe)&& !empty($filtroAte)) {
+        if (!empty($filtroDe) && !empty($filtroAte)) {
             $sql->bindValue(2, $filtroDe);
             $sql->bindValue(3, $filtroAte);
         }
